@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 360px; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Ride Reservation</h2>
+        <p>Please fill this form to book a ride.</p>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group">
+                <label>Pickup Point</label>
+                <input type="text" name="email" class="form-control value=">
+            </div>    
+            <div class="form-group">
+                <label>Destination</label>
+                <input type="destination" name="destination" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Number of luggages:</label>
+                <input type="luggage" name="luggage" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Date:</label>
+                <input type="date" name="date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Other:</label>
+                <input type="other" name="other" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+            </div>
+            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        </form>
+    </div>    
+</body>
+</html>
