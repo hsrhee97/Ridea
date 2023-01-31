@@ -24,7 +24,6 @@
             <div class = "registration">
                 <?php
                     $login = $_SESSION['username'];
-                    echo $login;
                     if (isset($_POST['registration_submit'])){ 
                         $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
 
