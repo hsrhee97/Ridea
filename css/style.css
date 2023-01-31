@@ -15,11 +15,9 @@
 }
 
 header {
-    /* background-image: url(../images/illustbg.jpeg); */
     height: 100vh;
     width: 100%;
-    /* background-size: cover;
-    background-position: center; */
+
 }
 
 .bg-image {
@@ -28,7 +26,7 @@ header {
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: 750px;
-    animation: slideleft 1s;
+    animation: slidedown 1s;
 }
 
 nav {
@@ -51,7 +49,7 @@ nav {
 
 .logo i {
     color: var(--main-color);
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .logo span {
@@ -117,7 +115,7 @@ nav {
 
 .hometext {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 8%;
     transform: translateY(-50%);
 
@@ -163,7 +161,7 @@ h3 {
 }
 
 .btn span:after {
-    content: '\00bb';
+    content: '\21c0';
     position: absolute;
     opacity: 0;
     top: 0;
@@ -184,21 +182,124 @@ h3 {
     animation: slideleft .5s;
   }
 
-/* slide left animation */
+/* Slide Animations */
+/* Slide left */
   @keyframes slideleft {
-    0% {
+    from {
         transform: translate(100px);
         opacity: 0;
     }
-    100% {
+    to {
         transform: translate(0px);
         opacity: 1;
     }
   }
+/* Slide right for home text after login*/
+  @keyframes slideright {
+    from {
+        left: 1%;
+        opacity: 0;
+    }
+    to {
+        left: 8%;
+        opacity: 1;
+    }
+  }
 
+  /* Slide down */
+  @keyframes slidedown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+  }
 
+  /* ----------------------- */
   /* home after login */
+  /* ---------------------- */
+
+  .hometext-after-login {
+    position: absolute;
+    top: 30%;
+    left: 8%;
+    transform: translateY(-50%);
+    animation: slideright 1s;
+  }
 
   .home_lgin_text span {
     color: var(--main-color);
+  }
+
+  .hometext-after-login h2 {
+    font-size: 65px;
+}
+
+.hometext-after-login p {
+    font-size: 65px;
+}
+  
+.bg-image-after-login {
+    background-image: url(../images/woman-box.jpeg);
+    padding: 15em;
+    background-repeat: no-repeat;
+    background-size: 50% 110%;
+    background-position: 750px;
+    animation: slidedown 1.5s;
+}
+
+
+.ridea {
+    color: var(--main-color);
+}
+
+h4 {
+    color: var(--main-color);
+    font-size: 2em;
+}
+
+.btn-after-login {
+    position: absolute;
+    right: 0;
+    border-radius: 2px solid black;
+    background-color: var(--main-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border: 2px solid transparent;
+    font-weight: bold;
+    padding: 20px 90px;
+    border-radius: 2px;
+    font-size: 25px;
+    text-align: center;
+    transition: all .5s ease;
+    animation: slideleft 1.5s;
+}
+
+.btn-after-login span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+   
+}
+
+.btn-after-login span:after {
+    content: '\21c0';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btn-after-login:hover span {
+    padding-right: 25px;
+  }
+  
+.btn-after-login:hover span:after {
+    opacity: 1;
+    right: 0;
   }
