@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --text-color-black: black;
+    --text-color: #fff;
+    --main-color: #EC4E20;
+}
+
+.textcon {
+    text-align: center;
+    padding: 60px 0 30px 0;
+}
+
+.textcon span {
+    color: var(--main-color);
+}
+
+.b-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+main {
+    background: url(images/white2bg.jpeg);
+    height: 100vh;
+    background-size: cover;
+}
+
+.box {
+    width: 430px;
+    margin: 30px;
+    border-radius: 10px;
+    transition: 0.5s;
+    box-shadow: 9px 14px 42px 3px rgba(163, 174, 184, 0.7);
+}
+
+.box-img {
+    height: 400px;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.ig1 {
+    background-image: url(images/handle.jpeg);
+}
+
+.ig2 {
+    background-image: url(images/slippers.jpeg);
+}
+
+.box:hover {
+    background-color: var(--three-blue);
+}
+
+.box:hover .clickme {
+    background-color: var(--two-blue);
+}
+
+.box:hover .box-img {
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.box h2 {
+    padding: 10px;
+}
+
+.box p {
+    padding: 10px;
+}
