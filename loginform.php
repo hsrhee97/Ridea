@@ -8,15 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style> <?php include 'css/loginform.css'; ?> </style>
+    
+    <title>Document</title>
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
-    <title>Document</title>
 </head>
 <body>
-    <main>
         <?php 
             if (isset($_POST['login_submit'])){ 
                 $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
@@ -83,18 +88,18 @@
             }
         ?>
 
-<section>
+    <section>
         <div class="imgbox">
-            <img src="../images/rocket.jpeg" alt="">
+            <img src="images/rocket.jpeg" alt="#">
             <div class="imagetext">
                 <p>Do not Follow Where the path may lead.<br>Go instead where there is no path and leave a trail.<br><span>- Ralph Waldo Emerson</span></p>
-            
+
             </div>
         </div>
         <div class="contentbox">
             <div class="formbox">
                 <h2>LOGIN</h2>
-                <form class="login_form" method="post">
+                <form method="post">
                     <div class="inputbox">
                         <span>Email</span>
                         <input class="reg_box" type='email' name = "login_email" size="40">
@@ -114,8 +119,6 @@
             </div>
     </section>
 
-
-    </main>
 </body>
 </html>
 

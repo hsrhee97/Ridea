@@ -37,6 +37,7 @@ section .imgbox:before {
     z-index: 1;
     mix-blend-mode: screen;
 }
+
 section .imagetext {
     position: absolute;
     text-align: center;
