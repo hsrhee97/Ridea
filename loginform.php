@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <style> <?php include 'css/styles.css'; ?> </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,23 @@
 </head>
 <body>
     <main>
+=======
+    <style> <?php include 'css/loginform.css'; ?> </style>
+    
+    <title>Document</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+</head>
+<body>
+>>>>>>> Woojin-Choi
         <?php 
             if (isset($_POST['login_submit'])){ 
                 $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
@@ -83,24 +101,38 @@
             }
         ?>
 
-        <form class = "login_form" method="post">
-            <div class = "login_page">
-                <h2 class="log_head">Login</h2>
-                <input class="reg_box" type='email' name = "login_email" placeholder="email" size="40">
-                <span class="error_message">* <br> <?php echo $email_error;?> </span> 
-                <br>
-
-                <input class="reg_box" type='password' name = "login_password" placeholder="password" size="40">
-                <span class="error_message">* <br> <?php echo $password_error;?> </span> 
-                <br>
-                <br>
-                <div class="login_submit">
-                    <input class="input_state" type="submit" name="login_submit" value="Submit"/> 
-                </div>
+    <section>
+        <div class="imgbox">
+            <img src="images/rocket.jpeg" alt="#">
+            <div class="imagetext">
+                <p>Do not Follow Where the path may lead.<br>Go instead where there is no path and leave a trail.<br><span>- Ralph Waldo Emerson</span></p>
             </div>
-        </form>
+        </div>
+        <div class="contentbox">
+            <div class="formbox">
+                <h2>LOGIN</h2>
+                <form method="post">
+                    <div class="inputbox">
+                        <span>Email</span>
+                        <input class="reg_box" type='email' name = "login_email" size="40">
+                    </div>
+                    <div class="inputbox">
+                        <span>Password</span>
+                        <input class="reg_box" type='password' name = "login_password" size="40">
+                    </div>
+                    <div class="inputbox">
+                        <input class="input_state" type="submit" name="login_submit" value="Login"> 
+                    </div>
+                    <div class="inputbox">
+                        <p>New to RIDEA? <a href="register1.php">Register</a></p>
+                    </div>
+                    </div>
+                </form>
+            </div>
+    </section>
 
-
-    </main>
 </body>
 </html>
+
+
+>>>>>>> Woojin-Choi
