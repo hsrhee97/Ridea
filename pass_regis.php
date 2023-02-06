@@ -24,6 +24,7 @@
             <div class = "registration">
                 <?php
                     $login = $_SESSION['username'];
+                    echo $login;
                     if (isset($_POST['registration_submit'])){ 
                         $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
 
@@ -37,7 +38,7 @@
                         
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                            $fname_error = $lname_error = $email_error = $password_error = $gender_error = $exist_error =  "";
+                            $fname_error = $lname_error = $address_error = $phone_error = $email_error = $password_error = $biography_error = $card_error  =  "";
 
                             //fname error check
                             if (empty($_POST["fname"])) {
@@ -53,6 +54,22 @@
                             }
                             else {
                                 $varlname = mysqli_real_escape_string($con, $_POST['lname']);
+                            }
+
+                            //address error check
+                            if (empty($_POST["address"])) {
+                                $address_error = "address is required!";
+                            }
+                            else {
+                                $varaddress = mysqli_real_escape_string($con, $_POST['address']);
+                            }
+
+                            //phone error check
+                            if (empty($_POST["phone"])) {
+                                $phone_error = "Phone is required!";
+                            }
+                            else {
+                                $varphone = mysqli_real_escape_string($con, $_POST['phone']);
                             }
 
                             //email error check
@@ -78,27 +95,35 @@
                                 }        
                             }
 
-                            //gender error check
-                            if (empty($_POST["gender"])) {
-                                $gender_error = "Gender is required!";
+                            //biography error check
+                            if (empty($_POST["biography"])) {
+                                $biography_error = "Biography is required!";
                             }
                             else {
-                                $vargender = mysqli_real_escape_string($con, $_POST['gender']);
+                                $varbiography = mysqli_real_escape_string($con, $_POST['biography']);
+                            }
+
+                            //credit card error check
+                            if (empty($_POST["card"])) {
+                                $card_error = "Credit-card is required!";
+                            }
+                            else {
+                                $varcard = mysqli_real_escape_string($con, $_POST['card']);
                             }
                             
 
-                            if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["email"]) OR empty($_POST["gender"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8) {
+                            if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 OR empty($_POST["card"])) {
 
                             }
                             else{
-                                $email_n = "SELECT * from users where users.email='$varemail'";
+                                $email_n = "SELECT * from PASSENGER where PASSENGER.email='$varemail'";
                                 $sql_email = mysqli_query($con, $email_n);
 
                                 if(mysqli_num_rows($sql_email)>0) {
                                     $email_error = "This email is already registered!";
                                 }
                                 else {
-                                    mysqli_query($con,("INSERT INTO users (fname, lname, email, password, gender) VALUES ('$varfname', '$varlname', '$varemail', PASSWORD('$varpassword'),'$vargender')"));
+                                    mysqli_query($con,("INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, credit_card) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varcard')"));
                                     echo ("<script>alert('You have been registered!')</script>");
                                 }
             
@@ -122,6 +147,16 @@
                     <span class="error_message">* <br> <?php echo $lname_error;?> </span> 
                     <br> 
 
+                    <span class="reg_form">Address: </span>
+                    <input class="reg_box" type='text' name = "address" size="40">
+                    <span class="error_message">* <br> <?php echo $address_error;?> </span> 
+                    <br> 
+
+                    <span class="reg_form">Phone: </span>
+                    <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40">
+                    <span class="error_message">* <br> <?php echo $phone_error;?> </span> 
+                    <br> 
+
                     <span class="reg_form">Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
                     <input class="reg_box" type='email' name = "email" size="40">
                     <span class="error_message">* <br> <?php echo $email_error;?> </span> 
@@ -132,18 +167,16 @@
                     <span class="error_message">* <br> <?php echo $password_error;?> </span> 
                     <br>
 
-                    <span class="reg_form">Phone Number: &nbsp; </span>
-                    <input class="reg_box" type='phone' name = "phone" size="40">
-                    <span class="error_message">* <br> <?php echo $phone_error;?> </span> 
-                    <br>
+                    <span class="reg_form">Biography: </span>
+                    <input class="reg_box" type='text' name = "biography" size="40">
+                    <span class="error_message">* <br> <?php echo $biography_error;?> </span> 
+                    <br> 
 
+                    <span class="reg_form">Credit Card: </span>
+                    <input class="reg_box" type='text' name = "card" size="40">
+                    <span class="error_message">* <br> <?php echo $card_error;?> </span> 
+                    <br> 
 
-                    <span class="reg_form">Gender: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <input type="radio" name="gender" value="Male"> Male
-                    <input type="radio" name="gender" value="Female"> Female
-                    <input type="radio" name="gender" value="Female"> Other
-                    <span class="error_message">* <br> <?php echo $gender_error;?> </span> 
-                    <br>
 
                     <input class="input_state" type="submit" name="registration_submit" value="Submit" style="float: right;"/> 
 

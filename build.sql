@@ -13,33 +13,50 @@ DROP TABLE IF EXISTS DRIVER;
 
 CREATE TABLE DRIVER (
    DriverID INT PRIMARY KEY,
-   email VARCHAR(255) NOT NULL,
    fname VARCHAR(50) NOT NULL,
    lname VARCHAR(50) NOT NULL,
+   address VARCHAR(255),
    phone VARCHAR(20),
-   color VARCHAR(50),
-   model_name VARCHAR(50),
+   email VARCHAR(255) NOT NULL,
+   password VARCHAR(250) NOT NULL,
+   biography TEXT,
    license_number VARCHAR(20) NOT NULL,
    license_photo VARCHAR(255)
 );
 
 CREATE TABLE PASSENGER (
-   PassengerID INT PRIMARY KEY,
-   email VARCHAR(255) NOT NULL,
+   PassengerID INT AUTO_INCREMENT,
    fname VARCHAR(50) NOT NULL,
    lname VARCHAR(50) NOT NULL,
+   address VARCHAR(255),
    phone VARCHAR(20),
-   credit_card VARCHAR(20) NOT NULL
+   email VARCHAR(255) NOT NULL,
+   password VARCHAR(250) NOT NULL,
+   biography TEXT,
+   credit_card VARCHAR(20) NOT NULL,
+   PRIMARY KEY (PassengerID)
+);
+
+CREATE TABLE VEHICLE (
+    VehicleID INT PRIMARY KEY,
+    DriverID INT,
+    Color VARCHAR(50),
+    Model_Name VARCHAR(50),
+    license_number VARCHAR(20) NOT NULL,
+    FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID)
 );
 
 CREATE TABLE TRIP (
     TripID INT PRIMARY KEY,
     DriverID INT,
+    PassengerID INT,
     Start_location VARCHAR(255),
     End_location VARCHAR(255),
     Distance DECIMAL(10,2),
-    FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID)
+    FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID),
+    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
+
 
 CREATE TABLE PAYMENT (
     PaymentID INT PRIMARY KEY,
@@ -77,14 +94,6 @@ CREATE TABLE EXAM_RESULT (
     FOREIGN KEY (Exam_ID) REFERENCES EXAM(Exam_ID)
 );
 
-/* CREATE TABLE CHAT (
-    UserID INT,
-    Playlist VARCHAR(50),
-    Images VARCHAR(255),
-    Location VARCHAR(255),
-    Text_messages VARCHAR(255),
-    FOREIGN KEY (UserID) REFERENCES USER(UserID)
-); */
 
 CREATE TABLE CUSTOMER_CARE (
    EmpID INT PRIMARY KEY,
@@ -98,101 +107,22 @@ CREATE TABLE CUSTOMER_CARE (
    FOREIGN KEY (MentorID) REFERENCES CUSTOMER_CARE(EmpID)
 );
 
-INSERT INTO USER (UserID, fname, lname, address, phone, email, biography, user_type)
+
+
+INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, credit_card) VALUES ('Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee','11111111111')
+
+INSERT INTO DRIVER (DriverID, fname, lname, address, phone, email, biography, license_number, license_photo)
 VALUES
-    (1, 'John', 'Doe', '123 Main St', '555-555-5555', 'johndoe@email.com', 'John is a friendly and experienced driver.', 'driver'),
-    (2, 'Jane', 'Smith', '456 Elm St', '555-555-5556', 'janesmith@email.com', 'Jane is a frequent passenger who values safety and comfort.', 'passenger'),
-    (3, 'Bob', 'Johnson', '789 Oak St', '555-555-5557', 'bobjohnson@email.com', 'Bob is a new driver who is eager to learn and improve.', 'driver'),
-    (4, 'Stella', 'Simanenko', '8265 Westend Avenue', '377-475-4305', 'ssimanenko3@yale.edu', 'Right-sized multi-state moderator', 'driver'),
-    (5, 'Devlin', 'Sloey', '59937 Clyde Gallagher Hill', '133-648-7898', 'dsloey4@typepad.com', 'Ergonomic stable methodology', 'driver'),
-    (6, 'Lawry', 'Lauder', '8679 Dakota Way', '996-692-4661', 'llauder5@parallels.com', 'Stand-alone interactive methodology', 'passenger'),
-    (7, 'Bellina', 'Bartlett', '709 Hanson Hill', '742-407-7779', 'bbartlett6@amazonaws.com', 'Cross-platform real-time function', 'driver'),
-    (8, 'Hieronymus', 'Franks', '39527 Portage Alley', '860-267-5940', 'hfranks7@amazon.co.jp', 'Polarised non-volatile forecast', 'passenger'),
-    (9, 'Giacopo', 'Bainbridge', '54 Melrose Street', '977-433-5913', 'gbainbridge8@imageshack.us', 'Polarised systemic help-desk', 'passenger'),
-    (10, 'Ameline', 'Lownes', '07353 Burning Wood Plaza', '623-655-1538', 'alownes9@smugmug.com', 'De-engineered multi-state circuit', 'driver'),
-    (11, 'Bobbee', 'Fosdick', '12475 Loomis Crossing', '711-124-4748', 'bfosdicka@nytimes.com', 'Centralized directional productivity', 'passenger'),
-    (12, 'Brendan', 'Bellard', '4 Sutherland Alley', '874-291-3363', 'bbellardb@ovh.net', 'Future-proofed actuating software', 'driver'),
-    (13, 'Renault', 'Truckett', '9 Fairview Hill', '577-722-9012', 'rtruckettc@cornell.edu', 'Public-key bandwidth-monitored policy', 'passenger'),
-    (14, 'Catherin', 'Pilley', '176 Cambridge Plaza', '815-522-2082', 'cpilleyd@oracle.com', 'Open-source web-enabled instruction set', 'driver'),
-    (15, 'Kristian', 'Humbie', '26 Ridgeview Junction', '573-109-2244', 'khumbiee@youku.com', 'Grass-roots intermediate emulation', 'driver'),
-    (16, 'Maryl', 'Torbett', '5418 East Street', '766-367-7089', 'mtorbettf@multiply.com', 'Profound multi-state artificial intelligence', 'passenger'),
-    (17, 'Rodge', 'Letixier', '890 Meadow Vale Court', '376-797-8416', 'rletixierg@cornell.edu', 'Assimilated non-volatile throughput', 'driver'),
-    (18, 'Aymer', 'Cornehl', '4 Karstens Circle', '673-129-7075', 'acornehlh@t.co', 'Visionary multi-state capacity', 'passenger'),
-    (19, 'Sergent', 'Ingrey', '39 Marcy Court', '943-354-1084', 'singreyi@parallels.com', 'Reverse-engineered radical benchmark', 'driver'),
-    (20, 'Gayelord', 'Bunford', '506 Independence Park', '566-913-8364', 'gbunfordj@topsy.com', 'Multi-lateral foreground application', 'driver'),
-    (21, 'Ailbert', 'Caudwell', '9 5th Pass', '519-791-0146', 'acaudwellk@chicagotribune.com', 'Open-architected incremental budgetary management', 'passenger'),
-    (22, 'Marya', 'Gergely', '263 Anhalt Pass', '338-607-3468', 'mgergelyl@gnu.org', 'Persistent national capacity', 'driver'),
-    (23, 'Carita', 'Ayscough', '50799 Harper Street', '546-886-3531', 'cayscoughm@zdnet.com', 'Cross-group scalable customer loyalty', 'passenger'),
-    (24, 'Gilly', 'Fairlie', '19149 Mayer Parkway', '650-175-8164', 'gfairlien@blog.com', 'Multi-tiered non-volatile access', 'driver'),
-    (25, 'Blayne', 'Raubenheimers', '21760 Dorton Plaza', '275-567-3323', 'braubenheimerso@marketwatch.com', 'Multi-channelled hybrid analyzer', 'driver'),
-    (26, 'Elspeth', 'Tynan', '86945 Shopko Crossing', '851-123-7229', 'etynanp@msu.edu', 'Advanced 5th generation methodology', 'driver'),
-    (27, 'Elsinore', 'Kaman', '5 Petterle Park', '574-906-8188', 'ekamanq@webmd.com', 'Grass-roots needs-based productivity', 'passenger'),
-    (28, 'Galven', 'Hindsberg', '63727 Lunder Avenue', '170-906-6944', 'ghindsbergr@unicef.org', 'Pre-emptive fault-tolerant throughput', 'driver'),
-    (29, 'Kip', 'Primmer', '7 Hanover Terrace', '628-621-8480', 'kprimmers@yelp.com', 'Business-focused national algorithm', 'passenger'),
-    (30, 'Kalindi', 'Roubay', '88 Charing Cross Trail', '647-852-9716', 'kroubayt@cbsnews.com', 'Extended multimedia local area network', 'driver');
-    
-INSERT INTO DRIVER (DriverID, license_number, license_photo)
+    (2, 'John', 'Doe', '123 Main St', '555-555-5555', 'johndoe@email.com', 'John is a friendly and experienced driver.', '5372353384', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg'),
+    (4, 'Bob', 'Johnson', '789 Oak St', '555-555-5557', 'bobjohnson@email.com', 'Bob is a new driver who is eager to learn and improve.', 'GHI789', 'path/to/photo3.jpg'),
+    (5, 'Stella', 'Simanenko', '8265 Westend Avenue', '377-475-4305', 'ssimanenko3@yale.edu', 'Right-sized multi-state moderator', '7879569979', 'data:image/png;base64,iVBORw0KGgoA');
+
+INSERT INTO PASSENGER (PassengerID, fname, lname, address, phone, email, biography, credit_card)
 VALUES
-    (2, '5372353384', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg'),
-    (4, 'GHI789', 'path/to/photo3.jpg'),
-    (5, '7879569979', 'data:image/png;base64,iVBORw0KGgoA'),
-    (6, '4628007578', 'data:image/png;base64,iVBORw0KGgoAAAANSUhI='),
-    (7, '0916366863', 'data:image/png;base64,iVBORw0KGgoAAAANSUhAAASUVORK5CYII='),
-    (8, '1024971406', 'data:image/png;base64,iVBORw0KGgoAAAANSUh5CYII='),
-    (9, '2122639199', 'data:image/png;base64,iVBORw0KGgoAAAANSUhI='),
-    (10, '2521477761', 'data:image/png;base64,iVBORw0KGgoAAAANSU'),
-    (11, '1457107163', 'data:image/png;base64,iVBORw0KGgoAAAANSUgg=='),
-    (12, '0053671252', 'data:image/png;base64,iVBORw0KGgoAAAANSU='),
-    (13, '4083423110', 'data:image/png;base64,iVBORw0KGgoAAAANSU'),
-    (14, '0369236610', 'data:image/png;base64,iVBORw0KGgoAAAANSUCYII='),
-    (15, '4054315593', 'data:image/png;base64,iVBORw0KGgoAg=='),
-    (16, '4092555652', 'data:image/png;base64,iVBORw0KGgoAg=='),
-    (17, '6985423876', 'data:image/png;base64,iVB='),
-    (18, '3403460355', 'data:image/png;base64,iVBORw0KGgoAAA'),
-    (19, '2987836392', 'data:image/png;base64,iVBORw0KGgoAAA=='),
-    (20, '7112665000', 'data:image/png;base64,iVBORw0KGgoAAAvnAlAAAAAElFTkSuQmCC'),
-    (21, '6533171569', 'data:image/png;base64,iVBORw0KGgoAAA'),
-    (22, '8087980859', 'data:image/png;base64,iVVQAAAAASUVORK5CYII='),
-    (23, '5634292042', 'data:image/png;base64,iVtXW4xpbWpAAAAAElFTkSuQmCC'),
-    (24, '5674601259', 'data:image/png;base64,iVggg=='),
-    (25, '7865976712', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAARK5CYII='),
-    (26, '0142505404', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/IpX+oHaI9cJDajhlcAAAAASUVORK5CYII='),
-    (27, '1566337976', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABVORK5CYII='),
-    (28, '6157176121', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABs5XQAAAABJRU5ErkJggg=='),
-    (29, '8856237482', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABYII='),
-    (30, '3276072769', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABC');
-    
-INSERT INTO PASSENGER (PassengerID, credit_card)
-VALUES
-    (1, '5048370199463308'),
-    (3, '5048377193344939'),
-    (4, '5108757924503282'),
-    (5, '5048377626409762'),
-    (6, '5108759460164669'),
-    (7, '5108753041085246'),
-    (8, '5108750322682477'),
-    (9, '5108755474156667'),
-    (10, '5048377906187534'),
-    (11, '5108755724718852'),
-    (12, '5048375457347184'),
-    (13, '5048377410336288'),
-    (14, '5108752645660974'),
-    (15, '5048370774111033'),
-    (16, '5048378651937495'),
-    (17, '5048376195389413'),
-    (18, '5048377656341570'),
-    (19, '5108756642603911'),
-    (20, '5048370436585509'),
-    (21, '5048376121964461'),
-    (22, '5108758551875514'),
-    (23, '5048370701510158'),
-    (24, '5048371429556382'),
-    (25, '5048372946816580'),
-    (26, '5108753452365053'),
-    (27, '5108759111239050'),
-    (28, '5108753655151805'),
-    (29, '5048373226907461'),
-    (30, '5048379004364478');
+    (1, 'Jane', 'Smith', '456 Elm St', '555-555-5556', 'janesmith@email.com', 'Jane is a frequent passenger who values safety and comfort.', '5048370199463308'),
+    (3, 'Kip', 'Primmer', '7 Hanover Terrace', '628-621-8480', 'kprimmers@yelp.com', 'Business-focused national algorithm', '5048377193344939'),
+    (4, 'Elsinore', 'Kaman', '5 Petterle Park', '574-906-8188', 'ekamanq@webmd.com', 'Grass-roots needs-based productivity', '5108757924503282');
+
 
 INSERT INTO VEHICLE (VehicleID, Color, Model_Name, license_number)
 VALUES
