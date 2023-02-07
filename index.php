@@ -81,7 +81,7 @@
 
         <div class='table'>
             <?php
-            $con = mysqli_connect("db.luddy.indiana.edu", "i494f22_desaikr", "my+sql=i494f22_desaikr", "i494f22_desaikr");
+            $con = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
             if (!$con) {
                 die("Failed to connect to MySQL: " . mysqli_connect_error());
             } else {

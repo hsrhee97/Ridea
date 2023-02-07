@@ -3,9 +3,9 @@
     /* Database credentials. Assuming you are running MySQL
     server with default setting (user 'root' with no password) */
     define('DB_SERVER', 'db.luddy.indiana.edu');
-    define('DB_USERNAME', 'i494f22_desaikr');
-    define('DB_PASSWORD', 'my+sql=i494f22_desaikr');
-    define('DB_NAME', 'i494f22_desaikr');
+    define('DB_USERNAME', 'i494f22_team06');
+    define('DB_PASSWORD', 'my+sql=i494f22_team06');
+    define('DB_NAME', 'i494f22_team06');
  
     /* Attempt to connect to MySQL database */
     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
