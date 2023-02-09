@@ -26,12 +26,12 @@
 </div>
 
     <section class="b-container">
-        <div class="box" onclick="location.href='packages.html';" style="cursor: pointer;">
+        <div class="box" onclick="location.href='driver_regis.php';" style="cursor: pointer;">
             <div class="box-img ig1"></div>
                 <h2>I'm a Driver</h2>
             </div>
         <div class="box">
-            <div class="box-img ig2" onclick="location.href='photos.html';" style="cursor: pointer;"></div>
+            <div class="box-img ig2" onclick="location.href='pass_regis.php';" style="cursor: pointer;"></div>
                 <h2>I'm a Passenger</h2>
             </div>
     </section>
