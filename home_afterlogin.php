@@ -23,14 +23,14 @@
         <nav>
         <a href="#" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
             <ul class="navbar">
-                <li><a href="survey1.php">Schedule a Ride</a></li>
+                <li><a href="survey.php">Schedule a Ride</a></li>
                 <li><a href="ride-history.php">My Rides</a></li>
                 <li><a href="calendar.php">Calendar</a></li>
                 <li><a href="chat.php">Chat</a></li>
             </ul>
             <div class="main">
+                <a href="#" class="user"><i class="ri-user-fill"></i>My Profile</a>
                 <a href="#" class="user"><i class="ri-logout-box-r-line"></i>Log Out</a>
-                <div class="bx bx-menu" id="menu-icon"></div>
             </div>
         </nav>
 
