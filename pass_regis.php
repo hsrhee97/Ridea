@@ -126,6 +126,7 @@
                                 else {
                                     mysqli_query($con,("INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, credit_card) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varcard')"));
                                     echo ("<script>alert('You have been registered!')</script>");
+                                    echo("<script>location.replace('home_afterlogin.php');</script>");
                                 }
             
                                 mysqli_close($con);
