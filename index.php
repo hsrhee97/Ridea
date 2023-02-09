@@ -43,8 +43,6 @@
 .Star_rating > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
-
-/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
     </style>
 </head>
 <body>
@@ -88,7 +86,7 @@
         
             }
 
-            $sql = "SELECT rp.RatingID, rp.PassengerID ,rp.Star_rating, rp.Comments FROM RATING_PASSENGER AS rp";
+            $sql = "SELECT RatingID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER";
             $result = mysqli_query($con, $sql);
             $num_rows = mysqli_num_rows($result);
 
@@ -98,12 +96,12 @@
 
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr style='border:1px solid black;'>";
-                    echo "<td>" . $row["Star_rating"] . "</td>";
+                    echo "<td>" .$row["Star_rating"] . "</td>";
                     echo "<td>" . $row["Comments"] . "</td>";
                     echo "<td>";
                     echo "<div class='btn-group'>";
-                    echo "<a class='btn btn-warning'href='./edit.php?id= " .$row['RatingID'] ."'>Edit</a>";
-                    echo "<a class='btn btn-secondary'href='./delete.php?id= " .$row['RatingID'] ."'>Delete</a>";
+                    echo "<a class='btn btn-warning'href='edit.php?RatingID=".$row['RatingID']."'>Edit</a>";
+                    echo "<a class='btn btn-warning'href='delete.php?RatingID=".$row['RatingID']."'>Delete</a>";
                     echo "</div>";
                     echo "</td>";
                     echo "</tr>";

@@ -20,11 +20,12 @@
     $PassengerID = 0;
 	$update = false;
 
-	if (isset($_POST['save'])) {
+	if (isset($_POST['submit'])) {
 		$Comments = $_POST['comments'];
         $Star_rating = $_POST['Star_rating'];
+        $RatingID = $_REQUEST['RatingID'];
         echo $Comments;
-        $qcheck = "INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments) VALUES (2, $Star_rating, '$Comments')";
+        $qcheck = "UPDATE RATING_PASSENGER SET Comments = $Comments, Star_rating = $Star_rating WHERE RatingID=$RatingID";
         echo $qcheck;
         $result = mysqli_query($link, $qcheck); 
         if(false===$result){
