@@ -26,7 +26,7 @@
                 <li><a href="survey.php">Schedule a Ride</a></li>
                 <li><a href="ride-history.php">My Rides</a></li>
                 <li><a href="calendar.php">Calendar</a></li>
-                <li><a href="chat.php">Chat</a></li>
+                <li><a href="help.php">Help</a></li>
             </ul>
             <div class="main">
                 <a href="#" class="user"><i class="ri-user-fill"></i>My Profile</a>
