@@ -19,7 +19,6 @@
 <body>
     
     <!-- navbar -->
-    <header>
         <nav>
         <a href="#" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
             <ul class="navbar">
@@ -34,19 +33,47 @@
             </div>
         </nav>
 
-        <div class="hometext-after-login">
-            <h2 class="after-login-h2">Welcome to <span class="ridea">RIDEA</span></h2>
-            <h4>Frequently Asked Questions</h4>  
+        <div class="upperhome">
+            <h2 class="after-login-h2">Welcome to <span>RIDEA</span></h2>
+            <p><span>Frequently Asked Questions</span></p>
+        </div>
+    
+        <div class="bgimg">
         </div>
 
-        <div class="bg-image-after-login">
-        </div>
+        <ul class="accordion">
+            <li>
+                <input type="radio" name="accordion" id="first">
+                <label for="first">About RIDEA</label>
+                <div class="content">
+                    <p>heweuqhweuqhweuqheiuqheiqheiuqwheiquheiu.eqweqweqweqweqweqew</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="second">
+                <label for="second">How can RIDEA provide services in affordable prices?</label>
+                <div class="content">
+                    <p>heweuqhweuqhweuqheiuqheiqheiuqwheiquheiu.eqweqweqweqweqweqew</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="third">
+                <label for="third">How can I use the RIDEA service?</label>
+                <div class="content">
+                    <p>heweuqhweuqhweuqheiuqheiqheiuqwheiquheiu.eqweqweqweqweqweqew</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="fourth">
+                <label for="fourth">What is the difference from other taxi services?</label>
+                <div class="content">
+                    <p>heweuqhweuqhweuqheiuqheiqheiuqwheiquheiu.eqweqweqweqweqweqew</p>
+                </div>
+            </li>
+        </ul>
 
         <a  href="#" class="btn-after-login"><span>GET A RIDEA</span></a>
-    </header>
 
-      
-    <script type="text/javascript" src="js/script.js"></script>
-    
+
 </body>
 </html> 
