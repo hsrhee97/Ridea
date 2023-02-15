@@ -63,14 +63,35 @@
 
                     }
                     else{
-                        $email_n = "SELECT * from users where users.email='$varemail'";
-                        $sql_email = mysqli_query($con, $email_n);
+                        //checking email in PASSENGER
+                        $email_p = "SELECT * from PASSENGER where PASSENGER.email='$varemail'";
+                        $sql_email = mysqli_query($con, $email_p);
 
-                        $password_n = "SELECT * from users where users.password=PASSWORD('$varpassword')";
-                        $sql_password = mysqli_query($con, $password_n);
+                        $password_p = "SELECT * from PASSENGER where PASSENGER.password=PASSWORD('$varpassword')";
+                        $sql_password = mysqli_query($con, $password_p);
 
+                        //checking email in DRIVER
                         if(mysqli_num_rows($sql_email)==0) {
-                            $email_error = "This email is not registered! Use registration form to create an account.";
+                            $email_d = "SELECT * from DRIVER where DRIVER.email='$varemail'";
+                            $sql_email = mysqli_query($con, $email_d);
+
+                            $password_d = "SELECT * from DRIVER where DRIVER.password=PASSWORD('$varpassword')";
+                            $sql_password = mysqli_query($con, $password_d);
+
+                            if(mysqli_num_rows($sql_email)==0) {
+                                $email_error = "This email is not registered! Use registration form to create an account.";
+                            }
+                            else {
+                                if(mysqli_num_rows($sql_password)==0) {
+                                    $password_error = "This password is not registered! Use registration form to create an account.";
+                                }
+                                else{
+                                    $_SESSION['login'] = $varemail;
+                                    echo ("<script>alert('You have been Logged In!')</script>");
+                                    echo("<script>location.replace('home_afterlogin.php');</script>");
+                                    exit;
+                                }
+                            }
                         }
                         else {
                             if(mysqli_num_rows($sql_password)==0) {
