@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-header('Location: home_beforelogin.php');
+header('Location: home.php');
 exit;
 ?>

@@ -53,7 +53,7 @@
                 </ul>
                 <div class="main">
                     <a href="#" class="user"><i class="ri-user-fill"></i>My Profile</a>
-                    <a href="#" class="user"><i class="ri-logout-box-r-line"></i>Log Out</a>
+                    <a href="logout.php" class="user"><i class="ri-logout-box-r-line"></i>Log Out</a>
                 </div>
             </nav>
             <?

@@ -100,7 +100,7 @@
                             else{
                                 $_SESSION['login'] = $varemail;
                                 echo ("<script>alert('You have been Logged In!')</script>");
-                                echo("<script>location.replace('home_afterlogin.php');</script>");
+                                echo("<script>location.replace('home.php');</script>");
                                 exit;
                             }
                         }
