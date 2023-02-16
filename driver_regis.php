@@ -22,177 +22,177 @@
 </head>
 
 <body>
-    <main class = "registration">           
-        <div class = "reg_line">
+    <div class="ridea">
+        <i class="ri-car-line"></i><span>RIDEA</span>
+    </div>
 
-            <h2 class="reg_h2">Registration Form</h2>
-            <div class = "registration">
-                <?php
-                    $login = $_SESSION['username'];
-                    echo $login;
-                    if (isset($_POST['registration_submit'])){ 
-                        // $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
-                        $con=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
-                        if (mysqli_connect_errno())
+    <div class="wrapper">
+        <div class="title">
+            Create account
+        </div>
+        <?php
+            $login = $_SESSION['username'];
+            echo $login;
+            if (isset($_POST['registration_submit'])){ 
+                // $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
+                $con=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
+                if (mysqli_connect_errno())
 
-                        { die("Failed to connect to MySQL: " . mysqli_connect_error()); }
+                { die("Failed to connect to MySQL: " . mysqli_connect_error()); }
 
-                        else
+                else
 
 
+                
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                    $fname_error = $lname_error = $address_error = $phone_error = $email_error = $password_error = $biography_error = $license_error = $photo_error  =  "";
+
+                    //fname error check
+                    if (empty($_POST["fname"])) {
+                        $fname_error = "First Name is required!";
+                    }
+                    else {
+                        $varfname = mysqli_real_escape_string($con, $_POST['fname']);
+                    }
+
+                    //lanme error check
+                    if (empty($_POST["lname"])) {
+                        $lname_error = "Last Name is required!";
+                    }
+                    else {
+                        $varlname = mysqli_real_escape_string($con, $_POST['lname']);
+                    }
+
+                    //address error check
+                    if (empty($_POST["address"])) {
+                        $address_error = "address is required!";
+                    }
+                    else {
+                        $varaddress = mysqli_real_escape_string($con, $_POST['address']);
+                    }
+
+                    //phone error check
+                    if (empty($_POST["phone"])) {
+                        $phone_error = "Phone is required!";
+                    }
+                    else {
+                        $varphone = mysqli_real_escape_string($con, $_POST['phone']);
+                    }
+
+                    //email error check
+                    if (empty($_POST["email"])) {
+                        $email_error = "Email is required!";
                         
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-                            $fname_error = $lname_error = $address_error = $phone_error = $email_error = $password_error = $biography_error = $license_error = $photo_error  =  "";
-
-                            //fname error check
-                            if (empty($_POST["fname"])) {
-                                $fname_error = "First Name is required!";
-                            }
-                            else {
-                                $varfname = mysqli_real_escape_string($con, $_POST['fname']);
-                            }
-
-                            //lanme error check
-                            if (empty($_POST["lname"])) {
-                                $lname_error = "Last Name is required!";
-                            }
-                            else {
-                                $varlname = mysqli_real_escape_string($con, $_POST['lname']);
-                            }
-
-                            //address error check
-                            if (empty($_POST["address"])) {
-                                $address_error = "address is required!";
-                            }
-                            else {
-                                $varaddress = mysqli_real_escape_string($con, $_POST['address']);
-                            }
-
-                            //phone error check
-                            if (empty($_POST["phone"])) {
-                                $phone_error = "Phone is required!";
-                            }
-                            else {
-                                $varphone = mysqli_real_escape_string($con, $_POST['phone']);
-                            }
-
-                            //email error check
-                            if (empty($_POST["email"])) {
-                                $email_error = "Email is required!";
-                                
-                            }
-                            else {
-                                $varemail = mysqli_real_escape_string($con, $_POST['email']);
-                                if (!filter_var($varemail, FILTER_VALIDATE_EMAIL)) {
-                                    $email_error = "Invalid email format!";
-                                }
-                            }
-
-                            //password error check
-                            if (empty($_POST["password"])) {
-                                $password_error = "Password is required!";
-                            }
-                            else {
-                                $varpassword = mysqli_real_escape_string($con, $_POST['password']);
-                                if(mb_strlen($varpassword)<8){
-                                    $password_error = "Password should be more than 8 letters!";
-                                }        
-                            }
-
-                            //biography error check
-                            if (empty($_POST["biography"])) {
-                                $biography_error = "Biography is required!";
-                            }
-                            else {
-                                $varbiography = mysqli_real_escape_string($con, $_POST['biography']);
-                            }
-
-                            // License number error check
-                            if (empty($_POST["license_num"])) {
-                                $license_error = "License number is required!";
-                            }
-                            else {
-                                $varlicense = mysqli_real_escape_string($con, $_POST['license_num']);
-                            }
-                            
-
-                            if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 OR empty($_POST["license_num"])) {
-
-                            }
-                            else{
-                                $email_n = "SELECT * from DRIVER where DRIVER.email='$varemail'";
-                                $sql_email = mysqli_query($con, $email_n);
-
-                                if(mysqli_num_rows($sql_email)>0) {
-                                    $email_error = "This email is already registered!";
-                                }
-                                else {
-                                    mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense')"));
-                                    echo ("<script>alert('You have been registered!')</script>");
-                                    echo("<script>location.replace('home.php');</script>");
-                                }
-            
-                                mysqli_close($con);
-                            }
-                            
+                    }
+                    else {
+                        $varemail = mysqli_real_escape_string($con, $_POST['email']);
+                        if (!filter_var($varemail, FILTER_VALIDATE_EMAIL)) {
+                            $email_error = "Invalid email format!";
                         }
                     }
 
+                    //password error check
+                    if (empty($_POST["password"])) {
+                        $password_error = "Password is required!";
+                    }
+                    else {
+                        $varpassword = mysqli_real_escape_string($con, $_POST['password']);
+                        if(mb_strlen($varpassword)<8){
+                            $password_error = "Password should be more than 8 letters!";
+                        }        
+                    }
 
-                ?>
-                <form method="POST">
-                    <div class="inputbox">
-                        <span>First name</span>
-                        <input class="reg_box" type='text' name = "fname">
-                    </div>
+                    //biography error check
+                    if (empty($_POST["biography"])) {
+                        $biography_error = "Biography is required!";
+                    }
+                    else {
+                        $varbiography = mysqli_real_escape_string($con, $_POST['biography']);
+                    }
 
-                    <div class="inputbox">
-                        <span>Last name</span>
-                        <input class="reg_box" type='text' name = "lname">
-                    </div>
-
-                    <div class="inputbox">
-                        <span>Email</span>
-                    <input class="reg_box" type='email' name = "email" >
-                    </div>
-
-                    <div class="inputbox">
-                        <span>Password </span>
-                    <input class="reg_box" type='password' name = "password" >
-                    </div>
+                    // License number error check
+                    if (empty($_POST["license_num"])) {
+                        $license_error = "License number is required!";
+                    }
+                    else {
+                        $varlicense = mysqli_real_escape_string($con, $_POST['license_num']);
+                    }
                     
-                    <div class="inputbox">
-                        <span>Address </span>
-                    <input class="reg_box" type='text' name = "address" size="40">
-                    </div>
 
-                    <div class="inputbox">
-                        <span>Phone</span>
-                    <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40">
-                    </div>
+                    if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 OR empty($_POST["license_num"])) {
 
-                    <div class="inputbox">
-                        <span>Biography</span>
-                    <input class="reg_box" type='text' name = "biography" size="40">
-                    </div>
+                    }
+                    else{
+                        $email_n = "SELECT * from DRIVER where DRIVER.email='$varemail'";
+                        $sql_email = mysqli_query($con, $email_n);
 
-                    <div class="inputbox">
-                        <span>License number</span>
-                    <input class="reg_box" type='text' name = "license_num" size="40">
-                    </div>
-
-                    <div class="inputbox">
-                        <span>License photo</span>
-                    <input class="reg_box" type='file' name = "license_photo" size="40">
-                    </div>
-
-                    <div class="inputbox">
-                        <input type="submit" name="registration_submit" value="Register" class="btn">
-                    </div>
-                </form>
+                        if(mysqli_num_rows($sql_email)>0) {
+                            $email_error = "This email is already registered!";
+                        }
+                        else {
+                            mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense')"));
+                            echo ("<script>alert('You have been registered!')</script>");
+                            echo("<script>location.replace('home.php');</script>");
+                        }
+    
+                        mysqli_close($con);
+                    }
+                    
+                }
+            }
+        ?>
+        
+        <form method="POST">
+            <div class="inputbox">
+                <span>First name</span>
+                <input class="reg_box" type='text' name = "fname">
             </div>
-        </div>
-    </main>
+
+            <div class="inputbox">
+                <span>Last name</span>
+                <input class="reg_box" type='text' name = "lname">
+            </div>
+
+            <div class="inputbox">
+                <span>Email</span>
+            <input class="reg_box" type='email' name = "email" >
+            </div>
+
+            <div class="inputbox">
+                <span>Password </span>
+            <input class="reg_box" type='password' name = "password" >
+            </div>
+            
+            <div class="inputbox">
+                <span>Address </span>
+            <input class="reg_box" type='text' name = "address" size="40">
+            </div>
+
+            <div class="inputbox">
+                <span>Phone</span>
+            <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40">
+            </div>
+
+            <div class="inputbox">
+                <span>Biography</span>
+            <input class="reg_box" type='text' name = "biography" size="40">
+            </div>
+
+            <div class="inputbox">
+                <span>License number</span>
+            <input class="reg_box" type='text' name = "license_num" size="40">
+            </div>
+
+            <div class="inputbox">
+                <span>License photo</span>
+            <input class="reg_box" type='file' name = "license_photo" size="40">
+            </div>
+
+            <div class="inputbox">
+                <input type="submit" name="registration_submit" value="Register" class="btn">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
