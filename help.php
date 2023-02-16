@@ -3,27 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Help</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <style>  <?php include 'css/help.css'; ?>  </style>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+
 </head>
 <body>
-    <header>
-        <nav>
-        <a href="#" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
-            <ul class="navbar">
-                <li><a href="#">Schedule a Ride</a></li>
-                <li><a href="#">My Rides</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Chat</a></li>
-            </ul>
-        </nav>    
-    </header>
+<?php include 'includes/nav.php'; ?>
+<main>
 
-    <a href="lostandfound.php"><img src="images/lostandfound.png"></a>
-    <a href="emergency.php"><img src="images/emergency.png"></a>
-    <a href="otherproblems.php"><img src="images/otherproblems.png"></a>
+    <div class="container">
+
+        <div class="heading">
+            <h2>RIDEA Customer Service</h2>
+        </div>
+
+        <div class="content_container">
+
+        <div class="content" onclick="location.href='lostandfound.php';" style="cursor: pointer;">
+        <div class="words">
+            <p>Lost and Found</p>
+            </div>
+        </div>
+
+        <div class="content" onclick="location.href='emergency.php';" style="cursor: pointer;">
+        <div class="words">
+            <p>Emergency</p>
+            </div>
+        </div>
+
+        <div class="content" onclick="location.href='otherproblems.php';" style="cursor: pointer;">
+        <div class="words">
+            <p>Other Problems</p>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+</main>
 </body>
 </html>

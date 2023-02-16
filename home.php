@@ -39,7 +39,7 @@
                             <a  href="loginform.php" class="btn"><span>Get a Ride!</span></a>
                         </div>
                         <div class="image">
-                            <img src="images/3drocket.png" alt="">
+                            <img src="images/3drocket.png" alt="#">
                         </div>
                     </div>
                 </div>
@@ -56,6 +56,7 @@
             </div>
         
             <div class="bgimg">
+                <img src="images/cubes.png" alt="#">
             </div>
 
             <ul class="accordion">
