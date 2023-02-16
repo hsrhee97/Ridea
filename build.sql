@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS DRIVER;
 
 
 CREATE TABLE DRIVER (
-   DriverID INT PRIMARY KEY,
+   DriverID INT AUTO_INCREMENT,
    fname VARCHAR(50) NOT NULL,
    lname VARCHAR(50) NOT NULL,
    address VARCHAR(255),
@@ -21,7 +21,8 @@ CREATE TABLE DRIVER (
    password VARCHAR(250) NOT NULL,
    biography TEXT,
    license_number VARCHAR(20) NOT NULL,
-   license_photo VARCHAR(255)
+   license_photo VARCHAR(255),
+   PRIMARY KEY (DriverID)
 );
 
 CREATE TABLE PASSENGER (
@@ -61,7 +62,7 @@ CREATE TABLE TRIP (
 CREATE TABLE PAYMENT (
     PaymentID INT PRIMARY KEY,
     TripID INT,
-    `Payment_amount` DECIMAL(10,2),
+    Payment_amount DECIMAL(10,2),
     FOREIGN KEY (TripID) REFERENCES TRIP(TripID)
 );
 
@@ -109,30 +110,26 @@ CREATE TABLE CUSTOMER_CARE (
 
 
 
-INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, credit_card) VALUES ('Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee','11111111111')
-
-INSERT INTO DRIVER (DriverID, fname, lname, address, phone, email, biography, license_number, license_photo)
+INSERT INTO DRIVER (DriverID, fname, lname, address, phone, email, password, biography, license_number, license_photo)
 VALUES
-    (2, 'John', 'Doe', '123 Main St', '555-555-5555', 'johndoe@email.com', 'John is a friendly and experienced driver.', '5372353384', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg'),
-    (4, 'Bob', 'Johnson', '789 Oak St', '555-555-5557', 'bobjohnson@email.com', 'Bob is a new driver who is eager to learn and improve.', 'GHI789', 'path/to/photo3.jpg'),
-    (5, 'Stella', 'Simanenko', '8265 Westend Avenue', '377-475-4305', 'ssimanenko3@yale.edu', 'Right-sized multi-state moderator', '7879569979', 'data:image/png;base64,iVBORw0KGgoA');
+    (1, 'John', 'Doe', '123 Main St', '555-555-5555', 'rhee@email.com', PASSWORD('11111111'), 'John is a friendly and experienced driver.', '5372353384', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg'),
+    (2, 'Bob', 'Johnson', '789 Oak St', '555-555-5557', 'choi@email.com', PASSWORD('11111111'), 'Bob is a new driver who is eager to learn and improve.', 'GHI789', 'path/to/photo3.jpg'),
+    (3, 'Stella', 'Simanenko', '8265 Westend Avenue', '377-475-4305', 'ssimanenko3@yale.edu', PASSWORD('11111111'), 'Right-sized multi-state moderator', '7879569979', 'data:image/png;base64,iVBORw0KGgoA');
 
-INSERT INTO PASSENGER (PassengerID, fname, lname, address, phone, email, biography, credit_card)
-VALUES
-    (1, 'Jane', 'Smith', '456 Elm St', '555-555-5556', 'janesmith@email.com', 'Jane is a frequent passenger who values safety and comfort.', '5048370199463308'),
-    (3, 'Kip', 'Primmer', '7 Hanover Terrace', '628-621-8480', 'kprimmers@yelp.com', 'Business-focused national algorithm', '5048377193344939'),
-    (4, 'Elsinore', 'Kaman', '5 Petterle Park', '574-906-8188', 'ekamanq@webmd.com', 'Grass-roots needs-based productivity', '5108757924503282');
-
+INSERT INTO PASSENGER (PassengerID, fname, lname, address, phone, email, password, biography, credit_card) 
+VALUES 
+    (1, 'Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee','11111111111');
+    (2, 'Woojin', 'Choi', '124 N', '812-929-0435', 'choi@iu.edu', PASSWORD('11111111'), 'I am Choi','11111111111');
 
 INSERT INTO VEHICLE (VehicleID, Color, Model_Name, license_number)
 VALUES
     (1, 'Red', 'Honda Civic', 'ABC123'),
     (2, 'Blue', 'Toyota Camry', 'DEF456');
     
-INSERT INTO TRIP (TripID, Start_location, End_location, Distance, DriverID)
+INSERT INTO TRIP (TripID, DriverID, PassengerID, Start_location, End_location, Distance)
 VALUES
-    (1, '123 Main St', '456 Elm St', 10.5, 1),
-    (2, '789 Oak St', '321 Pine St', 15.25, 3);
+    (1, 1, 2, '123 Main St', '456 Elm St', 10.5),
+    (2, 2, 1, '789 Oak St', '321 Pine St', 15.25);
 
 INSERT INTO PAYMENT (PaymentID, Payment_amount, TripID)
 VALUES

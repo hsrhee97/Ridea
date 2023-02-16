@@ -41,7 +41,7 @@
         }
 
         else{
-            //before login
+            //after login
             ?>
             <div class="upperhome">
                 <h2 class="after-login-h2">Welcome to <span>RIDEA</span></h2>
