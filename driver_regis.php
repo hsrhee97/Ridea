@@ -136,56 +136,55 @@
 
 
                 ?>
-                <form class = "registration_form" method="post">
+                <form method="POST">
+                    <div class="inputbox">
+                        <span>First name</span>
+                        <input class="reg_box" type='text' name = "fname">
+                    </div>
 
-                    <span class="reg_form">First Name:</span> 
-                    <input class="reg_box" type='text' name = "fname" size="40">
-                    <span class="error_message">* <br> <?php echo $fname_error;?> </span> 
-                    <br> 
+                    <div class="inputbox">
+                        <span>Last name</span>
+                        <input class="reg_box" type='text' name = "lname">
+                    </div>
 
-                    <span class="reg_form">Last Name: </span>
-                    <input class="reg_box" type='text' name = "lname" size="40">
-                    <span class="error_message">* <br> <?php echo $lname_error;?> </span> 
-                    <br> 
+                    <div class="inputbox">
+                        <span>Email</span>
+                    <input class="reg_box" type='email' name = "email" >
+                    </div>
 
-                    <span class="reg_form">Address: </span>
+                    <div class="inputbox">
+                        <span>Password </span>
+                    <input class="reg_box" type='password' name = "password" >
+                    </div>
+                    
+                    <div class="inputbox">
+                        <span>Address </span>
                     <input class="reg_box" type='text' name = "address" size="40">
-                    <span class="error_message">* <br> <?php echo $address_error;?> </span> 
-                    <br> 
+                    </div>
 
-                    <span class="reg_form">Phone: </span>
+                    <div class="inputbox">
+                        <span>Phone</span>
                     <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40">
-                    <span class="error_message">* <br> <?php echo $phone_error;?> </span> 
-                    <br> 
+                    </div>
 
-                    <span class="reg_form">Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-                    <input class="reg_box" type='email' name = "email" size="40">
-                    <span class="error_message">* <br> <?php echo $email_error;?> </span> 
-                    <br>
-
-                    <span class="reg_form">Password: &nbsp; </span>
-                    <input class="reg_box" type='password' name = "password" size="40">
-                    <span class="error_message">* <br> <?php echo $password_error;?> </span> 
-                    <br>
-
-                    <span class="reg_form">Biography: </span>
+                    <div class="inputbox">
+                        <span>Biography</span>
                     <input class="reg_box" type='text' name = "biography" size="40">
-                    <span class="error_message">* <br> <?php echo $biography_error;?> </span> 
-                    <br> 
+                    </div>
 
-                    <span class="reg_form">License Number: </span>
+                    <div class="inputbox">
+                        <span>License number</span>
                     <input class="reg_box" type='text' name = "license_num" size="40">
-                    <span class="error_message">* <br> <?php echo $license_error;?> </span> 
-                    <br> 
+                    </div>
 
-                    <span class="reg_form">License Photo: </span>
+                    <div class="inputbox">
+                        <span>License photo</span>
                     <input class="reg_box" type='file' name = "license_photo" size="40">
-                    <span class="error_message">* <br> <?php echo $photo_error;?> </span> 
-                    <br> 
+                    </div>
 
-
-                    <input class="input_state" type="submit" name="registration_submit" value="Submit" style="float: right;"/> 
-
+                    <div class="inputbox">
+                        <input type="submit" name="registration_submit" value="Register" class="btn">
+                    </div>
                 </form>
             </div>
         </div>
