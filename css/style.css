@@ -254,10 +254,6 @@ main {
     width: 45%;
     position: absolute;
     right: 0;
-    animation: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
 }
 
 .accordion {
