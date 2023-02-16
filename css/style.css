@@ -196,6 +196,7 @@ main {
         opacity: 1;
     }
   }
+  
 /* Slide right for home text after login*/
   @keyframes slideright {
     from {
@@ -249,15 +250,14 @@ main {
     animation: slideright 3s;
 }
 
-.bgimg {
-    width: 100%;
-    height: 100%;
-    background-image: url(/images/rightwoman.jpeg);
-    padding: 1px;
+.bgimg img{
+    width: 45%;
     position: absolute;
-    background-repeat: no-repeat;
-    background-size: 40% 90%;
-    background-position: 100% -40%;
+    right: 0;
+    animation: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 
 .accordion {
