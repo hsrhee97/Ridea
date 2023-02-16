@@ -25,19 +25,24 @@
     
     <!-- navbar -->
     <?php include 'includes/nav.php'; ?>
-
+    <main>
     <?php 
         $login = $_SESSION['login'];
         // before login
         if(!$login) {
             ?>
-            <div class="hometext">
-                <h2 class="slide-left">Tired of Waiting for <br> an Overpriced Taxi?<br></h2>
-                <a  href="loginform.php" class="btn"><span>Get a Ride!</span></a>
-            </div>
-            
-            <div class="bg-image">
-                <img class="background-image" src="images/woman.jpeg" alt="#">
+            <div class="container">
+                <div class="slide-container">
+                    <div class="slide">
+                        <div class="content">
+                            <h3 class="slide-left">Tired of Waiting for <br> an Overpriced Taxi?<br></h3>
+                            <a  href="loginform.php" class="btn"><span>Get a Ride!</span></a>
+                        </div>
+                        <div class="image">
+                            <img src="images/3drocket.png" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
             <?
         }
@@ -89,6 +94,6 @@
         }
     ?>
 
-
+</main>
 </body>
 </html> 
