@@ -171,7 +171,7 @@
 
                     <div class="inputbox">
                         <input type="submit" name="registration_submit" value="Register" class="btn">
-                      </div>
+                    </div>
                 </form>
 
         </div>
