@@ -38,7 +38,7 @@
                         
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                            $fname_error = $lname_error = $address_error = $phone_error = $email_error = $password_error = $biography_error = $card_error  =  "";
+                            $fname_error = $lname_error = $address_error = $phone_error = $email_error = $password_error = $biography_error = $license_error = $photo_error  =  "";
 
                             //fname error check
                             if (empty($_POST["fname"])) {
@@ -103,16 +103,16 @@
                                 $varbiography = mysqli_real_escape_string($con, $_POST['biography']);
                             }
 
-                            //credit card error check
-                            if (empty($_POST["card"])) {
-                                $card_error = "Credit-card is required!";
+                            // License number error check
+                            if (empty($_POST["license_num"])) {
+                                $license_error = "License number is required!";
                             }
                             else {
-                                $varcard = mysqli_real_escape_string($con, $_POST['card']);
+                                $varlicense = mysqli_real_escape_string($con, $_POST['license_num']);
                             }
                             
 
-                            if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 OR empty($_POST["card"])) {
+                            if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 OR empty($_POST["license_num"])) {
 
                             }
                             else{
@@ -123,7 +123,7 @@
                                     $email_error = "This email is already registered!";
                                 }
                                 else {
-                                    mysqli_query($con,("INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, credit_card) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varcard')"));
+                                    mysqli_query($con,("INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, license_number) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense')"));
                                     echo ("<script>alert('You have been registered!')</script>");
                                     echo("<script>location.replace('home.php');</script>");
                                 }
@@ -173,9 +173,14 @@
                     <span class="error_message">* <br> <?php echo $biography_error;?> </span> 
                     <br> 
 
-                    <span class="reg_form">Credit Card: </span>
-                    <input class="reg_box" type='text' name = "card" size="40">
-                    <span class="error_message">* <br> <?php echo $card_error;?> </span> 
+                    <span class="reg_form">License Number: </span>
+                    <input class="reg_box" type='text' name = "license_num" size="40">
+                    <span class="error_message">* <br> <?php echo $license_error;?> </span> 
+                    <br> 
+
+                    <span class="reg_form">License Photo: </span>
+                    <input class="reg_box" type='file' name = "license_photo" size="40">
+                    <span class="error_message">* <br> <?php echo $photo_error;?> </span> 
                     <br> 
 
 
