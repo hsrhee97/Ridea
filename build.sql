@@ -118,7 +118,7 @@ VALUES
 
 INSERT INTO PASSENGER (PassengerID, fname, lname, address, phone, email, password, biography, credit_card) 
 VALUES 
-    (1, 'Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee','11111111111');
+    (1, 'Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee','11111111111'),
     (2, 'Woojin', 'Choi', '124 N', '812-929-0435', 'choi@iu.edu', PASSWORD('11111111'), 'I am Choi','11111111111');
 
 INSERT INTO VEHICLE (VehicleID, Color, Model_Name, license_number)

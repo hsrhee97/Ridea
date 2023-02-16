@@ -26,8 +26,8 @@
                     $login = $_SESSION['username'];
                     echo $login;
                     if (isset($_POST['registration_submit'])){ 
-                        $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
-
+                        // $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
+                        $con=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
                         if (mysqli_connect_errno())
 
                         { die("Failed to connect to MySQL: " . mysqli_connect_error()); }
