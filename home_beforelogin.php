@@ -20,16 +20,7 @@
     
     <!-- navbar -->
     <header>
-        <nav>
-        <!-- ridea logo -->
-        <a href="#" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
-        <!-- sign in and register buttons -->
-            <div class="main">
-                <a href="loginform.php" class="user"><i class="ri-user-fill"></i>Sign in</a>
-                <a href="register1.php">Register</a>
-                <div class="bx bx-menu" id="menu-icon"></div>
-            </div>
-        </nav>
+        <?php include 'includes/nav.php'; ?>
         <!-- main text in the home -->
         <div class="hometext">
             <h2 class="slide-left">Tired of Waiting for <br> an Overpriced Taxi?<br></h2>
