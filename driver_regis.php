@@ -116,14 +116,14 @@
 
                             }
                             else{
-                                $email_n = "SELECT * from PASSENGER where PASSENGER.email='$varemail'";
+                                $email_n = "SELECT * from DRIVER where DRIVER.email='$varemail'";
                                 $sql_email = mysqli_query($con, $email_n);
 
                                 if(mysqli_num_rows($sql_email)>0) {
                                     $email_error = "This email is already registered!";
                                 }
                                 else {
-                                    mysqli_query($con,("INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, license_number) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense')"));
+                                    mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense')"));
                                     echo ("<script>alert('You have been registered!')</script>");
                                     echo("<script>location.replace('home.php');</script>");
                                 }
