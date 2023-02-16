@@ -62,22 +62,6 @@
                                 $varlname = mysqli_real_escape_string($con, $_POST['lname']);
                             }
 
-                            //address error check
-                            if (empty($_POST["address"])) {
-                                $address_error = "address is required!";
-                            }
-                            else {
-                                $varaddress = mysqli_real_escape_string($con, $_POST['address']);
-                            }
-
-                            //phone error check
-                            if (empty($_POST["phone"])) {
-                                $phone_error = "Phone is required!";
-                            }
-                            else {
-                                $varphone = mysqli_real_escape_string($con, $_POST['phone']);
-                            }
-
                             //email error check
                             if (empty($_POST["email"])) {
                                 $email_error = "Email is required!";
@@ -99,7 +83,25 @@
                                 if(mb_strlen($varpassword)<8){
                                     $password_error = "Password should be more than 8 letters!";
                                 }        
+                            }                            
+
+                            //address error check
+                            if (empty($_POST["address"])) {
+                                $address_error = "address is required!";
                             }
+                            else {
+                                $varaddress = mysqli_real_escape_string($con, $_POST['address']);
+                            }
+
+                            //phone error check
+                            if (empty($_POST["phone"])) {
+                                $phone_error = "Phone is required!";
+                            }
+                            else {
+                                $varphone = mysqli_real_escape_string($con, $_POST['phone']);
+                            }
+
+
 
                             //biography error check
                             if (empty($_POST["biography"])) {
@@ -167,6 +169,21 @@
                     <div class="inputbox">
                         <span>Address </span>
                     <input class="reg_box" type='text' name = "address" size="40">
+                    </div>
+
+                    <div class="inputbox">
+                        <span>Phone</span>
+                    <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40">
+                    </div>
+
+                    <div class="inputbox">
+                        <span>Biography</span>
+                    <input class="reg_box" type='text' name = "biography" size="40">
+                    </div>
+
+                    <div class="inputbox">
+                        <span>Credit Card</span>
+                    <input class="reg_box" type='text' name = "card" size="40">
                     </div>
 
                     <div class="inputbox">
