@@ -56,7 +56,7 @@
             </div>
         
             <div class="bgimg">
-                <img src="images/lines.png" alt="#">
+                <img src="images/lines.jpeg" alt="#">
             </div>
 
             <ul class="accordion">

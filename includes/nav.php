@@ -30,7 +30,7 @@
           ?>
             <nav>
             <!-- ridea logo -->
-            <a href="#" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
+            <a href="home.php" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
             <!-- sign in and register buttons -->
                 <div class="main">
                     <a href="loginform.php" class="user"><i class="ri-user-fill"></i>Sign in</a>
@@ -44,7 +44,7 @@
         else{
             ?>
             <nav>
-            <a href="#" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
+            <a href="home.php" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
                 <ul class="navbar">
                     <li><a href="survey.php">Schedule a Ride</a></li>
                     <li><a href="ride-history.php">My Rides</a></li>
