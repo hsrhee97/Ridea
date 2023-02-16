@@ -14,21 +14,6 @@
     --main-color: #EC4E20;
 }
 
-header {
-    height: 100vh;
-    width: 100%;
-
-}
-
-.bg-image {
-    background-image: url(../images/woman.jpeg);
-    padding: 20em;
-    background-repeat: no-repeat;
-    background-size: 55%;
-    background-position: 100%;
-    animation: slidedown 1s;
-}
-
 nav {
     display: flex;
     width: 100%;
@@ -114,29 +99,45 @@ nav {
 }
 /* text in home before login */
 
-.hometext {
-    position: absolute;
-    top: 48%;
-    left: 8%;
-    transform: translateY(-50%);
-
+main {
+    width: 80%;
+    margin: auto;
 }
 
-h2 {
-    color: var(--text-color-black);
-    margin: 20px 0px 20px;
+.container {
+    position: relative;
+}
+
+.container .slide-container .slide {
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 1px 2% 1px 9%;
+    flex-wrap: wrap;
+}
+
+.container .slide-container .slide .content {
+    flex: 1 1 600px;
+}
+
+.container .slide-container .slide .image {
+    flex: 0 1 500px;
+}
+
+.container .slide-container .slide .image img {
+    width: 100%;
+    animation: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.container .slide-container .slide .content h3 {
     font-size: 60px;
+    color: #333;
+    margin-bottom: 0.3em;
 }
 
-h3 {
-    color: var(--text-color-black);
-    margin: 20px 0px 20px;
-    font-size: 55px;
-}
-
-.ridea-color {
-    color: var(--main-color);
-}
 /* get a ride button in home before login */
 
 .btn {
@@ -219,6 +220,11 @@ h3 {
     }
   }
 
+  @keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+}
   /* ----------------------- */
   /* home after login */
   /* ---------------------- */
