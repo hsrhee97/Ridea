@@ -14,7 +14,7 @@
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-    <style> <?php include 'css/styles.css'; ?> </style>
+    <style> <?php include 'css/style.css'; ?> </style>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
