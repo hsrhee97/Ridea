@@ -14,14 +14,13 @@
     --main-color: #EC4E20;
 }
 
-header {
+/* header {
     height: 100vh;
     width: 100%;
+} */
 
-}
-
-.bg-image {
-    background-image: url(../images/woman.jpeg);
+.bg-image{
+    /* background-image: url(/images/woman.jpeg); */
     padding: 20em;
     background-repeat: no-repeat;
     background-size: 55%;

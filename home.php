@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <style> <?php include 'css/style.css'; ?> </style>
+    
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
@@ -36,12 +37,13 @@
             </div>
             
             <div class="bg-image">
+                <img class="background-image" src="images/woman.jpeg" alt="#">
             </div>
             <?
         }
 
         else{
-            //before login
+            //after login
             ?>
             <div class="upperhome">
                 <h2 class="after-login-h2">Welcome to <span>RIDEA</span></h2>
