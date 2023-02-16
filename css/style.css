@@ -112,8 +112,8 @@ main {
     max-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 1px 2% 1px 9%;
     flex-wrap: wrap;
+    margin-top: 5%;
 }
 
 .container .slide-container .slide .content {
