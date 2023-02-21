@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS SURVEY;
 DROP TABLE IF EXISTS HELP;
-DROP TABLE IF EXISTS RATING;
+DROP TABLE IF EXISTS RATING_PASSENGER;
+DROP TABLE IF EXISTS RATING_DRIVER;
 DROP TABLE IF EXISTS PAYMENT;
 DROP TABLE IF EXISTS TRIP;
 DROP TABLE IF EXISTS PASSENGER;
@@ -50,20 +51,27 @@ CREATE TABLE TRIP (
 
 CREATE TABLE PAYMENT (
     PaymentID INT AUTO_INCREMENT,
-    TripID INT,
     Payment_amount DECIMAL(10,2),
+    TripID INT,
     PRIMARY KEY (PaymentID),
     FOREIGN KEY (TripID) REFERENCES TRIP(TripID)
 );
 
-CREATE TABLE RATING (
+CREATE TABLE RATING_DRIVER (
     RatingID INT AUTO_INCREMENT,
-    DriverID INT,
+    DriverID INT NOT NULL,
+    Star_rating DECIMAL(5,1),
+    Comments VARCHAR(255),
+    PRIMARY KEY (RatingID),
+    FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID)
+);
+
+CREATE TABLE RATING_PASSENGER (
+    RatingID INT AUTO_INCREMENT,
     PassengerID INT,
     Star_rating DECIMAL(5,1),
     Comments VARCHAR(255),
     PRIMARY KEY (RatingID),
-    FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID),
     FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
 
@@ -117,9 +125,12 @@ VALUES
     (25.00, 1),
     (30.00, 2);
 
-INSERT INTO RATING (DriverID, PassengerID, Star_rating, Comments)
+INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments)
 VALUES
-    (NULL, 2, 4.5, 'John was a great driver and the ride was very comfortable.'),
-    (1, NULL, 3.5, 'Bob is a new driver and still needs improvement.');
+    (2, 4.5, 'John was a great driver and the ride was very comfortable.');
+
+INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments)
+VALUES
+    (1, 3.5, 'Bob is a new driver and still needs improvement.');
 
 
