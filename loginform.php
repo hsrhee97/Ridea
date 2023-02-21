@@ -26,7 +26,6 @@
         <?php 
             if (isset($_POST['login_submit'])){ 
                 $con=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
-                // $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
 
                 if (mysqli_connect_errno())
 
@@ -88,7 +87,7 @@
                                 else{
                                     $_SESSION['login'] = $varemail;
                                     echo ("<script>alert('You have been Logged In!')</script>");
-                                    echo("<script>location.replace('home_afterlogin.php');</script>");
+                                    echo("<script>location.replace('home.php');</script>");
                                     exit;
                                 }
                             }
