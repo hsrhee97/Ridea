@@ -28,7 +28,6 @@
     <main>
     <?php 
         $login = $_SESSION['login'];
-        echo $login;
         // before login
         if(!$login) {
             ?>
