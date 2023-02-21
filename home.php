@@ -64,28 +64,40 @@
                     <input type="radio" name="accordion" id="first">
                     <label for="first">About RIDEA</label>
                     <div class="content">
-                        <p>heweuqhweuqhweuqheiuqheiqheiuqwheiquheiu.eqweqweqweqweqweqew</p>
+                    <p>Ridea is a platform that connects students with other students 
+                            and drivers it is a great idea for providing a safe and reliable 
+                            transportation option. It allows students to save money on transportation 
+                            costs while also providing an opportunity to connect with their peers.</p>
                     </div>
                 </li>
                 <li>
                     <input type="radio" name="accordion" id="second">
                     <label for="second">How can RIDEA provide services in affordable prices?</label>
                     <div class="content">
-                        <p>heweuqhweuqhweuqheiuqheiqheiuqwheiquheiu.eqweqweqweqweqweqew</p>
+                    <p>Ridea is able to provide affordable rides to college students because 
+                            it is a platform where students will be connected with other students 
+                            and based on their responses in the user survey they will be paired with 
+                            one another. This enables RIDEA to connect students and eliminate 
+                            any other additional costs</p>
                     </div>
                 </li>
                 <li>
                     <input type="radio" name="accordion" id="third">
                     <label for="third">How can I use the RIDEA service?</label>
                     <div class="content">
-                        <p>heweuqhweuqhweuqheiuqheiqheiuqwheiquheiu.eqweqweqweqweqweqew</p>
+                    <p>The Ridea service can be used on the webpage through our website domain. 
+                            It is fast, easy and affordable for all students looking to reach their destination in a heartbeat</p>
                     </div>
                 </li>
                 <li>
                     <input type="radio" name="accordion" id="fourth">
                     <label for="fourth">What is the difference from other taxi services?</label>
                     <div class="content">
-                        <p>heweuqhweuqhweuqheiuqheiqheiuqwheiquheiu.eqweqweqweqweqweqew</p>
+                    <p>The primary difference between Ridea and all other taxi services is that 
+                            Ridea caters to all kinds of students and understands how troublesome 
+                            it is for students to find a safe and comfortable way for students to 
+                            reach their colleges. Our unique ridesharing features and affordability 
+                            is what separates us from all other taxi services.</p>
                     </div>
                 </li>
             </ul>
