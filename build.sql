@@ -92,7 +92,7 @@ CREATE TABLE SURVEY (
    end_city VARCHAR(100),
    trip_date DATE NOT NULL,
    other TEXT,
-   PRIMARY KEY (helpID),
+   PRIMARY KEY (SurveyID),
    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
 
