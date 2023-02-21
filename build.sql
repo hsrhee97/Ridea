@@ -109,10 +109,10 @@ VALUES
     (1, 'Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee','11111111111'),
     (2, 'Woojin', 'Choi', '124 N', '812-929-0435', 'choi@iu.edu', PASSWORD('11111111'), 'I am Choi','11111111111');
     
-INSERT INTO TRIP (TripID, DriverID, PassengerID, Start_location, End_location, Distance)
-VALUES
-    (1, 1, 2, '123 Main St', '456 Elm St', 10.5),
-    (2, 2, 1, '789 Oak St', '321 Pine St', 15.25);
+INSERT INTO TRIP (TripID, DriverID, PassengerID, Start_location, End_location, Distance, Date)
+VALUES 
+    (1, 1, 2, 'Los Angeles', 'San Francisco', 383.22, '2022-02-14'),
+    (2, 2, 1, '789 Oak St', '321 Pine St', 15.25, , '2022-02-14');
 
 INSERT INTO PAYMENT (PaymentID, Payment_amount, TripID)
 VALUES
