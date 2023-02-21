@@ -119,8 +119,25 @@
                         $varlicense = mysqli_real_escape_string($con, $_POST['license_num']);
                     }
                     
+                    // Vehicle Color error check
+                    if (empty($_POST["vehicle_color"])) {
+                        $color_error = "Vehicle Color is required!";
+                    }
+                    else {
+                        $varcolor = mysqli_real_escape_string($con, $_POST['vehicle_color']);
+                    }
 
-                    if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 OR empty($_POST["license_num"])) {
+                    // Vehicle Model error check
+                    if (empty($_POST["vehicle_model"])) {
+                        $model_error = "Vehicle Model is required!";
+                    }
+                    else {
+                        $varmodel = mysqli_real_escape_string($con, $_POST['vehicle_model']);
+                    }
+
+
+                    if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) 
+                    OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 OR empty($_POST["license_num"]) OR empty($_POST["vehicle_color"]) OR empty($_POST["vehicle_model"])) {
 
                     }
                     else{
@@ -131,7 +148,7 @@
                             $email_error = "This email is already registered!";
                         }
                         else {
-                            mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense')"));
+                            mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number, color, model_name) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense', '$varcolor', $varmodel)"));
                             echo ("<script>alert('You have been registered!')</script>");
                             echo("<script>location.replace('home.php');</script>");
                         }
@@ -187,6 +204,16 @@
             <div class="inputbox">
                 <span>License photo</span>
             <input class="reg_box" type='file' name = "license_photo" size="40">
+            </div>
+
+            <div class="inputbox">
+                <span>Vehicle Color</span>
+            <input class="reg_box" type='text' name = "vehicle_color" size="40">
+            </div>
+
+            <div class="inputbox">
+                <span>Model Name</span>
+            <input class="reg_box" type='text' name = "vehicle_model" size="40">
             </div>
 
             <div class="inputbox">
