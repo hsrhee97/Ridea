@@ -1,14 +1,8 @@
 DROP TABLE IF EXISTS SURVEY;
 DROP TABLE IF EXISTS HELP;
-DROP TABLE IF EXISTS CUSTOMER_CARE;
-DROP TABLE IF EXISTS CHAT;
-DROP TABLE IF EXISTS EXAM_RESULT;
-DROP TABLE IF EXISTS TRAINING;
-DROP TABLE IF EXISTS EXAM;
 DROP TABLE IF EXISTS RATING;
 DROP TABLE IF EXISTS PAYMENT;
 DROP TABLE IF EXISTS TRIP;
-DROP TABLE IF EXISTS VEHICLE;
 DROP TABLE IF EXISTS PASSENGER;
 DROP TABLE IF EXISTS DRIVER;
 
@@ -75,30 +69,6 @@ CREATE TABLE RATING (
     FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
 
-CREATE TABLE EXAM (
-    Exam_ID INT PRIMARY KEY,
-    Title VARCHAR(50),
-    Questions VARCHAR(255),
-    Passing_score DECIMAL(3,1)
-);
-
-CREATE TABLE TRAINING (
-    TrainingID INT PRIMARY KEY,
-    Module_capacity INT,
-    Location VARCHAR(255),
-    Subject VARCHAR(50),
-    Verification BOOLEAN
-);
-
-CREATE TABLE EXAM_RESULT (
-    Exam_ID INT,
-    Exam_date DATE NOT NULL,
-    Exam_hours TIME NOT NULL,
-    Score DECIMAL(3,1),
-    FOREIGN KEY (Exam_ID) REFERENCES EXAM(Exam_ID)
-);
-
-
 CREATE TABLE HELP (
    HelpID INT AUTO_INCREMENT,
    DriverID INT,
@@ -153,25 +123,3 @@ INSERT INTO RATING (RatingID, Star_rating, Comments)
 VALUES
     (1, 4.5, 'John was a great driver and the ride was very comfortable.'),
     (2, 3.5, 'Bob is a new driver and still needs improvement.');
-    
-INSERT INTO EXAM (Exam_ID, Title, Questions, Passing_score)
-VALUES
-    (1, 'Driver Safety Exam', 'Questions about safe driving practices and traffic laws', 80);
-
-INSERT INTO TRAINING (TrainingID, Module_capacity, Location, Subject, Verification)
-VALUES
-    (1, 20, '123 Main St', 'Driver Safety', 1);
-
-INSERT INTO EXAM_RESULT (Exam_date, Exam_hours, Score, Exam_ID)
-VALUES
-    ('2022-01-01', '10:00:00', 85, 1);
-
-INSERT INTO CHAT (Playlist, Images, Location, Text_messages, UserID)
-VALUES
-    ('Road Trip', 'path/to/image1.jpg, path/to/image2.jpg', '123 Main St', 'Hello, how are you doing?', 1),
-    ('Commute', 'path/to/image3.jpg', '456 Elm St', 'Good morning!', 2);
-
-INSERT INTO CUSTOMER_CARE (EmpID, fname, lname, Address, Phone, Email, Biography, MentorID)
-VALUES
-    (1, 'Emily', 'Richards', '1000 Market St', '555-555-5558', 'emily@email.com', 'Emily is an experienced customer service representative and a great mentor.', null),
-    (2, 'Michael', 'DeSanta', '2000 Market St', '555-555-5559', 'michael@email.com', 'Michael is a new customer service representative and is being mentored by Emily.', 1);
