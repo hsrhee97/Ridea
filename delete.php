@@ -16,19 +16,19 @@
 	// initializing variables
 	$Star_rating = "";
   $Comments = "";
-	$RatingID = 0;
+	$Rating_P_ID = 0;
   $PassengerID = 0;
 	$update = false;
 
-$RatingID=$_GET['RatingID'];
-$qcheck = "DELETE FROM RATING_PASSENGER WHERE RatingID=$RatingID"; 
+$Rating_P_ID=$_GET['Rating_P_ID'];
+$qcheck = "DELETE FROM RATING_PASSENGER WHERE Rating_P_ID=$Rating_P_ID"; 
 echo $qcheck;
 $result = mysqli_query($link, $qcheck); 
 if(false===$result){
   printf("error: %s\n", mysqli_error($link));}
 else {
   echo 'done';
-  header('location: index.php');}
+  header('location: review1.php');}
 
 ?>
 
