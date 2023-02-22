@@ -12,20 +12,30 @@
     // Check connection
     if($link === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+    }
+    else {
+        echo 'done';
+    }
+
 	// initializing variables
-	$Star_rating = "";
-    $Comments = "";
-	$RatingID = 0;
+	$email = "";
+    $help_type = "";
+    $lost_items = "";
+    $trip_date = "";
+    $description = "";
+    $DriverID = 0;
     $PassengerID = 0;
+	$HelpID = 0;
 	$update = false;
 
 	if (isset($_POST['submit'])) {
-		$Comments = $_POST['comments'];
-        $Star_rating = $_POST['Star_rating'];
-        $RatingID = $_REQUEST['RatingID'];
-        echo $Comments;
-        $qcheck = "UPDATE RATING_PASSENGER SET Comments = $Comments, Star_rating = $Star_rating WHERE RatingID=$RatingID";
+		$email = $_POST['email'];
+        $lost_items = $_POST['lost_items'];
+        $description = $_POST['description'];
+        $trip_date = $_POST['trip_date'];
+        $help_type = "Other Problem";
+        echo $description;
+        $qcheck = "INSERT INTO HELP (email, help_type, lost_items, description, trip_date) VALUES ('$email', '$help_type', '$lost_items', '$description', '$trip_date')";
         echo $qcheck;
         $result = mysqli_query($link, $qcheck); 
         if(false===$result){
@@ -33,7 +43,7 @@
         }
         else {
             echo 'done';
-            header('location: index.php');
+            header('location: otherproblems.php');
         }
         
 		//$_SESSION['message'] = "Address saved"; 
@@ -42,4 +52,3 @@
 	} 
 
 ?>
-

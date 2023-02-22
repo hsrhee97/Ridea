@@ -16,33 +16,12 @@
 	// initializing variables
 	$Star_rating = "";
   $Comments = "";
-    $RatingID = 0;
+    $Rating_P_ID = 0;
   $PassengerID = 0;
 	$update = false;
 
-    if (isset($_POST['submit'])) {
-        $Comments = $_POST['comments'];
-        $Star_rating = $_POST['Star_rating'];
-        $RatingID=$_GET['RatingID'];
-        echo $Comments;
-        $query = "UPDATE RATING_PASSENGER SET Comments = $Comments, Star_rating = $Star_rating WHERE RatingID=$RatingID";
-        echo $qcheck;
-        $result = mysqli_query($link, $query); 
-        if(false===$result){
-            printf("error: %s\n", mysqli_error($link));
-        }
-        else {
-            echo 'done';
-            header('location: index.php');
-        }
-        
-        //$_SESSION['message'] = "Address saved"; 
-        /* $Star_rating = $_POST['Star_rating']; */
-    
-    } 
-
-$RatingID=$_GET['RatingID'];
-$qcheck = "SELECT * from RATING_PASSENGER where RatingID=$RatingID"; 
+$Rating_P_ID=$_GET['Rating_P_ID'];
+$qcheck = "SELECT * from RATING_PASSENGER where Rating_P_ID=$Rating_P_ID"; 
 $result = mysqli_query($link, $qcheck); 
 $row = mysqli_fetch_assoc($result);
 
@@ -101,26 +80,26 @@ $row = mysqli_fetch_assoc($result);
 
 <h2>Edit</h2>
 
-<?php
-$status = "";
+<!-- 
+/* $status = "";
 if(isset($_POST['update']))
 {
-$RatingID = $_REQUEST['RatingID'];
+$Rating_P_ID = $_REQUEST['Rating_P_ID'];
 $Star_rating = $_REQUEST['Star_rating'];
 $Comments = $_REQUEST['Comments'];
 $PassengerID = $_REQUEST['PassengerID'];
-$update="RatingID".$RatingID."',
+$update="Rating_P_ID".$Rating_P_ID."',
 Star_rating='".$Star_rating."', Comments='".$Comments."',
 PassengerID='".$PassengerID."'";
 mysqli_query($con, $update) or die(mysqli_error());
 $status = "Record Updated Successfully. </br></br>
 <a href='index.php'>View Updated Record</a>";
 echo '<p style="color:#FF0000;">'.$status.'</p>';
-}else {
-?>
+}else { */
+?> -->
 
 <div>
-<form method="post" action="edit.php" >
+<form method="post" action="./update_review_edit.php?Rating_P_ID=<?= $Rating_P_ID ?>"" >
 	<div class="wrapper">
 		<div class="Star_rating">
     	<input type="radio" id="star5" name="Star_rating" value="5" />
@@ -139,13 +118,11 @@ echo '<p style="color:#FF0000;">'.$status.'</p>';
 
 	<div class="input-group">
 			<label>Add a written review</label>
-			<input type="text" name="comments" required value="<?php echo $row['Comments'];?>"/>
+			<input type="text" name="Comments" required value="<?php echo $row['Comments'];?>"/>
 	</div>
 
 <p><input name="submit" type="submit" value="Update"/></p>
 </form>
-
-<?php } ?>
 
 </body>
 </html>

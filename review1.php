@@ -66,7 +66,7 @@
 
 		<div class="input-group">
 			<label>Add a written review</label>
-			<input type="text" name="comments" value="">
+			<input type="text" name="Comments" value="">
 		</div>
 
 
@@ -86,7 +86,7 @@
         
             }
 
-            $sql = "SELECT RatingID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER";
+            $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER";
             $result = mysqli_query($con, $sql);
             $num_rows = mysqli_num_rows($result);
 
@@ -100,8 +100,8 @@
                     echo "<td>" . $row["Comments"] . "</td>";
                     echo "<td>";
                     echo "<div class='btn-group'>";
-                    echo "<a class='btn btn-warning'href='edit.php?RatingID=".$row['RatingID']."'>Edit</a>";
-                    echo "<a class='btn btn-warning'href='delete.php?RatingID=".$row['RatingID']."'>Delete</a>";
+                    echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
+                    echo "<a class='btn btn-warning'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
                     echo "</div>";
                     echo "</td>";
                     echo "</tr>";
