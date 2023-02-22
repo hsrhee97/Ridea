@@ -11,23 +11,23 @@
  
     // Check connection
     if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+      die("ERROR: Could not connect. " . mysqli_connect_error());
+    }
 	// initializing variables
 	$Star_rating = "";
-    $Comments = "";
-	$RatingID = 0;
-    $PassengerID = 0;
+  $Comments = "";
+    $RatingID = 0;
+  $PassengerID = 0;
 	$update = false;
 
-	if (isset($_POST['submit'])) {
-		$Comments = $_POST['comments'];
+    if (isset($_POST['submit'])) {
+        $Comments = $_POST['comments'];
         $Star_rating = $_POST['Star_rating'];
-        $RatingID = $_REQUEST['RatingID'];
+        $RatingID=$_GET['RatingID'];
         echo $Comments;
-        $qcheck = "UPDATE RATING_PASSENGER SET Comments = $Comments, Star_rating = $Star_rating WHERE RatingID=$RatingID";
+        $query = "UPDATE RATING_PASSENGER SET Comments = $Comments, Star_rating = $Star_rating WHERE RatingID=$RatingID";
         echo $qcheck;
-        $result = mysqli_query($link, $qcheck); 
+        $result = mysqli_query($link, $query); 
         if(false===$result){
             printf("error: %s\n", mysqli_error($link));
         }
@@ -35,11 +35,5 @@
             echo 'done';
             header('location: index.php');
         }
-        
-		//$_SESSION['message'] = "Address saved"; 
-		/* $Star_rating = $_POST['Star_rating']; */
 
-	} 
-
-?>
-
+        ?>

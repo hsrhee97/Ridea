@@ -20,27 +20,6 @@
   $PassengerID = 0;
 	$update = false;
 
-    if (isset($_POST['submit'])) {
-        $Comments = $_POST['comments'];
-        $Star_rating = $_POST['Star_rating'];
-        $RatingID=$_GET['RatingID'];
-        echo $Comments;
-        $query = "UPDATE RATING_PASSENGER SET Comments = $Comments, Star_rating = $Star_rating WHERE RatingID=$RatingID";
-        echo $qcheck;
-        $result = mysqli_query($link, $query); 
-        if(false===$result){
-            printf("error: %s\n", mysqli_error($link));
-        }
-        else {
-            echo 'done';
-            header('location: index.php');
-        }
-        
-        //$_SESSION['message'] = "Address saved"; 
-        /* $Star_rating = $_POST['Star_rating']; */
-    
-    } 
-
 $RatingID=$_GET['RatingID'];
 $qcheck = "SELECT * from RATING_PASSENGER where RatingID=$RatingID"; 
 $result = mysqli_query($link, $qcheck); 
@@ -120,7 +99,7 @@ echo '<p style="color:#FF0000;">'.$status.'</p>';
 ?>
 
 <div>
-<form method="post" action="edit.php" >
+<form method="post" action="update_review_edit.php" >
 	<div class="wrapper">
 		<div class="Star_rating">
     	<input type="radio" id="star5" name="Star_rating" value="5" />
