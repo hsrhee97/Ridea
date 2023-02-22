@@ -16,24 +16,24 @@
 	// initializing variables
 	$Star_rating = "";
   $Comments = "";
-    $RatingID = 0;
+    $Rating_P_ID = 0;
   $PassengerID = 0;
 	$update = false;
 
     if (isset($_POST['submit'])) {
-        $Comments = $_POST['comments'];
+        $Comments = $_POST['Comments'];
         $Star_rating = $_POST['Star_rating'];
-        $RatingID=$_GET['RatingID'];
+        $Rating_P_ID=$_GET['Rating_P_ID'];
         echo $Comments;
-        $query = "UPDATE RATING_PASSENGER SET Comments = $Comments, Star_rating = $Star_rating WHERE RatingID=$RatingID";
+        $query = "UPDATE RATING_PASSENGER SET Comments = '$Comments', Star_rating = '$Star_rating' WHERE Rating_P_ID='$Rating_P_ID'";
         echo $qcheck;
         $result = mysqli_query($link, $query); 
         if(false===$result){
             printf("error: %s\n", mysqli_error($link));
         }
         else {
-            echo 'done';
-            header('location: index.php');
+            echo 'done'; 
+            header('location: review1.php');
         }
-
+    }
         ?>

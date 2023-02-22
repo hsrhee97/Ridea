@@ -16,7 +16,7 @@
 	// initializing variables
 	$Star_rating = "";
     $Comments = "";
-	$RatingID = 0;
+	$Rating_P_ID = 0;
     $PassengerID = 0;
 	$update = false;
 
