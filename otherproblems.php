@@ -25,29 +25,24 @@
 
         <h2>Lost and Found</h2>
         <p>Please fill this form to report any problem.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form method="post" action="config_otherproblems.php">
             <div class="form-group">
-                <label>Name</label>
+                <label>Email</label>
                 <input type="text" name="email" class="form-control value=">
             </div>    
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="text" name="destination" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Problem Type</label>
-                <input type="text" name="luggage" class="form-control">
-            </div>
+            
             <div class="form-group">
                 <label>Trip Date:</label>
-                <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" class="form-control">
+                <input type="date" name="trip_date" value="<?php echo date('YYYY-MM-DD'); ?>" class="form-control">
             </div>
+
             <div class="form-group">
-                <label>Report:</label>
-                <input type="text" name="other" class="form-control">
+                <label>Problem:</label>
+                <input type="description" name="description" class="form-control">
             </div>
+
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="submit" class="btn btn-primary" value="Submit" name = "submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
             </div>
         </form>
