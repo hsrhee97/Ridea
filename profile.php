@@ -5,8 +5,6 @@
 	<title>Profile</title>
 </head>
 <body>
-	<?php ＄results == mysqli_query(＄link, "SELECT * FROM DRIVER"); ?>
-
         <div class='table'>
             <?php
             $con = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
@@ -17,10 +15,7 @@
             }
             $type = $_SESSION['type'];
             $email = $_SESSION['login'];
-            echo $type;
-            echo $email;
-            if (type =='driver') {
-
+            if ($type == 'driver') {
             $sql = "SELECT DriverID, fname ,lname, address, phone, email, password, biography, license_number, license_photo, color, model_name FROM DRIVER WHERE email='$email'";
             $result = mysqli_query($con, $sql);
             $num_rows = mysqli_num_rows($result);
@@ -48,13 +43,12 @@
                     echo "</td>";
                     echo "</tr>";
                 }
-                echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Driver_ID']."'>Edit</a>'";
+                echo "<a class='btn btn-warning'href='editprofile.php'>Edit</a>";
                 echo "</table>";
-            } else {
-                echo "0 results";
-            }
+            } 
         }
-            else {
+            elseif ($type == 'passenger') {
+             
                 $sql = "SELECT PassengerID, fname ,lname, address, phone, email, password, biography, credit_card FROM PASSENGER WHERE email='$email'";
                 $result = mysqli_query($con, $sql);
                 $num_rows = mysqli_num_rows($result);
@@ -79,13 +73,12 @@
                         echo "</td>";
                         echo "</tr>";
                     }
-                    echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Driver_ID']."'>Edit</a>'";
-                    echo "</table>";
-                } else {
-                    echo "0 results";
-                }
+                    
+                } 
+                echo "<a class='btn btn-warning'href='editprofile.php'>Edit</a>";
+                echo "</table>";
             }
-            }
+            
             ?>
 </body>
 </html>
