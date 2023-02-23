@@ -52,7 +52,7 @@
                     <li><a href="help.php">Help</a></li>
                 </ul>
                 <div class="main">
-                    <a href="#" class="user"><i class="ri-user-fill"></i>My Profile</a>
+                    <a href="drive_profile.php" class="user"><i class="ri-user-fill"></i>My Profile</a>
                     <a href="logout.php" class="user"><i class="ri-logout-box-r-line"></i>Log Out</a>
                 </div>
             </nav>
