@@ -13,6 +13,8 @@
     --main-color: #EC4E20;
 }
 
+/* THREE BOXES */
+
 .container {
     margin-top: 8%;
     align-items: center;
@@ -57,3 +59,88 @@
 .content:hover {
     transform: scale(1.2);
 }
+
+/* -------Lost and Found -------- */
+
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666666;
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.form-wrapper {
+    max-width: 500px;
+    width: 100%;
+    padding: 40px 40px 10px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.form-group.buttons {
+    text-align: right;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+input[type="reset"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #333333;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: var();
+    cursor: pointer;
+}
+
+input[type="reset"]:hover {
+    background-color: #808080;
+}
+
+input[type="submit"]:hover {
+    background-color: #6c250f;
+}
+
+
+  
+  
+  
+  
+  

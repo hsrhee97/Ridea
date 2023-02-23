@@ -28,7 +28,7 @@
 
     <div class="wrapper">
         <div class="title">
-            Create account
+            Create driver account
         </div>
         <?php
             $login = $_SESSION['username'];
@@ -148,7 +148,7 @@
                             $email_error = "This email is already registered!";
                         }
                         else {
-                            mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number, color, model_name) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense', '$varcolor', $varmodel)"));
+                            mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number, color, model_name) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense', '$varcolor', '$varmodel')"));
                             echo ("<script>alert('You have been registered!')</script>");
                             echo("<script>location.replace('home.php');</script>");
                         }
