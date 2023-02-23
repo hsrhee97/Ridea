@@ -40,7 +40,6 @@
         if (mysqli_num_rows($user_result) > 0) {
             // 결과를 처리
             $user_row = mysqli_fetch_assoc($user_result);
-            echo $user_row['trip_date'] ;
             // $row 변수에는 마지막으로 저장된 데이터가 저장됩니다.
         } 
         else {
