@@ -1,9 +1,13 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help</title>
-    <style>  <?php include 'css/help.css'; ?>  </style>
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +17,10 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <style>  <?php include 'css/help.css'; ?>  </style>
+    
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 </head>
 <body>
