@@ -86,6 +86,7 @@
                                 }
                                 else{
                                     $_SESSION['login'] = $varemail;
+                                    $_SESSION['type'] = 'driver';
                                     echo ("<script>alert('You have been Logged In!')</script>");
                                     echo("<script>location.replace('home.php');</script>");
                                     exit;
@@ -98,6 +99,7 @@
                             }
                             else{
                                 $_SESSION['login'] = $varemail;
+                                $_SESSION['type'] = 'passenger';
                                 echo ("<script>alert('You have been Logged In!')</script>");
                                 echo("<script>location.replace('home.php');</script>");
                                 exit;
