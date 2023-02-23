@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style> <?php include 'css/help.css'; ?> </style>
+    
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
-</head>
-<body>
-    <div class="wrapper">
-    <header>
-        <nav>
-        <a href="#" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
-            <ul class="navbar">
-                <li><a href="#">Schedule a Ride</a></li>
-                <li><a href="#">My Rides</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Chat</a></li>
-            </ul>
-        </nav>        
-    </header>
 
+</head>
+<?php include 'includes/nav.php'; ?>
+
+<body>
+    <div class="form-container">
+    <div class="form-wrapper">
         <h2>Lost and Found</h2>
         <p>Please fill this form to report any lost items.</p>
         <form method="post" action="config_lost&found.php">
@@ -46,11 +45,12 @@
                 <input type="description" name="description" class="form-control">
             </div>
 
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="submit" name = "submit">
+            <div class="form-group buttons">
                 <input type="reset" class="btn btn-secondary ml-2" value="reset">
+                <input type="submit" class="btn btn-primary" value="submit" name = "submit">
             </div>
         </form>
     </div>    
+    </div>
 </body>
 </html>

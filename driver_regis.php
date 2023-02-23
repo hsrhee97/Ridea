@@ -28,7 +28,7 @@
 
     <div class="wrapper">
         <div class="title">
-            Create account
+            Create driver account
         </div>
         <?php
             $login = $_SESSION['username'];

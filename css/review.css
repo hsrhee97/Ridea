@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --text-color-black: black;
+    --text-color: #fff;
+    --main-color: #EC4E20;
+}
+
+/* REVIEW WRITING */
+
+.Star_rating {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.Star_rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.Star_rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.Star_rating:not(:checked) > label:before {
+    content: '★ ';
+}
+.Star_rating > input:checked ~ label {
+    color: #ffc700;    
+}
+.Star_rating:not(:checked) > label:hover,
+.Star_rating:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.Star_rating > input:checked + label:hover,
+.Star_rating > input:checked + label:hover ~ label,
+.Star_rating > input:checked ~ label:hover,
+.Star_rating > input:checked ~ label:hover ~ label,
+.Star_rating > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
