@@ -25,7 +25,7 @@
     </div>
     <div class="wrapper">
         <div class="title">
-            Create account
+            Create passenger account
         </div>
         <?php
             $login = $_SESSION['username'];

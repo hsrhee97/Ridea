@@ -3,47 +3,16 @@
 <html>
 <head>
 	<title>New Review</title>
-	<style type="text/css">        
-    *{
-    margin: 0;
-    padding: 0;
-}
-.Star_rating {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.Star_rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.Star_rating:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.Star_rating:not(:checked) > label:before {
-    content: '★ ';
-}
-.Star_rating > input:checked ~ label {
-    color: #ffc700;    
-}
-.Star_rating:not(:checked) > label:hover,
-.Star_rating:not(:checked) > label:hover ~ label {
-    color: #deb217;  
-}
-.Star_rating > input:checked + label:hover,
-.Star_rating > input:checked + label:hover ~ label,
-.Star_rating > input:checked ~ label:hover,
-.Star_rating > input:checked ~ label:hover ~ label,
-.Star_rating > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
-    </style>
+    <style>  <?php include 'css/review.css'; ?>  </style>
+
+<!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
     <h2>Create Review</h2>
@@ -60,7 +29,7 @@
     	<label for="star2" title="text">2</label>
     	<input type="radio" id="star1" name="Star_rating" value="1" />
     	<label for="star1" title="text">1</label>
-  </div>
+    </div>
 		</div>
 
 
