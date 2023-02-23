@@ -34,7 +34,6 @@
             $login = $_SESSION['username'];
             echo $login;
             if (isset($_POST['registration_submit'])){ 
-                // $con=mysqli_connect("db.luddy.indiana.edu","i494f22_rheeh","my+sql=i494f22_rheeh","i494f22_rheeh");
                 $con=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
                 if (mysqli_connect_errno())
 
@@ -148,7 +147,7 @@
                             $email_error = "This email is already registered!";
                         }
                         else {
-                            mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number, color, model_name) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense', '$varcolor', $varmodel)"));
+                            mysqli_query($con,("INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number, color, model_name) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varlicense', '$varcolor', '$varmodel')"));
                             echo ("<script>alert('You have been registered!')</script>");
                             echo("<script>location.replace('home.php');</script>");
                         }

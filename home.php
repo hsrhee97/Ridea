@@ -102,7 +102,7 @@
                 </li>
             </ul>
 
-            <a  href="#" class="btn-after-login"><span>GET A RIDEA</span></a>
+            <a  href="usersurvey.php" class="btn-after-login"><span>GET A RIDEA</span></a>
             <?
         }
     ?>

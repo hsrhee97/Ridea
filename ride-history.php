@@ -1,20 +1,34 @@
+<!--OPEN AND CLOSE PHP TAG HERE 
+    /* session_start();
+    $r=session_id();
+    
+    $sql = "select * from TRIP";
+    $result = mysqli_query($con, $sql);
+    while($row = mysqli_fetch_array($result)) {
+        echo print_r($row);
+    } 
+    $_SESSION['PassengerID']=$PassengerID;
+    echo $PassengerID;
+    echo "the session id: ".$r;
+    echo " and the session has been registered for: ".$_SESSION['PassengerID']; */
+ 
+
+/* UNCOMMENT THIS CODE NOT THE PREVIOUS ONE */
+/*     session_start();
+    $user_check=$_SESSION['login'];
+    echo $user_check;
+    $ses_sql=mysqli_query($con,"select Start_location, End_Location, PassengerID from TRIP where email='$user_check'");
+    $row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+    $loggedin_session=$row['Start_location'];
+    $loggedin_id=$row['login'];
+    echo $loggedin_id */
+-->
 <?php 
-	
-    /* Database credentials. Assuming you are running MySQL
-    server with default setting (user 'root' with no password) */
-    define('DB_SERVER', 'db.luddy.indiana.edu');
-    define('DB_USERNAME', 'i494f22_team06');
-    define('DB_PASSWORD', 'my+sql=i494f22_team06');
-    define('DB_NAME', 'i494f22_team06');
- 
-    /* Attempt to connect to MySQL database */
-    $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
-    // Check connection
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+    session_start();
+    
+
 ?>
+
 
 <form id="period_select" name="period_selection" method="POST">
     <select name="month" value=''>Select Month</option>
@@ -51,49 +65,121 @@
   <button type="Submit" id="Submit" name="Submit">Submit</button>
 </form>
 
-<?php ＄results == mysqli_query(＄link, "SELECT * FROM TRIP"); ?>
+
 
 <div class='table'>
             <?php
-            $con = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
-            if (!$con) {
+            $conn = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
+            if (!$conn) {
                 die("Failed to connect to MySQL: " . mysqli_connect_error());
             } else {
+                echo 'done';
+            }
+            
+
+            $type = $_SESSION['type'];
+            $email = $_SESSION['login'];
+            echo $type;
+            echo $email;
+            $ID = '';
         
-            }
-
-
-if (isset($_POST["Submit"])) {
-    $month=$_POST["month"];
-    $year=$_POST["year"];
-} /*echo "$month";
-echo "$year"; */
-          
-            $sql = "select * from TRIP WHERE month(Date) = $month and year(Date) = $year";
-            $result = mysqli_query($con, $sql);
-            $num_rows = mysqli_num_rows($result);
-
-            if ($num_rows > 0) {
-                echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Date</th>";
-                /* echo $row["month"];
-                echo $row["year"]; */
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr style='border:1px solid black;'>";
-                    echo "<td>" . $row["TripID"] . "</td>";
-                    echo "<td>" . $row["DriverID"] . "</td>";
-                    echo "<td>" . $row["Start_location"] . "</td>";
-                    echo "<td>" . $row["End_location"] . "</td>";
-                    echo "<td>" . $row["Distance"] . "</td>";
-                    echo "<td>" . $row["Date"] . "</td>";
-                    echo "<td>";
-                    echo "</div>";
-                    echo "</td>";
-                    echo "</tr>";
+            if ($type =='driver') {
+                
+                $sql = "SELECT * FROM DRIVER WHERE email='$email'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $ID = $row["DriverID"];
+                    echo "id: " . $row["DriverID"]. " - Name: " 
+                        . $row["fname"]. " " . $row["lname"]. "<br>";
+                    }
+                    if (isset($_POST["Submit"])) {
+                        $month=$_POST["month"];
+                        $year=$_POST["year"];
+                    } /*echo "$month";
+                    echo "$year"; */
+                  
+                    $sql = "select * from TRIP WHERE month(Date) = $month and year(Date) = $year and DriverID = $ID" ;
+                    $result = mysqli_query($conn, $sql);
+                    $num_rows = mysqli_num_rows($result);
+        
+                    if ($num_rows > 0) {
+                        echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                        echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
+                        
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr style='border:1px solid black;'>";
+                            echo "<td>" . $row["TripID"] . "</td>";
+                            echo "<td>" . $row["DriverID"] . "</td>";
+                            echo "<td>" . $row["PassengerID"] . "</td>";
+                            echo "<td>" . $row["Start_location"] . "</td>";
+                            echo "<td>" . $row["End_location"] . "</td>";
+                            echo "<td>" . $row["Distance"] . "</td>";
+                            echo "<td>" . $row["Date"] . "</td>";
+                            echo "<td>";
+                            echo "</div>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "0 results";
+                    }
+                }            
+            } 
+            elseif ($type == 'passenger')
+            { 
+                $sql = "SELECT * FROM PASSENGER WHERE email='$email'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $ID = $row["PassengerID"];
+                    echo "id: " . $row["PassengerID"]. " - Name: " 
+                        . $row["fname"]. " " . $row["lname"]. "<br>";
+                    }
+                    if (isset($_POST["Submit"])) {
+                        $month=$_POST["month"];
+                        $year=$_POST["year"];
+                    } /*echo "$month";
+                    echo "$year"; */
+                  
+                    $sql = "select * from TRIP WHERE month(Date) = $month and year(Date) = $year and PassengerID = $ID" ;
+                    $result = mysqli_query($conn, $sql);
+                    $num_rows = mysqli_num_rows($result);
+        
+                    if ($num_rows > 0) {
+                        echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                        echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
+                        
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr style='border:1px solid black;'>";
+                            echo "<td>" . $row["TripID"] . "</td>";
+                            echo "<td>" . $row["DriverID"] . "</td>";
+                            echo "<td>" . $row["PassengerID"] . "</td>";
+                            echo "<td>" . $row["Start_location"] . "</td>";
+                            echo "<td>" . $row["End_location"] . "</td>";
+                            echo "<td>" . $row["Distance"] . "</td>";
+                            echo "<td>" . $row["Date"] . "</td>";
+                            echo "<td>";
+                            echo "</div>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "0 results";
+                    }
                 }
-                echo "</table>";
-            } else {
-                echo "0 results";
             }
+
+    
+            
+
+
+
+        
+
+
+
 ?>
 

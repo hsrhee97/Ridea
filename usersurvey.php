@@ -1,31 +1,72 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style> <?php include 'css/help.css'; ?> </style>
+    
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+
 </head>
 <body>
-    <div class="wrapper">
-    <header>
-        <nav>
-        <a href="#" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
-            <ul class="navbar">
-                <li><a href="#">Schedule a Ride</a></li>
-                <li><a href="#">My Rides</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Chat</a></li>
-            </ul>
-        </nav>        
-    </header>
+    <div class="form-container">
+    <div class="form-wrapper">
 
         <h2>Ride Reservation</h2>
         <p>Please fill this form to book a ride.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        
+        <?php
+            if (isset($_POST['survey_submit'])){ 
+                $passenger_id = $_SESSION['id'];
+                $start_address = $_POST['start_point'];
+                $start_city = $_POST['city_start'];
+                $end_address = $_POST['destination'];
+                $end_city = $_POST['city_end'];
+                $luggage = $_POST['luggage'];
+                $trip_date = $_POST['date'];
+                $other = $_POST['other'];
+
+                $conn=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                // Insert the data into the SURVEY table
+                $sql = "INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $sur = $conn->prepare($sql);
+                $sur->bind_param('issssss', $passenger_id, $start_address, $start_city, $end_address, $end_city, $trip_date, $other);
+
+
+
+                if ($sur->execute()) {
+                    echo ("<script>alert('You have scheduled the trip')</script>");
+                    echo("<script>location.replace('matching.php');</script>");
+                    exit;
+                } 
+                else {
+                }
+
+                $sur->close();
+                $conn->close();
+            }
+        ?>
+
+        <form method= "post">
         
             <div class="form-group">
                 <label>Pickup Point</label>
@@ -63,10 +104,11 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="submit" name="survey_submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
             </div>
         </form>
     </div>    
+    </div>
 </body>
 </html>

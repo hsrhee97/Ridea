@@ -69,6 +69,12 @@
                         $password_p = "SELECT * from PASSENGER where PASSENGER.password=PASSWORD('$varpassword')";
                         $sql_password = mysqli_query($con, $password_p);
 
+                        // getting id
+                        $P_ID = "SELECT PassengerID FROM PASSENGER WHERE email='$varemail'";
+                        $sql_P_ID = $con->query($P_ID);
+                        $P_row = $sql_P_ID->fetch_assoc();
+                        $passenger_id = $P_row["PassengerID"];
+
                         //checking email in DRIVER
                         if(mysqli_num_rows($sql_email)==0) {
                             $email_d = "SELECT * from DRIVER where DRIVER.email='$varemail'";
@@ -76,6 +82,12 @@
 
                             $password_d = "SELECT * from DRIVER where DRIVER.password=PASSWORD('$varpassword')";
                             $sql_password = mysqli_query($con, $password_d);
+
+                            // getting id
+                            $D_ID = "SELECT DriverID FROM DRIVER WHERE email='$varemail'";
+                            $sql_D_ID = $con->query($D_ID);
+                            $D_row = $sql_D_ID->fetch_assoc();
+                            $driver_id = $D_row["DriverID"];
 
                             if(mysqli_num_rows($sql_email)==0) {
                                 $email_error = "This email is not registered! Use registration form to create an account.";
@@ -87,6 +99,8 @@
                                 else{
                                     $_SESSION['login'] = $varemail;
                                     $_SESSION['type'] = 'driver';
+                                    $_SESSION['id'] = $driver_id;
+
                                     echo ("<script>alert('You have been Logged In!')</script>");
                                     echo("<script>location.replace('home.php');</script>");
                                     exit;
@@ -100,6 +114,7 @@
                             else{
                                 $_SESSION['login'] = $varemail;
                                 $_SESSION['type'] = 'passenger';
+                                $_SESSION['id'] = $passenger_id;
                                 echo ("<script>alert('You have been Logged In!')</script>");
                                 echo("<script>location.replace('home.php');</script>");
                                 exit;
