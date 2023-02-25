@@ -36,6 +36,7 @@ session_start();
       else {
             echo "No records has been found";
       }
+      
     
 
 ?>
@@ -105,11 +106,6 @@ session_start();
       die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 	// initializing variables
-	$Star_rating = "";
-    $Comments = "";
-    $Rating_P_ID = 0;
-    $PassengerID = 0;
-	$update = false;
 
     if (isset($_POST['submit'])) {
         $fname = $_POST['fname'];
@@ -118,6 +114,8 @@ session_start();
         $phone = $_POST['phone'];
         $biography = $_POST['biography'];
         $credit_card = $_POST['credit_card'];
+
+        
 
         $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', biography = '$biography', credit_card = '$credit_card' WHERE PassengerID = '$PassengerID' " ;
         echo $query;
