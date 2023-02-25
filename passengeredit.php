@@ -18,21 +18,19 @@ session_start();
     $type = $_SESSION['type'];
     $email = $_SESSION['login'];
 
-    $DriverID = '';
+    $PassengerID = '';
     $fname = "";
-    $sql = "SELECT * FROM DRIVER WHERE email='$email'";
+    $sql = "SELECT * FROM PASSENGER WHERE email='$email'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $DriverID = $row["DriverID"];
+            $PassengerID = $row["PassengerID"];
             $fname = $row["fname"];
             $lname = $row["lname"];
             $address = $row["address"];
             $phone = $row["phone"];
             $biography = $row["biography"];
-            $license_number = $row["license_number"];
-            $color = $row["color"];
-            $model_name = $row["model_name"];
+            $credit_card = $row["credit_card"];
             }
       } 
       else {
@@ -50,9 +48,8 @@ session_start();
 </head>
 <body>
 <h1>Update Profile</h1>
-<?php echo $row['DriverID'];?> 
 <div>
-<form method="post" action="driveredit.php" >
+<form method="post" action="passengeredit.php" >
             <div class="inputbox">
                 <span>First name</span>
                 <input class="reg_box" type='text' name = "fname" value="<?php echo $fname;?>">
@@ -79,18 +76,8 @@ session_start();
             </div>
 
             <div class="inputbox">
-                <span>License number</span>
-            <input class="reg_box" type='text' name = "license_number" size="40" value="<?php echo $license_number;?>">
-            </div>
-
-            <div class="inputbox">
-                <span>Vehicle Color</span>
-            <input class="reg_box" type='text' name = "color" size="40" value="<?php echo $color;?>">
-            </div>
-
-            <div class="inputbox">
-                <span>Model Name</span>
-            <input class="reg_box" type='text' name = "model_name" size="40" value="<?php echo $model_name;?>">
+                <span>Credit Card</span>
+            <input class="reg_box" type='text' name = "credit_card" size="40" value="<?php echo $credit_card;?>">
             </div>
 
             <div class="inputbox">
@@ -130,11 +117,9 @@ session_start();
         $address = $_POST['address'];
         $phone = $_POST['phone'];
         $biography = $_POST['biography'];
-        $license_number = $_POST['license_number'];
-        $color = $_POST['color'];
-        $model_name = $_POST['model_name'];
+        $credit_card = $_POST['credit_card'];
 
-        $query = "UPDATE DRIVER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', biography = '$biography', license_number = '$license_number', color = '$color', model_name = '$model_name' WHERE DriverID = '$DriverID' " ;
+        $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', biography = '$biography', credit_card = '$credit_card' WHERE PassengerID = '$PassengerID' " ;
         echo $query;
         $result = mysqli_query($link, $query); 
         if(false===$result){

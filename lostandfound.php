@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 
     <style>  <?php include 'css/help.css'; ?>  </style>
 
@@ -32,9 +32,10 @@
         <h2>Lost and Found</h2>
         <p>Please fill this form to report any lost items.</p>
         <form method="post" action="config_lost&found.php">
+
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" class="form-control value=">
+                <input type="email" name="email" class="form-control">
             </div>    
 
             <div class="form-group">
@@ -44,12 +45,12 @@
 
             <div class="form-group">
                 <label>Lost Items</label>
-                <input type="lost_items" name="lost_items" class="form-control">
+                <input type="text" name="lost_items" class="form-control">
             </div>
 
             <div class="form-group">
                 <label>Description:</label>
-                <input type="description" name="description" class="form-control">
+                <input type="text" name="description" class="form-control">
             </div>
 
             <div class="form-group buttons">
