@@ -19,6 +19,8 @@
             $TripID = 0 ;
             $passenger_name ='';
             $driver_name ='';
+            $D_ID ='';
+            $d_name ='';
 
             echo $type;
             echo $email;
@@ -36,7 +38,7 @@
                     }
 
                 $passenger_name = "SELECT fname, lname FROM PASSENGER WHERE PassengerID = $ID";
-                $sql = "SELECT TripID, $passenger_name, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
+                $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
                 $result = mysqli_query($conn, $sql);
                 $num_rows = mysqli_num_rows($result);
             
@@ -88,7 +90,7 @@
                     }
                     
                 /* CONTINUE WORKING HERE */
-                $driver_name = "SELECT fname, lname FROM DRIVER WHERE DriverID = '$D_ID'";
+                $driver_name = "SELECT * FROM DRIVER WHERE DriverID = '$D_ID'";
                 $result = mysqli_query($conn, $driver_id);
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
@@ -99,7 +101,7 @@
                 
                 
 
-                $sql = "SELECT TripID, $driver_name, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
+                $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
                 $result = mysqli_query($conn, $sql);
                 $num_rows = mysqli_num_rows($result);
             
