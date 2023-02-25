@@ -93,38 +93,70 @@
                     echo "id: " . $row["DriverID"]. " - Name: " 
                         . $row["fname"]. " " . $row["lname"]. "<br>";
                     }
+
                     if (isset($_POST["Submit"])) {
                         $month=$_POST["month"];
                         $year=$_POST["year"];
-                    } /*echo "$month";
-                    echo "$year"; */
-                  
-                    $sql = "select * from TRIP WHERE month(Date) = $month and year(Date) = $year and DriverID = $ID" ;
-                    $result = mysqli_query($conn, $sql);
-                    $num_rows = mysqli_num_rows($result);
-        
-                    if ($num_rows > 0) {
-                        echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                        echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
-                        
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr style='border:1px solid black;'>";
-                            echo "<td>" . $row["TripID"] . "</td>";
-                            echo "<td>" . $row["DriverID"] . "</td>";
-                            echo "<td>" . $row["PassengerID"] . "</td>";
-                            echo "<td>" . $row["Start_location"] . "</td>";
-                            echo "<td>" . $row["End_location"] . "</td>";
-                            echo "<td>" . $row["Distance"] . "</td>";
-                            echo "<td>" . $row["Date"] . "</td>";
-                            echo "<td>";
-                            echo "</div>";
-                            echo "</td>";
-                            echo "</tr>";
+                        $sql = "select * from TRIP WHERE month(Date) = $month and year(Date) = $year and DriverID = $ID" ;
+                        $result = mysqli_query($conn, $sql);
+                        $num_rows = mysqli_num_rows($result);
+            
+                        if ($num_rows > 0) {
+                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                            echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
+                            
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr style='border:1px solid black;'>";
+                                echo "<td>" . $row["TripID"] . "</td>";
+                                echo "<td>" . $row["DriverID"] . "</td>";
+                                echo "<td>" . $row["PassengerID"] . "</td>";
+                                echo "<td>" . $row["Start_location"] . "</td>";
+                                echo "<td>" . $row["End_location"] . "</td>";
+                                echo "<td>" . $row["Distance"] . "</td>";
+                                echo "<td>" . $row["Date"] . "</td>";
+                                echo "<td>";
+                                echo "<div class='btn-group'>";
+                                echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "</div>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "0 results";
                         }
-                        echo "</table>";
                     } else {
-                        echo "0 results";
+                        $sql_check = "SELECT * FROM TRIP WHERE PassengerID = $ID  ORDER BY Date DESC";
+                        $result_check = mysqli_query($conn, $sql_check);
+                        $num_rows_check = mysqli_num_rows($result_check);
+
+                        if ($num_rows_check > 0) {
+                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                            echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
+                            
+                            while ($row = $result_check->fetch_assoc()) {
+                                echo "<tr style='border:1px solid black;'>";
+                                echo "<td>" . $row["TripID"] . "</td>";
+                                echo "<td>" . $row["DriverID"] . "</td>";
+                                echo "<td>" . $row["PassengerID"] . "</td>";
+                                echo "<td>" . $row["Start_location"] . "</td>";
+                                echo "<td>" . $row["End_location"] . "</td>";
+                                echo "<td>" . $row["Distance"] . "</td>";
+                                echo "<td>" . $row["Date"] . "</td>";
+                                echo "<td>";
+                                echo "<div class='btn-group'>";
+                                echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "</div>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "0 results";
+                        }
                     }
+                  
+
                 }            
             } 
             elseif ($type == 'passenger')
@@ -140,46 +172,67 @@
                     if (isset($_POST["Submit"])) {
                         $month=$_POST["month"];
                         $year=$_POST["year"];
-                    } /*echo "$month";
-                    echo "$year"; */
-                  
-                    $sql = "select * from TRIP WHERE month(Date) = $month and year(Date) = $year and PassengerID = $ID" ;
-                    $result = mysqli_query($conn, $sql);
-                    $num_rows = mysqli_num_rows($result);
-        
-                    if ($num_rows > 0) {
-                        echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                        echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
                         
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr style='border:1px solid black;'>";
-                            echo "<td>" . $row["TripID"] . "</td>";
-                            echo "<td>" . $row["DriverID"] . "</td>";
-                            echo "<td>" . $row["PassengerID"] . "</td>";
-                            echo "<td>" . $row["Start_location"] . "</td>";
-                            echo "<td>" . $row["End_location"] . "</td>";
-                            echo "<td>" . $row["Distance"] . "</td>";
-                            echo "<td>" . $row["Date"] . "</td>";
-                            echo "<td>";
-                            echo "</div>";
-                            echo "</td>";
-                            echo "</tr>";
+                        $sql = "select * from TRIP WHERE month(Date) = $month and year(Date) = $year and PassengerID = $ID" ;
+                        $result = mysqli_query($conn, $sql);
+                        $num_rows = mysqli_num_rows($result);
+            
+                        if ($num_rows > 0) {
+                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                            echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
+                            
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr style='border:1px solid black;'>";
+                                echo "<td>" . $row["TripID"] . "</td>";
+                                echo "<td>" . $row["DriverID"] . "</td>";
+                                echo "<td>" . $row["PassengerID"] . "</td>";
+                                echo "<td>" . $row["Start_location"] . "</td>";
+                                echo "<td>" . $row["End_location"] . "</td>";
+                                echo "<td>" . $row["Distance"] . "</td>";
+                                echo "<td>" . $row["Date"] . "</td>";
+                                echo "<td>";
+                                echo "<div class='btn-group'>";
+                                echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "</div>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "0 results";
                         }
-                        echo "</table>";
                     } else {
-                        echo "0 results";
+                        $sql_check = "SELECT * FROM TRIP WHERE PassengerID = $ID  ORDER BY Date DESC";
+                        $result_check = mysqli_query($conn, $sql_check);
+                        $num_rows_check = mysqli_num_rows($result_check);
+
+                        if ($num_rows_check > 0) {
+                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                            echo "<tr style='border:1px solid black;'><th>TripID</th><th>DriverID</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
+                            
+                            while ($row = $result_check->fetch_assoc()) {
+                                echo "<tr style='border:1px solid black;'>";
+                                echo "<td>" . $row["TripID"] . "</td>";
+                                echo "<td>" . $row["DriverID"] . "</td>";
+                                echo "<td>" . $row["PassengerID"] . "</td>";
+                                echo "<td>" . $row["Start_location"] . "</td>";
+                                echo "<td>" . $row["End_location"] . "</td>";
+                                echo "<td>" . $row["Distance"] . "</td>";
+                                echo "<td>" . $row["Date"] . "</td>";
+                                echo "<td>";
+                                echo "<div class='btn-group'>";
+                                echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "</div>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "0 results";
+                        }
                     }
+
                 }
             }
-
-    
-            
-
-
-
-        
-
-
-
 ?>
 
