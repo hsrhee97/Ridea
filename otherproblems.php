@@ -14,7 +14,6 @@
     <style> <?php include 'css/help.css'; ?> </style>
     
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
 <?php include 'includes/nav.php'; ?>
@@ -36,9 +35,9 @@
 
             <div class="form-group">
                 <label>Problem:</label>
-                <input type="description" name="description" class="form-control">
+                <input type="text" name="description" class="form-control">
             </div>
-
+    
             <div class="form-group buttons">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
                 <input type="submit" class="btn btn-primary" value="Submit" name = "submit">

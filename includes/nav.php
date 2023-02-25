@@ -7,7 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style> <?php include 'css/style.css'; ?> </style>
+
     <title>RIDEA</title>
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,8 +19,9 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    
+
 </head>
 
 </head>
@@ -28,10 +31,10 @@
         $login = $_SESSION['login'];
         if(!$login) {
           ?>
+
             <nav>
-            <!-- ridea logo -->
-            <a href="home.php" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
-            <!-- sign in and register buttons -->
+            <a href="home.php" class="logo text-decoration-none"><i class="ri-car-line"></i><span>RIDEA</span></a>
+
                 <div class="main">
                     <a href="loginform.php" class="user"><i class="ri-user-fill"></i>Sign in</a>
                     <a href="register1.php">Register</a>
@@ -43,6 +46,7 @@
 
         else{
             ?>
+
             <nav>
             <a href="home.php" class="logo"><i class="ri-car-line"></i><span>RIDEA</span></a>
                 <ul class="navbar">
