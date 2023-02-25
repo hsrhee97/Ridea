@@ -94,7 +94,7 @@
                 
             }
 
-            // 매칭 결과 출력
+            // printing out the results
             if (count($matches['same_all']) > 0) {
                 echo "<h2>Cases where the date, destination, and departure are all the same</h2>";
                 echo "<ul>";
