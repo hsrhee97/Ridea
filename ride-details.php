@@ -21,6 +21,8 @@
             $driver_name ='';
             $D_ID ='';
             $d_name ='';
+            $d_fname = '';
+            $d_lname ='';
 
             echo $type;
             echo $email;
@@ -37,6 +39,27 @@
                         . $row["fname"]. " " . $row["lname"]. "<br>";
                     }
 
+                $Passenger_id = "SELECT PassengerID FROM TRIP WHERE TripID = $TripID";
+                $result = mysqli_query($conn, $driver_id);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $P_ID = $row["PassengerID"];
+                    echo "Driverid: " . $row["DriverID"]. "<br>";
+                    }
+
+                $passenger_name = "SELECT * FROM PASSENGER WHERE PassengerID = '$P_ID'";
+                $result = $conn->query($passenger_name);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $p_name = $row["PassengerID"];
+                        $p_fname = $row["fname"];
+                        $p_lname = $row["lname"];
+                    echo "id: " . $row["PassengerID"]. " - Name: " 
+                        . $row["fname"]. " " . $row["lname"]. "<br>";
+                    }
+                    echo $p_fname;
+                    echo $p_lname;
+
                 $passenger_name = "SELECT fname, lname FROM PASSENGER WHERE PassengerID = $ID";
                 $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
                 $result = mysqli_query($conn, $sql);
@@ -44,12 +67,13 @@
             
                 if ($num_rows > 0) {
                     echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                    echo "<tr style='border:1px solid black;'><th>TripID</th><th>Passenger Name</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
+                    echo "<tr style='border:1px solid black;'><th>TripID</th><th>Passenger First Name</th><th>Passenger Last Name</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
                 
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='border:1px solid black;'>";
                         echo "<td>" . $row["TripID"] . "</td>";
-                        echo "<td>" . $row["$passenger_name"] . "</td>";
+                        echo "<td>" . $p_fname . "</td>";
+                        echo "<td>" . $p_lname . "</td>";
                         echo "<td>" . $row["PassengerID"] . "</td>";
                         echo "<td>" . $row["Start_location"] . "</td>";
                         echo "<td>" . $row["End_location"] . "</td>";
@@ -64,8 +88,8 @@
                 } else {
                     echo "0 results";
                 }
-            
-
+                }
+            }
             }
         }
             elseif ($type == 'passenger'){
@@ -91,14 +115,18 @@
                     
                 /* CONTINUE WORKING HERE */
                 $driver_name = "SELECT * FROM DRIVER WHERE DriverID = '$D_ID'";
-                $result = mysqli_query($conn, $driver_id);
+                $result = $conn->query($driver_name);
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         $d_name = $row["DriverID"];
+                        $d_fname = $row["fname"];
+                        $d_lname = $row["lname"];
                     echo "id: " . $row["DriverID"]. " - Name: " 
                         . $row["fname"]. " " . $row["lname"]. "<br>";
                     }
-                
+                    echo $d_fname;
+                    echo $d_lname;
+
                 
 
                 $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
@@ -107,13 +135,13 @@
             
                 if ($num_rows > 0) {
                     echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                    echo "<tr style='border:1px solid black;'><th>TripID</th><th>Driver Name</th><th>PassengerID</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
+                    echo "<tr style='border:1px solid black;'><th>TripID</th><th>Driver First Name</th><th>Driver Last Name</th><th>Start Location</th><th>End Location</th><th>Distance</th><th>Date</th>";
                 
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr style='border:1px solid black;'>";
                         echo "<td>" . $row["TripID"] . "</td>";
-                        echo "<td>" . $row["$driver_name"] . "</td>";
-                        echo "<td>" . $row["PassengerID"] . "</td>";
+                        echo "<td>" . $d_fname . "</td>";
+                        echo "<td>" . $d_lname . "</td>";
                         echo "<td>" . $row["Start_location"] . "</td>";
                         echo "<td>" . $row["End_location"] . "</td>";
                         echo "<td>" . $row["Distance"] . "</td>";
