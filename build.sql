@@ -118,6 +118,7 @@ VALUES
     
 INSERT INTO TRIP(DriverID, PassengerID, Start_location, End_location, Distance, Date)
 VALUES 
+    (3, 9, 'Bloomington', 'Miami', 482.12, '2023-03-19'),
     (2, 8, 'Greenville', 'Brownville', 123.98, '2022-07-26'),
     (3, 9, 'Chicago', 'Miami', 456.32, '2022-07-29'),
     (4, 9, 'San Francisco', 'Seattle', 456.32, '2022-07-21'),
