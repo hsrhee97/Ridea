@@ -93,7 +93,7 @@
                     echo "id: " . $row["DriverID"]. " - Name: " 
                         . $row["fname"]. " " . $row["lname"]. "<br>";
                     }
-                    
+
                     if (isset($_POST["Submit"])) {
                         $month=$_POST["month"];
                         $year=$_POST["year"];
@@ -117,9 +117,6 @@
                                 echo "<td>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "</div>";
-                                echo "</td>";
-                                echo "<td>";
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -149,8 +146,6 @@
                                 echo "<td>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "</div>";
-                                echo "</td>";
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -200,9 +195,6 @@
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "</div>";
                                 echo "</td>";
-                                echo "<td>";
-                                echo "</div>";
-                                echo "</td>";
                                 echo "</tr>";
                             }
                             echo "</table>";
@@ -232,9 +224,6 @@
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "</div>";
                                 echo "</td>";
-                                echo "<td>";
-                                echo "</div>";
-                                echo "</td>";
                                 echo "</tr>";
                             }
                             echo "</table>";
@@ -245,15 +234,5 @@
 
                 }
             }
-
-    
-            
-
-
-
-        
-
-
-
 ?>
 
