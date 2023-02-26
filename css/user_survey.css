@@ -31,7 +31,7 @@ body {
   
   .form-wrapper {
     max-width: 60vw;
-    height: 75vh;
+    height: 80vh;
     width: 100%;
     padding: 40px 40px 40px 40px;
     background-color: #ffffff;
@@ -44,7 +44,7 @@ body {
 }
 
 .form-group.buttons {
-    padding: 2.5em 0 0 0;
+    padding: 7em 0 0 0;
     text-align: right;
 }
 
