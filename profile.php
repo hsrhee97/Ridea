@@ -39,30 +39,73 @@
             $num_rows = mysqli_num_rows($result);
 
             if ($num_rows > 0) {
-                echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                echo "<tr style='border:1px solid black;'><th>First Name</th><th>Last Name</th><th>Address</th><th>Phone Number</th><th>Email</th><th>Biography</th><th>License Number</th><th>License Photo</th><th>Vehicle Color</th><th>Vehicle Model</th>";
 
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr style='border:1px solid black;'>";
-                    echo "<td>" .$row["fname"] . "</td>";
-                    echo "<td>" . $row["lname"] . "</td>";
-                    echo "<td>" . $row["address"] . "</td>";
-                    echo "<td>" . $row["phone"] . "</td>";
-                    echo "<td>" . $row["email"] . "</td>";
-                    echo "<td>" . $row["biography"] . "</td>";
-                    echo "<td>" . $row["license_number"] . "</td>";
-                    echo "<td>" . $row["license_photo"] . "</td>";
-                    echo "<td>" . $row["color"] . "</td>";
-                    echo "<td>" . $row["model_name"] . "</td>";
 
+                echo "<div class='wrapper1'>";
+                    echo "<div class='div_test1'>";
+
+                    echo "<div class='col1_driver'>";
+
+                        echo "<div class='label'>";
+                            echo"<h2>My Name is</h2>";
+                                echo $row["fname"];
+                                echo $row["lname"];
+                        echo "</div>";
+
+                        echo "<div class='label'>";
+                            echo"<h2>A little bit about me</h2>";
+                            echo $row["biography"];
+                        echo "</div>";
+
+                        echo "<div class='label'>";
+                            echo"<h2>Address</h2>";
+                                echo $row["address"];
+                        echo "</div>";
+
+                        echo "<div class='label'>";
+                            echo"<h2>Phone Number</h2>";
+                                echo $row["phone"];
+                        echo "</div>";
+
+                        echo "<div class='label'>";
+                            echo"<h2>Email</h2>";
+                                echo $row["email"];
+                        echo "</div>";
+                        
                     echo "<div class='btn-group'>";
-                    
+                    echo "<a class='btn btn-warning'href='editprofile.php'>Edit</a>";
                     echo "</div>";
-                    echo "</td>";
-                    echo "</tr>";
+
+                    echo "</div>";
+
+                        echo "<div class='col2_driver'>";
+                            echo "<div class='label'>";
+                                echo"<h2>License number</h2>";
+                                echo $row["license_number"];
+                            echo "</div>";
+
+                            echo "<div class='label'>";
+                                echo"<h2>Licence photo</h2>";
+                                echo $row["license_photo"];
+                            echo "</div>";
+
+                            echo "<div class='label'>";
+                                echo"<h2>Model name</h2>";           
+                                echo $row["model_name"];
+                            echo "</div>";
+
+                            echo "<div class='label'>";
+                                echo"<h2>Color</h2>";
+                                echo $row["color"];
+                            echo "</div>";
+
+
+                    echo "</div>";
+
+                echo "</div>";
                 }
-                echo "<a class='btn btn-warning'href='editprofile.php'>Edit</a>";
-                echo "</table>";
+
             } 
         }
             elseif ($type == 'passenger') {
@@ -72,29 +115,64 @@
                 $num_rows = mysqli_num_rows($result);
     
                 if ($num_rows > 0) {
-                    echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                    echo "<tr style='border:1px solid black;'><th>First Name</th><th>Last Name</th><th>Address</th><th>Phone Number</th><th>Email</th><th>Biography</th><th>Credit Card</th>";
     
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr style='border:1px solid black;'>";
-                        echo "<td>" .$row["fname"] . "</td>";
-                        echo "<td>" . $row["lname"] . "</td>";
-                        echo "<td>" . $row["address"] . "</td>";
-                        echo "<td>" . $row["phone"] . "</td>";
-                        echo "<td>" . $row["email"] . "</td>";
-                        echo "<td>" . $row["biography"] . "</td>";
-                        echo "<td>" . $row["credit_card"] . "</td>";
-    
-                        echo "<div class='btn-group'>";
-                        
+                        echo "<div class='wrapper'>";
+                            echo "<div class='div_test'>";
+
+                            echo "<div class='col1'>";
+
+                                echo "<div class='label'>";
+                                    echo"<h2>My Name is</h2>";
+                                        echo $row["fname"];
+                                        echo $row["lname"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo"<h2>A little bit about me</h2>";
+                                    echo $row["biography"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo"<h2>Address</h2>";
+                                        echo $row["address"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo"<h2>Phone Number</h2>";
+                                        echo $row["phone"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo"<h2>Email</h2>";
+                                        echo $row["email"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo"<h2>Credt card</h2>";
+                                        echo $row["credit_card"] ;
+                                echo "</div>";
+
+                                
+                            echo "<div class='btn-group'>";
+                            echo "<a class='btn btn-warning'href='editprofile.php'>Edit</a>";
+                            echo "</div>";
+
+                            echo "</div>";
+
+                                echo "<div class='col2'>";
+
+                                    echo "<div class='bookmark'>";
+                                    echo "</div>";
+
+                            echo "</div>";
+
                         echo "</div>";
-                        echo "</td>";
-                        echo "</tr>";
                     }
                     
                 } 
-                echo "<a class='btn btn-warning'href='editprofile.php'>Edit</a>";
-                echo "</table>";
+
+
             }
             
             ?>
