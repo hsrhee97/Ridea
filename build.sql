@@ -139,7 +139,10 @@ VALUES
 
 INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments)
 VALUES
-    (1, 3.5, 'Bob is a new driver and still needs improvement.');
+    (1, 3.5, 'Bob is a new driver and still needs improvement.'),
+    (2, 3.5, 'Bob is a new driver and still needs improvement.'),
+    (3, 3.5, 'Bob is a new driver and still needs improvement.'),
+    (4, 3.5, 'Bob is a new driver and still needs improvement.');
 
 INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other) 
 VALUES 
@@ -151,4 +154,8 @@ VALUES
     (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL),
     (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None');
 
+SELECT CONCAT(p.fname, ' ', p.lname) AS Name, s.start_city, s.end_city, s.trip_date, p.biography
+FROM PASSENGER p 
+JOIN SURVEY s ON p.PassengerID = s.PassengerID
+WHERE p.PassengerID = 1;
 

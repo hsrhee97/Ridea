@@ -99,6 +99,11 @@
                 echo "<h2>Cases where the date, destination, and departure are all the same</h2>";
                 echo "<ul>";
                 foreach ($matches['same_all'] as $match) {
+                    $pass_sql = "SELECT CONCAT(p.fname, ' ', p.lname) AS Name, s.start_city, s.end_city, s.trip_date, p.biography
+                    FROM PASSENGER p 
+                    JOIN SURVEY s ON p.PassengerID = s.PassengerID
+                    WHERE p.PassengerID = 1";
+                    $pass_result = mysqli_query($conn, $sql);
                     echo "<li> You could match with {$match[1]}</li>";
                 }
                 echo "</ul>";
