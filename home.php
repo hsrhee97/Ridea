@@ -26,12 +26,17 @@
     
     <!-- navbar -->
     <?php include 'includes/nav.php'; ?>
-    <main>
+    
+
+
+
+<main>
     <?php 
         $login = $_SESSION['login'];
         // before login
         if(!$login) {
             ?>
+            
             <div class="container">
                 <div class="slide-container">
                     <div class="slide">
@@ -45,20 +50,21 @@
                     </div>
                 </div>
             </div>
+            
             <?
         }
 
         else{
-            //after login
+
             ?>
-            <div class="upperhome">
-                <h2 class="after-login-h2">Welcome to <span>RIDEA</span></h2>
-                <p><span>Frequently Asked Questions</span></p>
+            <div class="backimg">
+            <img src="images/hi.jpeg" alt="image">
             </div>
-        
-            <div class="bgimg">
-                <img src="images/cubes.png" alt="#">
-            </div>
+
+                <div class="upperhome">
+                    <h2 class="after-login-h2">Welcome to <span>RIDEA</span></h2>
+                    <p><span>Frequently Asked Questions</span></p>
+                </div>
 
             <ul class="accordion">
                 <li>
@@ -104,10 +110,13 @@
             </ul>
 
             <a  href="usersurvey.php" class="btn-after-login"><span>GET A RIDEA</span></a>
+
             <?
         }
     ?>
 
-</main>
+    </main>
+
+
 </body>
 </html> 
