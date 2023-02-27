@@ -23,6 +23,10 @@
             $d_name ='';
             $d_fname = '';
             $d_lname ='';
+            $P_ID ='';
+            $p_name ='';
+            $p_fname ='';
+            $p_lname ='';
 
             echo $type;
             echo $email;
@@ -39,12 +43,12 @@
                         . $row["fname"]. " " . $row["lname"]. "<br>";
                     }
 
-                $Passenger_id = "SELECT PassengerID FROM TRIP WHERE TripID = $TripID";
-                $result = mysqli_query($conn, $driver_id);
+                $passenger_id = "SELECT PassengerID FROM TRIP WHERE TripID = $TripID";
+                $result = mysqli_query($conn, $passenger_id);
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         $P_ID = $row["PassengerID"];
-                    echo "Driverid: " . $row["DriverID"]. "<br>";
+                    echo "Passengerid: " . $row["PassengerID"]. "<br>";
                     }
 
                 $passenger_name = "SELECT * FROM PASSENGER WHERE PassengerID = '$P_ID'";
@@ -60,7 +64,7 @@
                     echo $p_fname;
                     echo $p_lname;
 
-                $passenger_name = "SELECT fname, lname FROM PASSENGER WHERE PassengerID = $ID";
+                
                 $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
                 $result = mysqli_query($conn, $sql);
                 $num_rows = mysqli_num_rows($result);
@@ -90,8 +94,8 @@
                 }
                 }
             }
-            }
         }
+    }
             elseif ($type == 'passenger'){
                 echo $ID;
                 $TripID = $_GET['TripID'];
