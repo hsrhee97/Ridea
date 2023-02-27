@@ -149,7 +149,10 @@ VALUES
     (3, '444 1st Ave', 'Seattle', '555 2nd St', 'Los Angeles', '2024-02-02', NULL),
     (6, '423 Elm St', 'Boston', '723 Ave', 'Portland', '2024-02-02', 'Traffic was terrible!'),
     (5, '900 Beach Blvd', 'New York', '1000 Ocean Ave', 'Jacksonville', '2023-05-12', 'Stopped for lunch in Orlando.'),
-    (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL),
+    (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL), 
     (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None');
+
+    -- Once 2 passengers are matched take their data and insert it into trip table and also delete that data from survey table.
+    -- the passenger id could have multiple data so only delete the one id that is matched
 
 
