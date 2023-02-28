@@ -113,28 +113,56 @@
     <script>
         const form = document.getElementById("chat-form");
         const messageInput = document.getElementById("message-input");
+        const messagesContainer = document.getElementById("chat-messages");
 
-        form.addEventListener("submit", event => {
+        // 새로운 메시지를 가져오는 함수
+        function getNewMessages() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", window.location.href);
+            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                const newMessages = JSON.parse(xhr.responseText);
+                newMessages.forEach((message) => {
+                    const div = document.createElement("div");
+                    if (message["SenderID"] == <?= $user_id ?>) {
+                    div.innerHTML = '<div style="text-align: right;"><strong>Me:</strong> ' + message["message"] + "</div>";
+                    } else {
+                    div.innerHTML = '<div style="text-align: left;"><strong><?= $receiver["Name"] ?>:</strong> ' + message["message"] + "</div>";
+                    }
+                    messagesContainer.appendChild(div);
+                });
+                // 새 메시지가 추가될 때마다 스크롤을 아래로 이동
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            };
+            xhr.send();
+        }
+
+        // 일정 간격으로 새로운 메시지를 가져오기
+        setInterval(getNewMessages, 5000);
+
+        form.addEventListener("submit", (event) => {
             event.preventDefault();
-
             const message = messageInput.value.trim();
 
             if (message !== "") {
                 const xhr = new XMLHttpRequest();
                 xhr.open("POST", window.location.href);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
                 xhr.send("message=" + encodeURIComponent(message));
 
                 xhr.onload = () => {
                     if (xhr.status === 200) {
                         messageInput.value = "";
+                        // 새로운 메시지 가져오기
+                        getNewMessages();
                     }
                 };
             }
         });
 
-        const messagesContainer = document.getElementById("chat-messages");
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
     </script>
 </body>
 </html>
