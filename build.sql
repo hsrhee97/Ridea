@@ -103,6 +103,17 @@ CREATE TABLE SURVEY (
    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
 
+CREATE TABLE CHAT (
+   ChatID INT AUTO_INCREMENT,
+   SenderID INT NOT NULL,
+   ReceiverID INT NOT NULL,
+   message TEXT,
+   message_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   PRIMARY KEY (ChatID),
+   FOREIGN KEY (SenderID) REFERENCES PASSENGER(PassengerID),
+   FOREIGN KEY (ReceiverID) REFERENCES PASSENGER(PassengerID)
+);
+
 
 
 INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number, license_photo, color, model_name)
@@ -155,8 +166,25 @@ VALUES
     (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL),
     (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None');
 
+INSERT INTO CHAT (SenderID, ReceiverID, message)
+VALUES 
+    (1, 2, 'Hi?'),
+    (2, 1, 'What up?'),
+    (1, 3, 'hello'),
+    (2, 4, 'I am h'),
+    (2, 3, 'I am here'),
+    (2, 1, 'good'),
+    (3, 4, 'why');
+
 SELECT CONCAT(p.fname, ' ', p.lname) AS Name, s.start_city, s.end_city, s.trip_date, p.biography
 FROM PASSENGER p 
 JOIN SURVEY s ON p.PassengerID = s.PassengerID
 WHERE p.PassengerID = 1;
 
+SELECT DISTINCT 
+            CASE 
+                WHEN SenderID = 1 THEN ReceiverID 
+                ELSE SenderID 
+            END AS id 
+            FROM CHAT 
+            WHERE SenderID = 1 OR ReceiverID = 1;
