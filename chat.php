@@ -133,6 +133,8 @@
                 };
             }
         });
+        
+        setInterval(getNewMessages, 1000);
 
         const messagesContainer = document.getElementById("chat-messages");
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
