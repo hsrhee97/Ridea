@@ -104,7 +104,7 @@
                 <?php endif ?>
             <?php endforeach ?>
         </div>
-        <form id="chat-form" method="post">
+        <form id="chat-form" method="post" onsubmit="location.reload(>
             <input type="text" id="message-input" name="message" placeholder="type the message">
             <button type="submit" id="send-button">Send</button>
         </form>
@@ -151,28 +151,28 @@
 
 
         // 일정 간격으로 새로운 메시지를 가져오기
-        setInterval(getNewMessages, 1000);
+        // setInterval(getNewMessages, 1000);
 
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            const message = messageInput.value.trim();
+        // form.addEventListener("submit", (event) => {
+        //     event.preventDefault();
+        //     const message = messageInput.value.trim();
 
-            if (message !== "") {
-                const xhr = new XMLHttpRequest();
-                xhr.open("POST", window.location.href);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-                xhr.send("message=" + encodeURIComponent(message));
+        //     if (message !== "") {
+        //         const xhr = new XMLHttpRequest();
+        //         xhr.open("POST", window.location.href);
+        //         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        //         xhr.send("message=" + encodeURIComponent(message));
 
-                xhr.onload = () => {
-                    if (xhr.status === 200) {
-                        messageInput.value = "";
-                        // 새로운 메시지 가져오기
-                        getNewMessages();
-                    }
-                };
-            }
-        });
+        //         xhr.onload = () => {
+        //             if (xhr.status === 200) {
+        //                 messageInput.value = "";
+        //                 // 새로운 메시지 가져오기
+        //                 getNewMessages();
+        //             }
+        //         };
+        //     }
+        // });
     </script>
 </body>
 </html>
