@@ -115,6 +115,9 @@
         const messageInput = document.getElementById("message-input");
         const messagesContainer = document.getElementById("chat-messages");
 
+        // 마지막으로 가져온 메시지의 ID
+        let lastMessageID = null;
+
         // 새로운 메시지를 가져오는 함수
         function getNewMessages() {
             const xhr = new XMLHttpRequest();
@@ -123,6 +126,9 @@
             xhr.onload = () => {
                 if (xhr.status === 200) {
                     const newMessages = JSON.parse(xhr.responseText);
+                    if (newMessages.length > 0) {
+                        lastMessageID = newMessages[newMessages.length - 1].ID;
+                    }
                     newMessages.forEach((message) => {
                         const div = document.createElement("div");
                         if (message["SenderID"] == <?= $user_id ?>) {
@@ -136,8 +142,13 @@
                     messagesContainer.scrollTop = messagesContainer.scrollHeight;
                 }
             };
-            xhr.send();
+            if (lastMessageID !== null) {
+                xhr.send(`lastMessageID=${lastMessageID}`);
+            } else {
+                xhr.send();
+            }
         }
+
 
         // 일정 간격으로 새로운 메시지를 가져오기
         setInterval(getNewMessages, 1000);
