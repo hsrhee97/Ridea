@@ -71,13 +71,13 @@
             }
 
             // If it is the last day of the week, add the week and reset
-            // if ($first_day % 7 == 6 || $day == $last_day) {
-            //     if ($day == $last_day) {
-            //         $week .= str_repeat('<td></td>', 6 - ($first_day % 7));
-            //     }
-            //     $weeks[] = '<tr>' . $week . '</tr>';
-            //     $week = '';
-            // }
+            if ($first_day % 7 == 6 || $day == $last_day) {
+                if ($day == $last_day) {
+                    $week .= str_repeat('<td></td>', 6 - ($first_day % 7));
+                }
+                $weeks[] = '<tr>' . $week . '</tr>';
+                $week = '';
+            }
         }
     ?>
     <?php include 'includes/nav.php'; ?>
