@@ -122,18 +122,18 @@
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             xhr.onload = () => {
                 if (xhr.status === 200) {
-                const newMessages = JSON.parse(xhr.responseText);
-                newMessages.forEach((message) => {
-                    const div = document.createElement("div");
-                    if (message["SenderID"] == <?= $user_id ?>) {
-                    div.innerHTML = '<div style="text-align: right;"><strong>Me:</strong> ' + message["message"] + "</div>";
-                    } else {
-                    div.innerHTML = '<div style="text-align: left;"><strong><?= $receiver["Name"] ?>:</strong> ' + message["message"] + "</div>";
-                    }
-                    messagesContainer.appendChild(div);
-                });
-                // 새 메시지가 추가될 때마다 스크롤을 아래로 이동
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    const newMessages = JSON.parse(xhr.responseText);
+                    newMessages.forEach((message) => {
+                        const div = document.createElement("div");
+                        if (message["SenderID"] == <?= $user_id ?>) {
+                            div.innerHTML = '<div style="text-align: right;"><strong>Me:</strong> ' + message["message"] + "</div>";
+                        } else {
+                            div.innerHTML = '<div style="text-align: left;"><strong><?= $receiver["Name"] ?>:</strong> ' + message["message"] + "</div>";
+                        }
+                        messagesContainer.appendChild(div);
+                    });
+                    // 새 메시지가 추가될 때마다 스크롤을 아래로 이동
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
                 }
             };
             xhr.send();
@@ -162,7 +162,6 @@
                 };
             }
         });
-
     </script>
 </body>
 </html>
