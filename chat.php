@@ -49,7 +49,7 @@
     <title>채팅 페이지</title>
     <style>
         #chat-container {
-            width: 100%;
+            width: 80%;
             height: 80vh;
             display: flex;
             flex-direction: column;
@@ -61,6 +61,7 @@
         #chat-messages {
             width: 100%;
             height: 70vh;
+            padding: 1rem;
             overflow-y: scroll;
         }
 
@@ -104,7 +105,7 @@
                 <?php endif ?>
             <?php endforeach ?>
         </div>
-        <form id="chat-form" method="post" onsubmit="location.reload(>
+        <form id="chat-form" method="post" onsubmit="location.reload()">
             <input type="text" id="message-input" name="message" placeholder="type the message">
             <button type="submit" id="send-button">Send</button>
         </form>
@@ -113,66 +114,28 @@
     <script>
         const form = document.getElementById("chat-form");
         const messageInput = document.getElementById("message-input");
-        const messagesContainer = document.getElementById("chat-messages");
 
-        // 마지막으로 가져온 메시지의 ID
-        let lastMessageID = null;
+        form.addEventListener("submit", event => {
+            event.preventDefault();
 
-        // 새로운 메시지를 가져오는 함수
-        function getNewMessages() {
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", window.location.href);
-            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-            xhr.onload = () => {
-                if (xhr.status === 200) {
-                    const newMessages = JSON.parse(xhr.responseText);
-                    if (newMessages.length > 0) {
-                        lastMessageID = newMessages[newMessages.length - 1].ID;
+            const message = messageInput.value.trim();
+
+            if (message !== "") {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", window.location.href);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("message=" + encodeURIComponent(message));
+
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        messageInput.value = "";
                     }
-                    newMessages.forEach((message) => {
-                        const div = document.createElement("div");
-                        if (message["SenderID"] == <?= $user_id ?>) {
-                            div.innerHTML = '<div style="text-align: right;"><strong>Me:</strong> ' + message["message"] + "</div>";
-                        } else {
-                            div.innerHTML = '<div style="text-align: left;"><strong><?= $receiver["Name"] ?>:</strong> ' + message["message"] + "</div>";
-                        }
-                        messagesContainer.appendChild(div);
-                    });
-                    // 새 메시지가 추가될 때마다 스크롤을 아래로 이동
-                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                }
-            };
-            if (lastMessageID !== null) {
-                xhr.send('lastMessageID=' + lastMessageID);
-            } else {
-                xhr.send();
+                };
             }
-        }
+        });
 
-
-        // 일정 간격으로 새로운 메시지를 가져오기
-        // setInterval(getNewMessages, 1000);
-
-        // form.addEventListener("submit", (event) => {
-        //     event.preventDefault();
-        //     const message = messageInput.value.trim();
-
-        //     if (message !== "") {
-        //         const xhr = new XMLHttpRequest();
-        //         xhr.open("POST", window.location.href);
-        //         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        //         xhr.send("message=" + encodeURIComponent(message));
-
-        //         xhr.onload = () => {
-        //             if (xhr.status === 200) {
-        //                 messageInput.value = "";
-        //                 // 새로운 메시지 가져오기
-        //                 getNewMessages();
-        //             }
-        //         };
-        //     }
-        // });
+        const messagesContainer = document.getElementById("chat-messages");
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
     </script>
 </body>
 </html>
