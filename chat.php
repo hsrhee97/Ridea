@@ -143,7 +143,7 @@
                 }
             };
             if (lastMessageID !== null) {
-                xhr.send(`lastMessageID=${lastMessageID}`);
+                xhr.send('lastMessageID=' + lastMessageID);
             } else {
                 xhr.send();
             }
