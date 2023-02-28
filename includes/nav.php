@@ -54,6 +54,7 @@
                     <li><a href="ride-history.php">My Rides</a></li>
                     <li><a href="calendar.php">Calendar</a></li>
                     <li><a href="help.php">Help</a></li>
+                    <li><a href="chat_before.php">Chat</a></li>
                 </ul>
                 <div class="main">
                     <a href="profile.php" class="user"><i class="ri-user-fill"></i>My Profile</a>
