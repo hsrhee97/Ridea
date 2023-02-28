@@ -140,7 +140,7 @@
         }
 
         // 일정 간격으로 새로운 메시지를 가져오기
-        setInterval(getNewMessages, 5000);
+        setInterval(getNewMessages, 1000);
 
         form.addEventListener("submit", (event) => {
             event.preventDefault();
