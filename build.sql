@@ -166,12 +166,10 @@ VALUES
     (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL), 
     (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None');
 
-<<<<<<< HEAD
     -- Once 2 passengers are matched take their data and insert it into trip table and also delete that data from survey table.
     -- the passenger id could have multiple data so only delete the one id that is matched
 
 
-=======
 INSERT INTO CHAT (SenderID, ReceiverID, message)
 VALUES 
     (1, 2, 'Hi?'),
@@ -182,16 +180,3 @@ VALUES
     (2, 1, 'good'),
     (3, 4, 'why');
 
-SELECT CONCAT(p.fname, ' ', p.lname) AS Name, s.start_city, s.end_city, s.trip_date, p.biography
-FROM PASSENGER p 
-JOIN SURVEY s ON p.PassengerID = s.PassengerID
-WHERE p.PassengerID = 1;
-
-SELECT DISTINCT 
-            CASE 
-                WHEN SenderID = 1 THEN ReceiverID 
-                ELSE SenderID 
-            END AS id 
-            FROM CHAT 
-            WHERE SenderID = 1 OR ReceiverID = 1;
->>>>>>> Hansang-Rhee
