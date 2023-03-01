@@ -66,6 +66,7 @@
     align-items: center;
   }
   
+
   .main a {
     color: white;
     margin-right: 25px;
@@ -99,9 +100,16 @@
   }
   /* text in home before login */
   
+  body {
+    height: 100vh;
+  }
+  
   main {
     width: 80%;
-    margin: auto;
+    margin: 0 auto;
+    height: 85vh;
+    display: flex;
+    align-items: center;
   }
   
   .container {
@@ -113,7 +121,6 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 5%;
   }
   
   .container .slide-container .slide .content {
