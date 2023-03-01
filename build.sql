@@ -103,6 +103,17 @@ CREATE TABLE SURVEY (
    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
 
+CREATE TABLE CHAT (
+   ChatID INT AUTO_INCREMENT,
+   SenderID INT NOT NULL,
+   ReceiverID INT NOT NULL,
+   message TEXT,
+   message_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   PRIMARY KEY (ChatID),
+   FOREIGN KEY (SenderID) REFERENCES PASSENGER(PassengerID),
+   FOREIGN KEY (ReceiverID) REFERENCES PASSENGER(PassengerID)
+);
+
 
 
 INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, license_number, license_photo, color, model_name)
@@ -140,7 +151,10 @@ VALUES
 
 INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments)
 VALUES
-    (1, 3.5, 'Bob is a new driver and still needs improvement.');
+    (1, 3.5, 'Bob is a new driver and still needs improvement.'),
+    (2, 3.5, 'Bob is a new driver and still needs improvement.'),
+    (3, 3.5, 'Bob is a new driver and still needs improvement.'),
+    (4, 3.5, 'Bob is a new driver and still needs improvement.');
 
 INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other) 
 VALUES 
@@ -149,7 +163,20 @@ VALUES
     (3, '444 1st Ave', 'Seattle', '555 2nd St', 'Los Angeles', '2024-02-02', NULL),
     (6, '423 Elm St', 'Boston', '723 Ave', 'Portland', '2024-02-02', 'Traffic was terrible!'),
     (5, '900 Beach Blvd', 'New York', '1000 Ocean Ave', 'Jacksonville', '2023-05-12', 'Stopped for lunch in Orlando.'),
-    (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL),
+    (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL), 
     (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None');
 
+    -- Once 2 passengers are matched take their data and insert it into trip table and also delete that data from survey table.
+    -- the passenger id could have multiple data so only delete the one id that is matched
+
+
+INSERT INTO CHAT (SenderID, ReceiverID, message)
+VALUES 
+    (1, 2, 'Hi?'),
+    (2, 1, 'What up?'),
+    (1, 3, 'hello'),
+    (2, 4, 'I am h'),
+    (2, 3, 'I am here'),
+    (2, 1, 'good'),
+    (3, 4, 'why');
 
