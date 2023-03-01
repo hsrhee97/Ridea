@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
-    
+
     <!-- navbar -->
     <?php include 'includes/nav.php'; ?>
     

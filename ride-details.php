@@ -117,7 +117,6 @@
                     echo "Driverid: " . $row["DriverID"]. "<br>";
                     }
                     
-                /* CONTINUE WORKING HERE */
                 $driver_name = "SELECT * FROM DRIVER WHERE DriverID = '$D_ID'";
                 $result = $conn->query($driver_name);
                 if ($result->num_rows > 0) {

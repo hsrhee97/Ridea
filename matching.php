@@ -62,7 +62,7 @@
                     if ($user_row['PassengerID'] == $schedules[$i]['PassengerID']) {
                         continue; // 동일한 유저 아이디인 경우 skip
                     }
-                    $match = array($user_row['PassengerID'], $schedules[$i]['PassengerID']);
+                    $match = array($user_row['PassengerID'], $schedules[$i]['PassengerID'], $schedules[$i]['SurveyID']);
                     $matches['same_all'][] = $match;
                 // 날짜, 도착지, 출발지 중 두 개가 같은 경우
 
@@ -73,7 +73,7 @@
                     if ($user_row['PassengerID'] == $schedules[$i]['PassengerID']) {
                         continue; // 동일한 유저 아이디인 경우 skip
                     }
-                    $match = array($user_row['PassengerID'], $schedules[$i]['PassengerID']);
+                    $match = array($user_row['PassengerID'], $schedules[$i]['PassengerID'], $schedules[$i]['SurveyID']);
                     $matches['same_two'][] = $match;
                 // 날짜, 도착지, 출발지 중 하나만 경우
 
@@ -84,11 +84,11 @@
                     if ($user_row['PassengerID'] == $schedules[$i]['PassengerID']) {
                         continue; // 동일한 유저 아이디인 경우 skip
                     }
-                    $match = array($user_row['PassengerID'], $schedules[$i]['PassengerID']);
+                    $match = array($user_row['PassengerID'], $schedules[$i]['PassengerID'], $schedules[$i]['SurveyID']);
                     $matches['same_one'][] = $match;
 
                 } else {
-                    $match = array($user_row['PassengerID'], $schedules[$i]['PassengerID']);
+                    $match = array($user_row['PassengerID'], $schedules[$i]['PassengerID'], $schedules[$i]['SurveyID']);
                     $matches['different_all'][] = $match;
                 }
                 
@@ -99,7 +99,25 @@
                 echo "<h2>Cases where the date, destination, and departure are all the same</h2>";
                 echo "<ul>";
                 foreach ($matches['same_all'] as $match) {
-                    echo "<li> You could match with {$match[1]}</li>";
+                    $pass_ID = $match[1];
+                    $survey_id = $match[2];
+
+                    $pass_sql = "SELECT CONCAT(p.fname, ' ', p.lname) AS Name, s.start_city , s.end_city, s.trip_date AS Date, p.biography AS Bio
+                    FROM PASSENGER p 
+                    JOIN SURVEY s ON p.PassengerID = s.PassengerID
+                    WHERE s.SurveyID = $survey_id";
+
+                    $pass_result = mysqli_query($conn, $pass_sql);
+                    $pass_data = mysqli_fetch_assoc($pass_result);
+                    echo "<li> You could match with {$match[1]}, {$match[2]} </li>";
+                    echo "<li>";
+                    echo "Name: {$pass_data['Name']}<br>";
+                    echo "Start City: {$pass_data['start_city']}<br>";
+                    echo "End City: {$pass_data['end_city']}<br>";
+                    echo "Date: {$pass_data['Date']}<br>";
+                    echo "Bio: {$pass_data['Bio']}<br>";
+                    echo "<br>";
+                    echo "</li>";
                 }
                 echo "</ul>";
             }
@@ -107,12 +125,31 @@
                 echo "<h2>Cases where the date, destination, and departure are all the same</h2>";
                 echo "There are no cases where the date, destination, and origin are all the same.";
             }
-
+            
+            //for two equls
             if (count($matches['same_two']) > 0) {
                 echo "<h2>When two of the following match: date, destination, and departure</h2>";
                 echo "<ul>";
                 foreach ($matches['same_two'] as $match) {
-                    echo "<li> You could match with {$match[1]}</li>";
+                    $pass_ID = $match[1];
+                    $survey_id = $match[2];
+
+                    $pass_sql = "SELECT CONCAT(p.fname, ' ', p.lname) AS Name, s.start_city , s.end_city, s.trip_date AS Date, p.biography AS Bio
+                    FROM PASSENGER p 
+                    JOIN SURVEY s ON p.PassengerID = s.PassengerID
+                    WHERE s.SurveyID = $survey_id";
+
+                    $pass_result = mysqli_query($conn, $pass_sql);
+                    $pass_data = mysqli_fetch_assoc($pass_result);
+                    echo "<li> You could match with {$match[1]}, {$match[2]} </li>";
+                    echo "<li>";
+                    echo "Name: {$pass_data['Name']}<br>";
+                    echo "Start City: {$pass_data['start_city']}<br>";
+                    echo "End City: {$pass_data['end_city']}<br>";
+                    echo "Date: {$pass_data['Date']}<br>";
+                    echo "Bio: {$pass_data['Bio']}<br>";
+                    echo "<br>";
+                    echo "</li>";
                 }
                 echo "</ul>";
             }
@@ -121,11 +158,30 @@
                 echo "There are no cases where two of the date, destination, and origin are the same.";
             }
 
+            //for one equal
             if (count($matches['same_one']) > 0) {
                 echo "<h2>Cases where one of the date, destination, or departure is the same.</h2>";
                 echo "<ul>";
                 foreach ($matches['same_one'] as $match) {
-                    echo "<li> You could match with {$match[1]}</li>";
+                    $pass_ID = $match[1];
+                    $survey_id = $match[2];
+
+                    $pass_sql = "SELECT CONCAT(p.fname, ' ', p.lname) AS Name, s.start_city , s.end_city, s.trip_date AS Date, p.biography AS Bio
+                    FROM PASSENGER p 
+                    JOIN SURVEY s ON p.PassengerID = s.PassengerID
+                    WHERE s.SurveyID = $survey_id";
+
+                    $pass_result = mysqli_query($conn, $pass_sql);
+                    $pass_data = mysqli_fetch_assoc($pass_result);
+                    echo "<li> You could match with {$match[1]}, {$match[2]} </li>";
+                    echo "<li>";
+                    echo "Name: {$pass_data['Name']}<br>";
+                    echo "Start City: {$pass_data['start_city']}<br>";
+                    echo "End City: {$pass_data['end_city']}<br>";
+                    echo "Date: {$pass_data['Date']}<br>";
+                    echo "Bio: {$pass_data['Bio']}<br>";
+                    echo "<br>";
+                    echo "</li>";
                 }
                 echo "</ul>";
             }
@@ -134,6 +190,7 @@
                 echo "There are no cases where one of the date, destination, and departure is the same.";
             }
 
+            //None
             if (count($matches['different_all']) > 0) {
                 echo "<h2>When the date, destination, and departure are all different</h2>";
                 echo "There is no one to match.";
