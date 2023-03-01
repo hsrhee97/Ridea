@@ -138,6 +138,7 @@
 
         const messagesContainer = document.getElementById("chat-messages");
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        
     </script>
 </body>
 </html>
