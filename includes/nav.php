@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style> <?php include 'css/style.css'; ?> </style>
+    <style> <?php include 'css/navbar.css'; ?> </style>
 
     <title>RIDEA</title>
     <!-- google fonts -->
@@ -20,7 +20,6 @@
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    
 
 </head>
 

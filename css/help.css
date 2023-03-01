@@ -13,10 +13,29 @@
     --main-color: #EC4E20;
 }
 
+body {
+    height: 100vh;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666666;
+    background-color: #f6f6f6;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    height: 80vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
 /* THREE BOXES */
 
+main 
 .container {
-    margin-top: 8%;
+    width: 100%;
     align-items: center;
     justify-content: center;
 }
@@ -61,13 +80,6 @@
 }
 
 /* -------Lost and Found -------- */
-
-body {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #666666;
-    background-color: #f6f6f6;
-}
 
 .form-container {
     position: absolute;
