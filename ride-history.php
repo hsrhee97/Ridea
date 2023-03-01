@@ -25,10 +25,45 @@
 -->
 <?php 
     session_start();
-    
-
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIDEA</title>
+    
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
+    <style> <?php include 'css/ride_history.css'; ?> </style>
+    
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<?php include 'includes/nav.php'; ?>
+
+
+
+<div class="contents">
+    <div class="texts">
+    <h2>My Ride <span>History</span></h2>
+    <p>When and where did you create new memories with us?<br>Check out your ride history below!</p>
+    </div>
+</div>
+
+<main>
+
+<p class="activity"> Activity </p>
 
 <form id="period_select" name="period_selection" method="POST">
     <select name="month" value=''>Select Month</option>
@@ -73,14 +108,12 @@
             if (!$conn) {
                 die("Failed to connect to MySQL: " . mysqli_connect_error());
             } else {
-                echo 'done';
+                
             }
             
 
             $type = $_SESSION['type'];
             $email = $_SESSION['login'];
-            echo $type;
-            echo $email;
             $ID = '';
         
             if ($type =='driver') {
@@ -198,23 +231,23 @@
                         $num_rows_check = mysqli_num_rows($result_check);
 
                         if ($num_rows_check > 0) {
-                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                            echo "<tr style='border:1px solid black;'><th>Start Location</th><th>End Location</th><th>Date</th>";
                             
                             while ($row = $result_check->fetch_assoc()) {
-                                echo "<tr style='border:1px solid black;'>";
-                                echo "<td>" . $row["Start_location"] . "</td>";
-                                echo "<td>" . $row["End_location"] . "</td>";
-                                echo "<td>" . $row["Date"] . "</td>";
-                                echo "<td>";
+                                echo "<div class='box'>";
+                                    echo $row["Start_location"];
+                                    echo $row["End_location"];
+                                    echo $row["Date"];
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
                                 echo "</div>";
+                                
+                                // div ending for box
+                                echo "</div>";
+
                                 echo "</td>";
                                 echo "</tr>";
                             }
-                            echo "</table>";
+
                         } else {
                             echo "0 results";
                         }
@@ -224,3 +257,8 @@
             }
 ?>
 
+</main>
+
+
+</body>
+</html> 
