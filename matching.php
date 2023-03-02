@@ -174,7 +174,7 @@
                     $pass_result = mysqli_query($conn, $pass_sql);
                     $pass_data = mysqli_fetch_assoc($pass_result);
                     echo "<li> You could match with {$match[1]}, {$match[2]} </li>";
-                    echo "<li>";
+                    echo "<li>";    
                     echo "Name: {$pass_data['Name']}<br>";
                     echo "Start City: {$pass_data['start_city']}<br>";
                     echo "End City: {$pass_data['end_city']}<br>";
