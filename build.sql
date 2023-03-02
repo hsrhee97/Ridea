@@ -185,7 +185,8 @@ VALUES
     (6, '423 Elm St', 'Boston', '723 Ave', 'Portland', '2024-02-02', 'Traffic was terrible!'),
     (5, '900 Beach Blvd', 'New York', '1000 Ocean Ave', 'Jacksonville', '2023-05-12', 'Stopped for lunch in Orlando.'),
     (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL), 
-    (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None');
+    (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None'),
+    (8, '534 College St', 'New York', '456 Elm St', 'Bloomington', '2023-04-15', 'None');
 
 INSERT INTO CHAT (SenderID, ReceiverID, message)
 VALUES 

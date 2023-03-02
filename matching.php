@@ -157,8 +157,8 @@
                 echo "</div>";
             }
             else {
-                echo "<h2>When two of the following match: date, destination, and departure</h2>";
-                echo "There are no cases where two of the date, destination, and origin are the same.";
+                // echo "<h2>When two of the following match: date, destination, and departure</h2>";
+                // echo "There are no cases where two of the date, destination, and origin are the same.";
             }
 
             //for one equal
@@ -188,12 +188,14 @@
                 echo "</div>";
             }
             else {
-                echo "<h2>Cases where one of the date, destination, or departure is the same.</h2>";
-                echo "There are no cases where one of the date, destination, and departure is the same.";
+                // echo "<h2>Cases where one of the date, destination, or departure is the same.</h2>";
+                // echo "There are no cases where one of the date, destination, and departure is the same.";
             }
 
             //None
             if (count($matches['different_all']) > 0) {
+                echo "There are no cases.";
+
                 echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
 
                 echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
