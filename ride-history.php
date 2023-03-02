@@ -165,6 +165,8 @@
                         $num_rows_check = mysqli_num_rows($result_check);
 
                         if ($num_rows_check > 0) {
+                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                            echo "<tr style='border:1px solid black;'><th>Start Location</th><th>End Location</th><th>Date</th>";
                             
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
@@ -176,10 +178,7 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                    echo "</div>";
-                                echo "</div>";
-                                
-                                // div ending for box
+                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
                                 echo "</div>";
 
 

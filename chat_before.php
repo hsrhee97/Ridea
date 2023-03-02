@@ -52,8 +52,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
+
 <?php include 'includes/nav.php'; ?>
 <body>
+    
     <h1>Chat lists </h1>
     <ul>
         <?php foreach ($users as $user): ?>
