@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <style> <?php include 'css/help.css'; ?> </style>
+    <style> <?php include 'css/matching.css'; ?> </style>
     
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
@@ -31,7 +31,7 @@
             echo "user id:", $user_id;
             echo "<br>";
 
-            echo "<a class='btn btn-warning' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
+            echo "<a class='last_btn' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
         
         ?>
     </main>
