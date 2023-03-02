@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  /* theme color */
+  :root {
+    --text-color-black: black;
+    --text-color: #fff;
+    --main-color: #EC4E20;
+  }
+
+  body {
+    height: 100vh;
+  }
+  
+  main {
+    width: 80%;
+    margin: 0 auto;
+    height: 85vh;
+  }
+
+.header {
+  text-align: center;
+}
+/* 
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+} */
+
+.box {
+  background-color: rgb(224, 224, 224);
+  padding: 1em;
+  margin: 1em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
