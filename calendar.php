@@ -84,7 +84,7 @@
 
     <div class="calendar">
         <div class="header">
-        <?php echo "<a href='calendar.php?ym=" . $prev . "'>&lt;</a> " . $title . " <a href='calendar.php?ym=" . $next . "'>&gt;</a>"; ?>
+        <?php echo "<a class='calendar-link' href='calendar.php?ym=" . $prev . "'>&lt;</a> " . $title . " <a class='calendar-link' href='calendar.php?ym=" . $next . "'>&gt;</a>"; ?>
         </div>
         <table class="table">
             <thead>

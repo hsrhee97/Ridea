@@ -1,17 +1,29 @@
+
+body {
+  height: 100vh;
+  background-color: #f6f6f6;
+}
+
 .calendar {
     width: 80%;
-    margin: 0 auto;
+    margin: 02em auto;
     font-size: 20px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    background-color: #666666;
-    color: #fff;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: #666666;
+  color: #f6f6f6;
+  padding: 10px;
+}
+
+.calendar-link {
+  color: #EC4E20; 
+  font-size: 36px; 
+  text-decoration: none; 
 }
 
 .title {
@@ -27,7 +39,7 @@
 
 .table th {
   background-color: #666666;
-    color: #fff;
+    color: #f6f6f6;
     font-weight: normal;
     text-align: center;
     padding: 10px;
