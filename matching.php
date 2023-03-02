@@ -115,11 +115,9 @@
                     $pass_data = mysqli_fetch_assoc($pass_result);
 
                     echo "<div class='box'>";
-                        echo "<p> You could match with {$match[1]}, {$match[2]} </p>";
-                        echo "<p> Name: {$pass_data['Name']}</p>";
-                        echo "<p>Start City: {$pass_data['start_city']}</p>";
-                        echo "<p>End City: {$pass_data['end_city']}</p>";
+                        echo "<p> <span class='data'>{$pass_data['start_city']}</span> TO <span class='data'>{$pass_data['end_city']}</span></p>";
                         echo "<p>Date: {$pass_data['Date']}</p>";
+                        echo "<p> Name: {$pass_data['Name']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
                         echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
                     echo "</div>";
@@ -127,13 +125,12 @@
                 echo "</div>";
             }
             else {
-                echo "<h2>Cases where the date, destination, and departure are all the same</h2>";
-                echo "There are no cases where the date, destination, and origin are all the same.";
+
             }
             
             //for two equls
             if (count($matches['same_two']) > 0) {
-                echo "<h2>When two of the following match: date, destination, and departure</h2>";
+                echo "<h2 class='header'>Two of your search criteria have been matched with the users below!</h2>";
                 echo "<div class='row'>";
                 foreach ($matches['same_two'] as $match) {
                     $pass_ID = $match[1];
@@ -148,11 +145,9 @@
                     $pass_data = mysqli_fetch_assoc($pass_result);
 
                     echo "<div class='box'>";
-                        echo "<p> You could match with {$match[1]}, {$match[2]} </p>";
-                        echo "<p> Name: {$pass_data['Name']}</p>";
-                        echo "<p>Start City: {$pass_data['start_city']}</p>";
-                        echo "<p>End City: {$pass_data['end_city']}</p>";
+                        echo "<p> <span class='data'>{$pass_data['start_city']}</span> TO <span class='data'>{$pass_data['end_city']}</span></p>";
                         echo "<p>Date: {$pass_data['Date']}</p>";
+                        echo "<p> Name: {$pass_data['Name']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
                         echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
                     echo "</div>";
@@ -166,9 +161,8 @@
 
             //for one equal
             if (count($matches['same_one']) > 0) {
-                echo "<h2>Cases where one of the date, destination, or departure is the same.</h2>";
+                echo "<h2 class='header'>One of your search criteria have been matched with the users below!</h2>";
                 echo "<div class='row'>";
-
                 foreach ($matches['same_one'] as $match) {
                     $pass_ID = $match[1];
                     $survey_id = $match[2];
@@ -180,12 +174,11 @@
 
                     $pass_result = mysqli_query($conn, $pass_sql);
                     $pass_data = mysqli_fetch_assoc($pass_result);
+
                     echo "<div class='box'>";
-                        echo "<p> You could match with {$match[1]}, {$match[2]} </p>";
-                        echo "<p> Name: {$pass_data['Name']}</p>";
-                        echo "<p>Start City: {$pass_data['start_city']}</p>";
-                        echo "<p>End City: {$pass_data['end_city']}</p>";
+                        echo "<p> <span class='data'>{$pass_data['start_city']}</span> TO <span class='data'>{$pass_data['end_city']}</span></p>";
                         echo "<p>Date: {$pass_data['Date']}</p>";
+                        echo "<p> Name: {$pass_data['Name']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
                         echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
                     echo "</div>";
@@ -199,13 +192,14 @@
 
             //None
             if (count($matches['different_all']) > 0) {
-                echo "<h2>When the date, destination, and departure are all different</h2>";
-                echo "There is no one to match.";
+                echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+
+                echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
             }
 
 
         } else {
-            echo "There is no one to match.";
+            echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
         }
 
         mysqli_close($conn);
