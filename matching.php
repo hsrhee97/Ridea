@@ -99,6 +99,8 @@
             }
 
             // printing out the results
+            $user_survey_id = $user_row['SurveyID'];
+
             if (count($matches['same_all']) > 0) {
                 echo "<h2 class='header'>Looks like we found your perfect match! </h2>";
                 echo "<div class='row'>";
@@ -121,7 +123,7 @@
                         echo "<p>End City: {$pass_data['end_city']}</p>";
                         echo "<p>Date: {$pass_data['Date']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
-                        echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
+                        echo "<a class='btn btn-warning' href='payment.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$survey_id."'>Confirm</a>";
                     echo "</div>";
                 }
                 echo "</div>";
@@ -154,7 +156,7 @@
                         echo "<p>End City: {$pass_data['end_city']}</p>";
                         echo "<p>Date: {$pass_data['Date']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
-                        echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
+                        echo "<a class='btn btn-warning' href='payment.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$survey_id."'>Confirm</a>";
                     echo "</div>";
                 }
                 echo "</div>";
@@ -187,7 +189,7 @@
                         echo "<p>End City: {$pass_data['end_city']}</p>";
                         echo "<p>Date: {$pass_data['Date']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
-                        echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
+                        echo "<a class='btn btn-warning' href='payment.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$survey_id."'>Confirm</a>";
                     echo "</div>";
                 }
                 echo "</div>";

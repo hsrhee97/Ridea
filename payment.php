@@ -18,32 +18,22 @@
 </head>
 <?php include 'includes/nav.php'; ?>
 <body>
-    <div class="form-container">
-    <div class="form-wrapper">
-        <h2>Other Problems</h2>
-        <p>Please fill this form to report any problem.</p>
-        <form method="post" action="config_otherproblems.php">
-            <div class="form-group">
-                <label>Email</label>
-                <input type="text" name="email" class="form-control value=">
-            </div>    
-            
-            <div class="form-group">
-                <label>Trip Date:</label>
-                <input type="date" name="trip_date" value="<?php echo date('YYYY-MM-DD'); ?>" class="form-control">
-            </div>
+    <main>
+        <?php
+            $user_id = $_SESSION["id"];
+            $user_survey_id = $_GET["user_survey_id"];
+            $pass_survey_id = $_GET["pass_survey_id"];
 
-            <div class="form-group">
-                <label>Problem:</label>
-                <input type="text" name="description" class="form-control">
-            </div>
-    
-            <div class="form-group buttons">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-                <input type="submit" class="btn btn-primary" value="Submit" name = "submit">
-            </div>
-        </form>
-    </div>    
-    </div>
+            echo "U_survey:", $user_survey_id;
+            echo "<br>";
+            echo "P_survey:", $pass_survey_id;
+            echo "<br>";
+            echo "user id:", $user_id;
+            echo "<br>";
+
+            echo "<a class='btn btn-warning' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
+        
+        ?>
+    </main>
 </body>
 </html>
