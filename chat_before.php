@@ -37,7 +37,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Chat</title>
+
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,29 +50,39 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <style> <?php include 'css/help.css'; ?> </style>
+    <style> <?php include 'css/chat.css'; ?> </style>
     
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 </head>
-
-<?php include 'includes/nav.php'; ?>
 <body>
-    
-    <h1>Chat lists </h1>
-    <ul>
+<?php include 'includes/nav.php'; ?>
+
+<div class="header">
+    <h1>My Chat list </h1>
+    </div>
+
+<div class="container">
+
+    <ul class="list">
         <?php foreach ($users as $user): ?>
             <li>
-                <a href="chat.php?receiver_id=<?php echo $user["id"]; ?>">
+                <a class="button" href="chat.php?receiver_id=<?php echo $user["id"]; ?>">
                     <?php
                         $pass_name = "SELECT CONCAT(fname, ' ', lname) AS Name FROM PASSENGER WHERE PassengerID = {$user['id']}";
                         $name_result = mysqli_query($conn, $pass_name);
                         $pass_info = mysqli_fetch_array($name_result, MYSQLI_ASSOC);
-                        echo $pass_info["Name"];
+
+                        echo "<div class='wrapper'>";
+                            echo "<div class='box'>";
+                                echo $pass_info["Name"];
+                            echo "</div>";
+                        echo "</div>";
                     ?>
                 </a>
             </li>
         <?php endforeach; ?>
     </ul>
+    </div>
 </body>
 </html>

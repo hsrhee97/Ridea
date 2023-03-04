@@ -46,51 +46,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>채팅 페이지</title>
-    <style>
-        #chat-container {
-            width: 80%;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 2rem;
-        }
-
-        #chat-messages {
-            width: 100%;
-            height: 70vh;
-            padding: 1rem;
-            overflow-y: scroll;
-        }
-
-        #chat-form {
-            width: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        #message-input {
-            width: 80%;
-            margin-right: 1rem;
-        }
-
-        #send-button {
-            width: 20%;
-            font-weight: bold;
-            background-color: #3d5a80;
-            color: white;
-            border: none;
-            border-radius: 0.2rem;
-            padding: 0.5rem 1rem;
-        }
-    </style>
+    <title>Chat</title>
+    <style> <?php include 'css/chat.css'; ?> </style>
 </head>
 
 <?php include 'includes/nav.php'; ?>
 <body>
-    <h1><?= $receiver["Name"] ?></h1>
+    <main>
+        <div class="header2">
+            <h2><?= $receiver["Name"] ?></h2>
+        </div>
+
+    <div class="wrapper2">
     <div id="chat-container">
         <div id="chat-messages">
             <?php foreach ($messages as $message): ?>
@@ -109,6 +76,7 @@
             <input type="text" id="message-input" name="message" placeholder="type the message">
             <button type="submit" id="send-button">Send</button>
         </form>
+    </div>
     </div>
 
     <script>
@@ -140,6 +108,7 @@
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
         
     </script>
+    </main>
 </body>
 </html>
 
