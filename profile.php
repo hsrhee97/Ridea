@@ -50,6 +50,7 @@
                         echo "<div class='label'>";
                             echo"<h2>My Name is</h2>";
                                 echo $row["fname"];
+                                echo " ";
                                 echo $row["lname"];
                         echo "</div>";
 
@@ -72,9 +73,14 @@
                             echo"<h2>Email</h2>";
                                 echo $row["email"];
                         echo "</div>";
+
+                        echo "<div class='label'>";
+                            echo"<h2>Password</h2>";
+                            echo $row["password"] ? str_repeat("*", strlen($row["password"])) : "";
+                        echo "</div>";
                         
                     echo "<div class='btn-group'>";
-                    echo "<a class='btn btn-warning'href='editprofile.php'>Edit</a>";
+                    echo "<a class='btn btn-warning'href='edit_profile.php'>Edit</a>";
                     echo "</div>";
 
                     echo "</div>";
@@ -125,6 +131,7 @@
                                 echo "<div class='label'>";
                                     echo"<h2>My Name is</h2>";
                                         echo $row["fname"];
+                                        echo " ";
                                         echo $row["lname"];
                                 echo "</div>";
 
@@ -149,13 +156,18 @@
                                 echo "</div>";
 
                                 echo "<div class='label'>";
+                                    echo"<h2>Password</h2>";
+                                    echo $row["password"] ? str_repeat("*", strlen($row["password"])) : "";
+                                echo "</div>";
+
+                                echo "<div class='label'>";
                                     echo"<h2>Credt card</h2>";
                                         echo $row["credit_card"] ;
                                 echo "</div>";
 
                                 
                             echo "<div class='btn-group'>";
-                            echo "<a class='btn btn-warning'href='editprofile.php'>Edit</a>";
+                            echo "<a class='btn btn-warning'href='edit_profile.php'>Edit</a>";
                             echo "</div>";
 
                             echo "</div>";

@@ -99,6 +99,8 @@
             }
 
             // printing out the results
+            $user_survey_id = $user_row['SurveyID'];
+
             if (count($matches['same_all']) > 0) {
                 echo "<h2 class='header'>Looks like we found your perfect match! </h2>";
                 echo "<div class='row'>";
@@ -119,13 +121,14 @@
                         echo "<p>Date: {$pass_data['Date']}</p>";
                         echo "<p> Name: {$pass_data['Name']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
-                        echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
+                        echo "<a class='btn btn-warning' href='payment.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$survey_id."'>Confirm</a>";
                     echo "</div>";
                 }
                 echo "</div>";
             }
             else {
-
+                echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
+                echo "<p class='ask_book'> There are no cases where all of the date, destination, and origin are the same. </p>";
             }
             
             //for two equls
@@ -149,14 +152,16 @@
                         echo "<p>Date: {$pass_data['Date']}</p>";
                         echo "<p> Name: {$pass_data['Name']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
-                        echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
+                        echo "<a class='btn btn-warning' href='payment.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$survey_id."'>Confirm</a>";
                     echo "</div>";
                 }
                 echo "</div>";
             }
             else {
-                echo "<h2>When two of the following match: date, destination, and departure</h2>";
-                echo "There are no cases where two of the date, destination, and origin are the same.";
+                // echo "<h2>When two of the following match: date, destination, and departure</h2>";
+                // echo "There are no cases where two of the date, destination, and origin are the same.";
+                echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
+                echo "<p class='ask_book'> There are no cases where two of the date, destination, and origin are the same. </p>";
             }
 
             //for one equal
@@ -180,14 +185,14 @@
                         echo "<p>Date: {$pass_data['Date']}</p>";
                         echo "<p> Name: {$pass_data['Name']}</p>";
                         echo "<p>Bio: {$pass_data['Bio']}</p>";
-                        echo "<a class='btn btn-warning'href='payment.php?TripID=".$row['TripID']."'>Confirm</a>";
+                        echo "<a class='btn btn-warning' href='payment.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$survey_id."'>Confirm</a>";
                     echo "</div>";
                 }
                 echo "</div>";
             }
             else {
-                echo "<h2>Cases where one of the date, destination, or departure is the same.</h2>";
-                echo "There are no cases where one of the date, destination, and departure is the same.";
+                echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
+                echo "<p class='ask_book'> There are no cases where one of the date, destination, and departure is the same. </p>";
             }
 
             //None
@@ -199,6 +204,7 @@
 
 
         } else {
+            echo "<p class='ask_book'>There are no cases. You can still proceed with the booking even if there are no matching results for your search criteria</p>";
             echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
         }
 

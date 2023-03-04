@@ -20,10 +20,10 @@ session_start();
     echo $type;
     echo $email;
     if ($type == 'driver') {
-        header('Location: driveredit.php'); 
+        header('Location: driver_edit.php'); 
     }
     elseif ($type == 'passenger') {
-            header('Location: passengeredit.php'); 
+            header('Location: passenger_edit.php'); 
         }
 
 ?>
