@@ -106,3 +106,9 @@ main {
 .datebox {
     font-size: 0.8em;
 }
+
+.no-result-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -23,7 +23,7 @@
 <body>
 
 <?php include 'includes/nav.php'; ?>
-        <div class='table'>
+
             <?php
             $con = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
             if (!$con) {
@@ -123,6 +123,7 @@
                 if ($num_rows > 0) {
     
                     while ($row = $result->fetch_assoc()) {
+                        
                         echo "<div class='wrapper'>";
                             echo "<div class='div_test'>";
 
@@ -171,11 +172,6 @@
                             echo "</div>";
 
                             echo "</div>";
-
-                                echo "<div class='col2'>";
-
-                                    echo "<div class='bookmark'>";
-                                    echo "</div>";
 
                             echo "</div>";
 

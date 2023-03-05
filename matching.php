@@ -198,14 +198,19 @@
             //None
             if (count($matches['different_all']) > 0) {
                 echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
-
+                
+                echo "<div class='button-box'>";
                 echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
+                echo "</div>";
             }
 
 
         } else {
             echo "<p class='ask_book'>There are no cases. You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+
+            echo "<div class='button-box'>";
             echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
+            echo "</div>";
         }
 
         mysqli_close($conn);

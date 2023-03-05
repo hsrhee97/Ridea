@@ -157,7 +157,11 @@
                             }
                             echo "</table>";
                         } else {
-                            echo "0 results";
+                            echo "<div class='no-result-wrapper'>";
+                            echo "<div class='no-result'>";
+                            echo "<h2>Looks like you haven't taken a ride with us yet!</h2>";
+                            echo "</div>";
+                            echo "</div>";
                         }
                     } else {
                         $sql_check = "SELECT * FROM TRIP WHERE PassengerID = $ID  ORDER BY Date DESC";
@@ -186,7 +190,11 @@
                                 echo "</tr>";
                             }
                         } else {
-                            echo "0 results";
+                            echo "<div class='no-result-wrapper'>";
+                            echo "<div class='no-result'>";
+                            echo "<h2>Looks like you haven't taken a ride with us yet!</h2>";
+                            echo "</div>";
+                            echo "</div>";
                         }
                     }
                   
@@ -234,7 +242,11 @@
                             }
 
                         } else {
-                            echo "0 results";
+                            echo "<div class='no-result-wrapper'>";
+                            echo "<div class='no-result'>";
+                            echo "<h2>Looks like you haven't taken a ride with us yet!</h2>";
+                            echo "</div>";
+                            echo "</div>";
                         }
                     } else {
                         $sql_check = "SELECT * FROM TRIP WHERE PassengerID = $ID  ORDER BY Date DESC";
@@ -265,7 +277,11 @@
                             }
 
                         } else {
-                            echo "0 results";
+                            echo "<div class='no-result-wrapper'>";
+                            echo "<div class='no-result'>";
+                            echo "<h2>Looks like you haven't taken a ride with us yet!</h2>";
+                            echo "</div>";
+                            echo "</div>";
                         }
                     }
 

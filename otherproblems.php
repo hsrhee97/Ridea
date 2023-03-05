@@ -22,7 +22,9 @@
     <div class="form-wrapper">
         <h2>Other Problems</h2>
         <p>Please fill this form to report any problem.</p>
+        
         <form method="post" action="config_otherproblems.php">
+
             <div class="form-group">
                 <label>Email</label>
                 <input type="text" name="email" class="form-control value=">
