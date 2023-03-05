@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style> <?php include 'css/style.css'; ?> </style>
+    <style> <?php include 'css/navbar.css'; ?> </style>
 
     <title>RIDEA</title>
     <!-- google fonts -->
@@ -20,7 +20,6 @@
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    
 
 </head>
 
@@ -54,6 +53,7 @@
                     <li><a href="ride-history.php">My Rides</a></li>
                     <li><a href="calendar.php">Calendar</a></li>
                     <li><a href="help.php">Help</a></li>
+                    <li><a href="chat_before.php">Chat</a></li>
                 </ul>
                 <div class="main">
                     <a href="profile.php" class="user"><i class="ri-user-fill"></i>My Profile</a>

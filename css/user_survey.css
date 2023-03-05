@@ -31,7 +31,7 @@ body {
   
   .form-wrapper {
     max-width: 60vw;
-    height: 75vh;
+    height: 80vh;
     width: 100%;
     padding: 40px 40px 40px 40px;
     background-color: #ffffff;
@@ -44,7 +44,7 @@ body {
 }
 
 .form-group.buttons {
-    padding: 2.5em 0 0 0;
+    padding: 7em 0 0 0;
     text-align: right;
 }
 
@@ -75,12 +75,13 @@ input[type="reset"] {
 }
 
 input[type="submit"] {
-    padding: 10 20;
+    background-color: var(--main-color);
     border: none;
+    color: #fff;
+    padding: 10px 30px;
     border-radius: 5px;
     font-size: 16px;
-    color: #ffffff;
-    background-color: var();
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
     cursor: pointer;
 }
 
@@ -89,7 +90,7 @@ input[type="reset"]:hover {
 }
 
 input[type="submit"]:hover {
-    background-color: #6c250f;
+    background-color: #ffa500;
 }
 
 
@@ -100,7 +101,7 @@ input[type="submit"]:hover {
 
 .col {
     flex: 50%;
-  padding: 20px 20px 20px 10px;
-  height: 300px;
+    padding: 20px 20px 20px 10px;
+    height: 300px;
 }
   
