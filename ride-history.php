@@ -113,7 +113,7 @@
                                 echo "<td>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='help.php?TripID=".$row['TripID']."'>Ride Help</a>";
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -139,7 +139,7 @@
                                 echo "<td>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='help.php?TripID=".$row['TripID']."'>Ride Help</a>";
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -183,7 +183,7 @@
                                 echo "<td>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='help.php?TripID=".$row['TripID']."'>Ride Help</a>";
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -209,7 +209,7 @@
                                 echo "<td>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='help.php?TripID=".$row['TripID']."'>Ride Help</a>";
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
