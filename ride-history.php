@@ -145,14 +145,11 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-<<<<<<< HEAD
                                 echo "<a class='btn btn-warning'href='help.php?TripID=".$row['TripID']."'>Ride Help</a>";
-=======
                                     echo "</div>";
                                 echo "</div>";
                                 
                                 // div ending for box
->>>>>>> 8b3384dc9e9280626eb2819d94e8301f6695172d
                                 echo "</div>";
 
 
@@ -179,11 +176,8 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-<<<<<<< HEAD
                                 echo "<a class='btn btn-warning'href='help.php?TripID=".$row['TripID']."'>Ride Help</a>";
-=======
                                     echo "</div>";
->>>>>>> 8b3384dc9e9280626eb2819d94e8301f6695172d
                                 echo "</div>";
                                 
                                 // div ending for box
@@ -230,14 +224,11 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-<<<<<<< HEAD
                                 echo "<a class='btn btn-warning'href='help.php?TripID=".$row['TripID']."'>Ride Help</a>";
-=======
                                     echo "</div>";
                                 echo "</div>";
                                 
                                 // div ending for box
->>>>>>> 8b3384dc9e9280626eb2819d94e8301f6695172d
                                 echo "</div>";
 
 
@@ -256,7 +247,6 @@
                         if ($num_rows_check > 0) {
                             
                             while ($row = $result_check->fetch_assoc()) {
-<<<<<<< HEAD
                                 echo "<tr style='border:1px solid black;'>";
                                 echo "<td>" . $row["Start_location"] . "</td>";
                                 echo "<td>" . $row["End_location"] . "</td>";
@@ -265,7 +255,6 @@
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "<a class='btn btn-warning'href='help.php?TripID=".$row['TripID']."'>Ride Help</a>";
-=======
                                 echo "<div class='box'>";
                                     echo "<div class='address-box'>";
                                         echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
@@ -276,7 +265,6 @@
 
                                         echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
 
->>>>>>> 8b3384dc9e9280626eb2819d94e8301f6695172d
                                 echo "</div>";
                                 
                                 // div ending for box
