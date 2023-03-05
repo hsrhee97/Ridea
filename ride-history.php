@@ -147,6 +147,7 @@
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -173,7 +174,8 @@
                                 echo "<td>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>"; 
+                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -218,6 +220,7 @@
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";
@@ -240,6 +243,7 @@
                                     echo $row["Date"];
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
                                 echo "</div>";
                                 
                                 // div ending for box
