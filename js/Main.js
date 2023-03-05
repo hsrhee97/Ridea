@@ -19,14 +19,14 @@ var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
  
 //create a DirectionsRenderer object which we will use to display the route
 var directionsDisplay = new google.maps.DirectionsRenderer();
- 
+
 //bind the DirectionsRenderer to the map
 directionsDisplay.setMap(map);
 var directionsService = new google.maps.DirectionsService();
- 
+
 //create a DirectionsRenderer object which we will use to display the route
 var directionsDisplay = new google.maps.DirectionsRenderer();
- 
+
 //bind the DirectionsRenderer to the map
 directionsDisplay.setMap(map);
 
