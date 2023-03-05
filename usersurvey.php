@@ -28,103 +28,143 @@
 
 <body>
     <div class="form-container">
-    <div class="form-wrapper">
+        <div class="form-wrapper">
 
-        <h2>Ride Reservation</h2>
-        <p>Please fill this form to book a ride.</p>
-        
-        <?php
-            if (isset($_POST['survey_submit'])){ 
-                $passenger_id = $_SESSION['id'];
-                $start_address = $_POST['start_point'];
-                $start_city = $_POST['city_start'];
-                $end_address = $_POST['destination'];
-                $end_city = $_POST['city_end'];
-                $luggage = $_POST['luggage'];
-                $trip_date = $_POST['date'];
-                $other = $_POST['other'];
+            <h2>Ride Reservation</h2>
+            <p>Please fill this form to book a ride.</p>
+            
+            <?php
+                if (isset($_POST['survey_submit'])){ 
+                    $passenger_id = $_SESSION['id'];
+                    $start_address = $_POST['start_point'];
+                    $start_city = $_POST['city_start'];
+                    $end_address = $_POST['destination'];
+                    $end_city = $_POST['city_end'];
+                    $luggage = $_POST['luggage'];
+                    $trip_date = $_POST['date'];
+                    $other = $_POST['other'];
 
-                $conn=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
+                    $conn=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
 
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    // Insert the data into the SURVEY table
+                    $sql = "INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other)
+                            VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    $sur = $conn->prepare($sql);
+                    $sur->bind_param('issssss', $passenger_id, $start_address, $start_city, $end_address, $end_city, $trip_date, $other);
+
+
+
+                    if ($sur->execute()) {
+                        echo ("<script>alert('You have scheduled the trip')</script>");
+                        echo("<script>location.replace('matching.php');</script>");
+                        exit;
+                    } 
+                    else {
+                    }
+
+                    $sur->close();
+                    $conn->close();
                 }
+            ?>
 
-                // Insert the data into the SURVEY table
-                $sql = "INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other)
-                        VALUES (?, ?, ?, ?, ?, ?, ?)";
-                $sur = $conn->prepare($sql);
-                $sur->bind_param('issssss', $passenger_id, $start_address, $start_city, $end_address, $end_city, $trip_date, $other);
+            <form method= "post">
 
+                <div class="container">
 
-
-                if ($sur->execute()) {
-                    echo ("<script>alert('You have scheduled the trip')</script>");
-                    echo("<script>location.replace('matching.php');</script>");
-                    exit;
-                } 
-                else {
-                }
-
-                $sur->close();
-                $conn->close();
-            }
-        ?>
-
-        <form method= "post">
-
-    <div class="container">
-            <div class="col">
-
-                <div class="form-group">
-                    <label>Pickup Address</label>
-                    <input type="text" name="start_point" class="form-control value=">
-                </div>    
-
-                <div class="form-group">
-                    <label>Departure city</label>
-                    <input type="text" name="city_start" class="form-control value=">
-                </div>   
-
-                <div class="form-group">
-                    <label>Date:</label>
-                    <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label>Other:</label>
-                    <input type="text" name="other" class="form-control">
-                </div>
-
-            </div>
-        <div class="col">
-
-                <div class="form-group">
-                    <label>Destination Address</label>
-                    <input type="text" name="destination" class="form-control">
-                </div>
+                    <div class="map">
+                        <h1>Find The Distance Between Two Places.</h1>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="from"></label>
+                                <input type="text" id="from" placeholder="Origin" class="form-control">
                 
-                <div class="form-group">
-                    <label>Destination City</label>
-                    <input type="text" name="city_end" class="form-control value=">
-                </div> 
+                            </div>
+                            <div class="form-group">
+                
+                                <label for="to"></label>
+                                <input type="text" id="to" placeholder="Destination" class="form-control">
+                
+                            </div>
+                
+                        </form>
+                
+                        <div class="form-group">
+                            <button class="btn btn-info btn-lg" onclick="calcRoute();">Calculate</button>
+                        </div>
 
-                <div class="form-group">
-                    <label>Number of luggages:</label>
-                    <input type="text" name="luggage" class="form-control">
+                        <div class="container-fluid">
+                            <div id="output">
+                    
+                            </div>
+                            <div id="googleMap">
+                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+
+                        <div class="form-group">
+                            <label>Pickup Address</label>
+                            <input type="text" name="start_point" class="form-control value=">
+                        </div>    
+
+                        <div class="form-group">
+                            <label>Departure city</label>
+                            <input type="text" name="city_start" class="form-control value=">
+                        </div>   
+
+                        <div class="form-group">
+                            <label>Date:</label>
+                            <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Other:</label>
+                            <input type="text" name="other" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="col">
+
+                        <div class="form-group">
+                            <label>Destination Address</label>
+                            <input type="text" name="destination" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Destination City</label>
+                            <input type="text" name="city_end" class="form-control value=">
+                        </div> 
+
+                        <div class="form-group">
+                            <label>Number of luggages:</label>
+                            <input type="text" name="luggage" class="form-control">
+                        </div>
+
+                        <div class="form-group buttons">
+                            <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+                            <input type="submit" name="survey_submit" class="btn btn-primary" value="Submit">
+                        </div>
+
+                    </div>
+                    
                 </div>
 
-                <div class="form-group buttons">
-                    <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-                    <input type="submit" name="survey_submit" class="btn btn-primary" value="Submit">
-                </div>
-
-        </div>
+            </form>
+        </div>    
     </div>
 
-        </form>
-    </div>    
-    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH31LPL7iXVqc7D37PBjEsK-WmrRmvcKM&libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/Main.js"></script>
 </body>
 </html>

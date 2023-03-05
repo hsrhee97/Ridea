@@ -32,12 +32,13 @@ body {
 }
 
 .container {
-    width: 40%;
-    margin: 0 auto;
+    display: flex;
     font-size: 1.6em;
+    align-items: center;
+    justify-content: center;
 }
 
-.wrapper {
+.label {
     border-bottom: 1px solid black;
     margin-bottom: 1em;
     border-left: 1em solid var(--main-color);

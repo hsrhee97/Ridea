@@ -145,7 +145,6 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>"; 
                                     echo "</div>";
                                 echo "</div>";
                                 
@@ -158,11 +157,7 @@
                             }
                             echo "</table>";
                         } else {
-                            echo "<div class='no-result-wrapper'>";
-                            echo "<div class='no-result'>";
-                            echo "<h2>Looks like you haven't taken a ride with us yet!</h2>";
-                            echo "</div>";
-                            echo "</div>";
+                            echo "0 results";
                         }
                     } else {
                         $sql_check = "SELECT * FROM TRIP WHERE PassengerID = $ID  ORDER BY Date DESC";
@@ -170,6 +165,7 @@
                         $num_rows_check = mysqli_num_rows($result_check);
 
                         if ($num_rows_check > 0) {
+                            
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address'>";
@@ -180,7 +176,6 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
                                     echo "</div>";
                                 echo "</div>";
                                 
@@ -192,11 +187,7 @@
                                 echo "</tr>";
                             }
                         } else {
-                            echo "<div class='no-result-wrapper'>";
-                            echo "<div class='no-result'>";
-                            echo "<h2>Looks like you haven't taken a ride with us yet!</h2>";
-                            echo "</div>";
-                            echo "</div>";
+                            echo "0 results";
                         }
                     }
                   
@@ -232,7 +223,6 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
-                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
                                     echo "</div>";
                                 echo "</div>";
                                 
@@ -245,11 +235,7 @@
                             }
 
                         } else {
-                            echo "<div class='no-result-wrapper'>";
-                            echo "<div class='no-result'>";
-                            echo "<h2>Looks like you haven't taken a ride with us yet!</h2>";
-                            echo "</div>";
-                            echo "</div>";
+                            echo "0 results";
                         }
                     } else {
                         $sql_check = "SELECT * FROM TRIP WHERE PassengerID = $ID  ORDER BY Date DESC";
@@ -260,11 +246,6 @@
                             
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
-                                    echo $row["Start_location"];
-                                    echo $row["End_location"];
-                                    echo $row["Date"];
-                                echo "<div class='btn-group'>";
-                                echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                     echo "<div class='address-box'>";
                                         echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
                                         echo "<span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
@@ -285,11 +266,7 @@
                             }
 
                         } else {
-                            echo "<div class='no-result-wrapper'>";
-                            echo "<div class='no-result'>";
-                            echo "<h2>Looks like you haven't taken a ride with us yet!</h2>";
-                            echo "</div>";
-                            echo "</div>";
+                            echo "0 results";
                         }
                     }
 
