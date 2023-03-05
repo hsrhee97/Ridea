@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS CHAT;
 DROP TABLE IF EXISTS SURVEY;
 DROP TABLE IF EXISTS HELP;
 DROP TABLE IF EXISTS RATING;
@@ -120,12 +121,32 @@ INSERT INTO DRIVER (fname, lname, address, phone, email, password, biography, li
 VALUES
     ('John', 'Doe', '123 Main St', '555-555-5555', 'rhee@email.com', PASSWORD('11111111'), 'John is a friendly and experienced driver.', '5372353384', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg', 'Red', 'Honda Civic'),
     ('Bob', 'Johnson', '789 Oak St', '555-555-5557', 'choi@email.com', PASSWORD('11111111'), 'Bob is a new driver who is eager to learn and improve.', 'GHI789', 'path/to/photo3.jpg', 'Blue', 'Toyota Camry'),
-    ('Stella', 'Simanenko', '8265 Westend Avenue', '377-475-4305', 'ssimanenko3@yale.edu', PASSWORD('11111111'), 'Right-sized multi-state moderator', '7879569979', 'data:image/png;base64,iVBORw0KGgoA', 'Grey', 'Honda Civic');
+    ('Stella', 'Simanenko', '8265 Westend Avenue', '377-475-4305', 'ssimanenko3@yale.edu', PASSWORD('11111111'), 'Right-sized multi-state moderator', '7879569979', 'data:image/png;base64,iVBORw0KGgoA', 'Grey', 'Honda Civic'),
+    ("John", "Doe", "123 Main St, Bloomington, IN", "123-456-7890", "johndoe@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "123456", "/uploads/license1.jpg", "red", "Ford Mustang"),
+    ("Jane", "Doe", "456 Broad St, Bloomington, IN", "123-456-7890", "janedoe@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "654321", "/uploads/license2.jpg", "blue", "Toyota Camry"),
+    ("Bob", "Smith", "789 Elm St, Bloomington, IN", "123-456-7890", "bobsmith@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "987654", "/uploads/license3.jpg", "green", "Honda Accord"),
+    ("Alice", "Johnson", "111 State St, Bloomington, IN", "123-456-7890", "alicejohnson@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "456789", "/uploads/license4.jpg", "yellow", "Nissan Altima"),
+    ("Mike", "Brown", "222 College Ave, Bloomington, IN", "123-456-7890", "mikebrown@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "654321", "/uploads/license5.jpg", "silver", "Honda Civic"),
+    ("Sarah", "Davis", "333 Walnut St, Bloomington, IN", "123-456-7890", "sarahdavis@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "123456", "/uploads/license6.jpg", "black", "Chevrolet Malibu"),
+    ("David", "Wilson", "444 Kirkwood Ave, Bloomington, IN", "123-456-7890", "davidwilson@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "987654", "/uploads/license7.jpg", "white", "Ford Fusion"),
+    ("Amy", "Taylor", "555 Indiana Ave, Bloomington, IN", "123-456-7890", "amytaylor@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "456789", "/uploads/license8.jpg", "gray", "Toyota Corolla"),
+    ("Tom", "Anderson", "666 Jordan Ave, Bloomington, IN", "123-456-7890", "tomanderson@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "654321", "/uploads/license9.jpg", "red", "Honda Fit"),
+    ("Linda", "Martin", "777 Dunn St, Bloomington, IN", "123-456-7890", "lindamartin@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "123456", "/uploads/license10.jpg", "blue", "Nissan Sentra");
 
 INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, credit_card) 
 VALUES 
     ('Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee','11111111111'),
-    ('Woojin', 'Choi', '124 N', '812-929-0435', 'choi@iu.edu', PASSWORD('11111111'), 'I am Choi','11111111111');
+    ('Woojin', 'Choi', '124 N', '812-929-0435', 'choi@iu.edu', PASSWORD('11111111'), 'I am Choi','11111111111'),
+    ("John", "Doe", "123 Main St, Bloomington, IN", "123-456-7890", "johndoe@example.com", PASSWORD('11111111'), "I'm a software engineer", "1234567890123456"),
+    ("Jane", "Doe", "456 Elm St, Bloomington, IN", "234-567-8901", "janedoe@example.com", PASSWORD('11111111'), "I'm a student at IU", "2345678901234567"),
+    ("Bob", "Smith", "789 Walnut St, Bloomington, IN", "345-678-9012", "bobsmith@example.com", PASSWORD('11111111'), "I'm a teacher", "3456789012345678"),
+    ("Alice", "Jones", "321 Oak St, Bloomington, IN", "456-789-0123", "alicejones@example.com", PASSWORD('11111111'), "I'm an artist", "4567890123456789"),
+    ("Tom", "Brown", "654 Pine St, Bloomington, IN", "567-890-1234", "tombrown@example.com", PASSWORD('11111111'), "I'm a musician", "5678901234567890"),
+    ("Samantha", "Miller", "987 Cedar St, Bloomington, IN", "678-901-2345", "samanthamiller@example.com", PASSWORD('11111111'), "I'm a nurse", "6789012345678901"),
+    ("David", "Wilson", "246 Maple St, Bloomington, IN", "789-012-3456", "davidwilson@example.com", PASSWORD('11111111'), "I'm a chef", "7890123456789012"),
+    ("Maria", "Garcia", "135 Cherry St, Bloomington, IN", "890-123-4567", "mariagarcia@example.com", PASSWORD('11111111'), "I'm a librarian", "8901234567890123"),
+    ("Megan", "Lee", "864 Birch St, Bloomington, IN", "901-234-5678", "meganlee@example.com", PASSWORD('11111111'), "I'm a photographer", "9012345678901234"),
+    ("Michael", "Davis", "579 Spruce St, Bloomington, IN", "012-345-6789", "michaeldavis@example.com", PASSWORD('11111111'), "I'm a lawyer", "0123456789012345");
     
 INSERT INTO TRIP(DriverID, PassengerID, Start_location, End_location, Distance, Date)
 VALUES 
@@ -147,7 +168,7 @@ VALUES
 
 INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments)
 VALUES
-    (2, 4.5, 'John was a great driver and the ride was very comfortable.');
+    (2, 4.5, 'Bob was a great driver and the ride was very comfortable.');
 
 INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments)
 VALUES
@@ -164,11 +185,8 @@ VALUES
     (6, '423 Elm St', 'Boston', '723 Ave', 'Portland', '2024-02-02', 'Traffic was terrible!'),
     (5, '900 Beach Blvd', 'New York', '1000 Ocean Ave', 'Jacksonville', '2023-05-12', 'Stopped for lunch in Orlando.'),
     (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL), 
-    (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None');
-
-    -- Once 2 passengers are matched take their data and insert it into trip table and also delete that data from survey table.
-    -- the passenger id could have multiple data so only delete the one id that is matched
-
+    (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None'),
+    (8, '534 College St', 'New York', '456 Elm St', 'Bloomington', '2023-04-15', 'None');
 
 INSERT INTO CHAT (SenderID, ReceiverID, message)
 VALUES 
