@@ -158,13 +158,13 @@ VALUES
     
 INSERT INTO TRIP(DriverID, PassengerID, Start_location, End_location, Distance, Date)
 VALUES 
-    (3, 9, 'Bloomington', 'Miami', 482.12, '2023-03-19'),
-    (2, 8, 'Greenville', 'Brownville', 123.98, '2022-07-26'),
-    (3, 9, 'Chicago', 'Miami', 456.32, '2022-07-29'),
-    (4, 9, 'San Francisco', 'Seattle', 456.32, '2022-07-21'),
-    (6, 9, 'Boston', 'Bloomington', 5982.34, '2022-07-12'),
-    (6, 2, 'Los Angeles', 'San Francisco', 383.22, '2022-02-13'),
-    (2, 1, '789 Oak St', '321 Pine St', 15.25, '2022-02-14'),
+    (3, 16, 'Bloomington', 'Miami', 482.12, '2023-03-19'),
+    (2, 16, 'Greenville', 'Brownville', 123.98, '2022-07-26'),
+    (3, 16, 'Chicago', 'Miami', 456.32, '2022-07-29'),
+    (4, 16, 'San Francisco', 'Seattle', 456.32, '2022-07-21'),
+    (6, 16, 'Boston', 'Bloomington', 5982.34, '2022-07-12'),
+    (6, 16, 'Los Angeles', 'San Francisco', 383.22, '2022-02-13'),
+    (2, 16, '789 Oak St', '321 Pine St', 15.25, '2022-02-14'),
     (3, 5, 'Chicago', 'Los Angeles', 4329.45, '2022-08-23'),
     (4, 4, 'BOSTON', 'MIAMI', 324.87, '2022-08-04'),
     (5, 6, 'ORLANDO', 'CANCUN', 1234.87, '2022-09-29');

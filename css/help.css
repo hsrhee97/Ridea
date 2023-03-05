@@ -83,7 +83,7 @@ main
 
 .form-container {
     position: absolute;
-    top: 50%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -111,6 +111,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="date"],
+input[type="tel"],
 textarea {
     width: 100%;
     padding: 10px;

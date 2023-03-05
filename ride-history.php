@@ -166,6 +166,7 @@
                         $num_rows_check = mysqli_num_rows($result_check);
 
                         if ($num_rows_check > 0) {
+                            
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address'>";

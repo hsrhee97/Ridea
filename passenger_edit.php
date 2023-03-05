@@ -55,55 +55,56 @@
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <style> <?php include 'css/register2.css'; ?> </style>
+    <style> <?php include 'css/help.css'; ?> </style>
 </head>
 
     <body>
         <?php include 'includes/nav.php'; ?>
-            <div class="wrapper">
-                <div class="title">
-                    Edit My Profile
-                </div>
+        <div class="form-container">
+    <div class="form-wrapper">
+        <h2>Edit my information</h2>
 
                 <form method="post" action="passenger_edit.php" >
-                    <div class="inputbox">
+
+                    <div class="form-group">
                         <span>First name</span>
                         <input class="reg_box" type='text' name = "fname" value="<?php echo $fname;?>">
                     </div>
 
-                    <div class="inputbox">
+                    <div class="form-group">
                         <span>Last name</span>
                         <input class="reg_box" type='text' name = "lname" value="<?php echo $lname;?>">
                     </div>
 
-                    <div class="inputbox">
+                    <div class="form-group">
                         <span>Password </span>
                     <input class="reg_box" type='password' name = "password" value="<?php echo $password;?>">
                     </div>
 
-                    <div class="inputbox">
+                    <div class="form-group">
                         <span>Address </span>
                     <input class="reg_box" type='text' name = "address"  value="<?php echo $address;?>">
                     </div>
 
-                    <div class="inputbox">
+                    <div class="form-group">
                         <span>Phone</span>
                     <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo $phone;?>">
                     </div>
 
-                    <div class="inputbox">
+                    <div class="form-group">
                         <span>Biography</span>
                     <input class="reg_box" type='text' name = "biography"  value="<?php echo $biography;?>">
                     </div>
 
-                    <div class="inputbox">
+                    <div class="form-group">
                         <span>Credit Card</span>
                     <input class="reg_box" type='text' name = "credit_card"  value="<?php echo $credit_card;?>">
                     </div>
 
-                    <div class="inputbox">
+                    <div class="form-group buttons">
                         <input type="submit" name="submit" value="submit" class="btn">
                     </div>
+                    
                 </form>
             </div>
     </body>

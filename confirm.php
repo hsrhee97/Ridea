@@ -80,6 +80,7 @@
 
             if ($pass_result->num_rows > 0) {
                 while($pass_row = $pass_result->fetch_assoc()) {
+                    //임시 드라이버
                     $p_driver_id = 1; 
                     $p_passenger_id = $pass_row["PassengerID"];
                     $p_start_location = $pass_row["start_address"] . ", " . $pass_row["start_city"];

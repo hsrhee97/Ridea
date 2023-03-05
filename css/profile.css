@@ -13,35 +13,39 @@
     --text-color: #fff;
     --main-color: #EC4E20;
   }
+
+  body {
+    height: 100vh;
+  }
 /* 
   passenger */
   
   .wrapper {
+    display: flex;
     background-color: #ececec;
-    height: 100vh;
+    height: 94vh;
+    align-items: center;
   }
   
   .div_test {
-    padding: 5px 20px 20px 20px;
+    font-size: 1.1rem;
     height: 80%;
     width: 25%;
     margin: 0 auto;
     background-color: white;
-    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 10px 1px rgb(0 0 0 / 20%);
     display: flex;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    align-items: center; 
+    align-items: center;
     text-align: left;
+    justify-content: center;
+  }
+
+  col1 {
+    display: flex;
   }
   
   .btn-group {
-    position: absolute;
-    bottom: 1em;
-    right: 1em;
-    padding: 10px;
+    float: right;
   }
   
   .label {
@@ -92,10 +96,6 @@ Driver  */
     color: #fff;
   }
   
-  .label {
-    padding: 10px;
-  }
-  
   body {
     text-align: center;
     position: relative;
@@ -111,3 +111,10 @@ Driver  */
     padding: 20px;
 
   }
+
+
+  /* @media screen and (max-width:1000px){
+    .div_test {
+      background: #EC4E20;
+    }
+  } */
