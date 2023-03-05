@@ -65,7 +65,8 @@
 
             if ($result->num_rows > 0) {
                 $event = $result->fetch_assoc();
-                $week .= '<td class="event">' . $day . '<br>SurveyID = ' . $event['SurveyID'] . '</td>';
+                // $week .= '<td class="event">' . $day . '<br>SurveyID = ' . $event['SurveyID'] . '</td>';
+                $week .= '<td class="event" onclick="showModal(' . $event['SurveyID'] . ')">' . $day . '<br><span class="start-city">' . $event['start_city'] . '</span> → <span class="end-city">' . $event['end_city'] . '</span></td>';
             } else {
                 $week .= '<td>' . $day . '</td>';
             }
@@ -108,6 +109,36 @@
         </table>
     </div>
     
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal()">&times;</span>
+            <div id="eventDetails"></div>
+        </div>
+    </div>
+
+    <script>
+        // Show modal with event details
+        function showModal(eventId) {
+            var modal = document.getElementById('myModal');
+            var eventDetails = document.getElementById('eventDetails');
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    eventDetails.innerHTML = this.responseText;
+                    modal.style.display = "block";
+                }
+            };
+            xhttp.open("GET", "modal.php?id=" + eventId, true);
+            xhttp.send();
+        }
+
+        // Hide modal
+        function hideModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
 
