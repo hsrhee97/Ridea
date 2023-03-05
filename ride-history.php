@@ -145,6 +145,8 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
                                     echo "</div>";
                                 echo "</div>";
                                 
@@ -179,6 +181,8 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
                                     echo "</div>";
                                 echo "</div>";
                                 
@@ -230,6 +234,8 @@
                                         echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
                                     echo "</div>";
                                 echo "</div>";
                                 
@@ -257,6 +263,12 @@
                             
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
+                                    echo $row["Start_location"];
+                                    echo $row["End_location"];
+                                    echo $row["Date"];
+                                echo "<div class='btn-group'>";
+                                echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
                                     echo "<div class='address-box'>";
                                         echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
                                         echo "<span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
