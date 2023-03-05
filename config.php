@@ -21,9 +21,10 @@
 	$update = false;
 
 	if (isset($_POST['save'])) {
-		$Comments = $_POST['comments'];
+		$Comments = $_POST['Comments'];
         $Star_rating = $_POST['Star_rating'];
         echo $Comments;
+        //change static passengerid of 2 to dynamic passengerid that is retrieved from session 
         $qcheck = "INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments) VALUES (2, $Star_rating, '$Comments')";
         echo $qcheck;
         $result = mysqli_query($link, $qcheck); 
