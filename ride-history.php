@@ -96,7 +96,6 @@
         <option value='2012'>2012</option>
     </select>
 
-    <br><br>
   <button type="Submit" id="Submit" name="Submit">Submit</button>
 </form>
 
@@ -123,8 +122,6 @@
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         $ID = $row["DriverID"];
-                    echo "id: " . $row["DriverID"]. " - Name: " 
-                        . $row["fname"]. " " . $row["lname"]. "<br>";
                     }
 
                     if (isset($_POST["Submit"])) {
@@ -139,16 +136,24 @@
                             echo "<tr style='border:1px solid black;'><th>Start Location</th><th>End Location</th><th>Date</th>";
                             
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr style='border:1px solid black;'>";
-                                echo "<td>" . $row["Start_location"] . "</td>";
-                                echo "<td>" . $row["End_location"] . "</td>";
-                                echo "<td>" . $row["Date"] . "</td>";
-                                echo "<td>";
+                                echo "<div class='box'>";
+                                    echo "<div class='address'>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<div class='datebox'>";
+                                            echo $row["Date"];
+                                        echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
                                 echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
+                                    echo "</div>";
                                 echo "</div>";
+                                
+                                // div ending for box
+                                echo "</div>";
+
+
                                 echo "</td>";
                                 echo "</tr>";
                             }
@@ -162,25 +167,28 @@
                         $num_rows_check = mysqli_num_rows($result_check);
 
                         if ($num_rows_check > 0) {
-                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                            echo "<tr s
-                            tyle='border:1px solid black;'><th>Start Location</th><th>End Location</th><th>Date</th>";
-                            
                             while ($row = $result_check->fetch_assoc()) {
-                                echo "<tr style='border:1px solid black;'>";
-                                echo "<td>" . $row["Start_location"] . "</td>";
-                                echo "<td>" . $row["End_location"] . "</td>";
-                                echo "<td>" . $row["Date"] . "</td>";
-                                echo "<td>";
+                                echo "<div class='box'>";
+                                    echo "<div class='address'>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<div class='datebox'>";
+                                            echo $row["Date"];
+                                        echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
                                 echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
+                                    echo "</div>";
                                 echo "</div>";
+                                
+                                // div ending for box
+                                echo "</div>";
+
+
                                 echo "</td>";
                                 echo "</tr>";
                             }
-                            echo "</table>";
                         } else {
                             echo "0 results";
                         }
@@ -196,8 +204,7 @@
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         $ID = $row["PassengerID"];
-                    echo "id: " . $row["PassengerID"]. " - Name: " 
-                        . $row["fname"]. " " . $row["lname"]. "<br>";
+
                     }
                     if (isset($_POST["Submit"])) {
                         $month=$_POST["month"];
@@ -208,24 +215,30 @@
                         $num_rows = mysqli_num_rows($result);
             
                         if ($num_rows > 0) {
-                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                            echo "<tr style='border:1px solid black;'><th>Start Location</th><th>End Location</th><th>Date</th>";
                             
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr style='border:1px solid black;'>";
-                                echo "<td>" . $row["Start_location"] . "</td>";
-                                echo "<td>" . $row["End_location"] . "</td>";
-                                echo "<td>" . $row["Date"] . "</td>";
-                                echo "<td>";
+                                echo "<div class='box'>";
+                                    echo "<div class='address'>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<div class='datebox'>";
+                                            echo $row["Date"];
+                                        echo "</div>";
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "<a class='btn btn-warning'href='help.php'>Ride Help</a>";
                                 echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
+                                    echo "</div>";
                                 echo "</div>";
+                                
+                                // div ending for box
+                                echo "</div>";
+
+
                                 echo "</td>";
                                 echo "</tr>";
                             }
-                            echo "</table>";
+
                         } else {
                             echo "0 results";
                         }
@@ -244,10 +257,20 @@
                                 echo "<div class='btn-group'>";
                                 echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
                                 echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."'>Create a review</a>"; 
+                                    echo "<div class='address-box'>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
+                                        echo "<span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                            echo "<div class='datebox'>";
+                                                echo $row["Date"];
+                                            echo "</div>";
+
+                                        echo "<a class='btn btn-warning'href='ride-details.php?TripID=".$row['TripID']."'>Ride Details</a>";
+
                                 echo "</div>";
                                 
                                 // div ending for box
                                 echo "</div>";
+
 
                                 echo "</td>";
                                 echo "</tr>";

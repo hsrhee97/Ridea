@@ -21,13 +21,7 @@ body {
 }
 
 main {
-    width: 80%;
-    margin: 0 auto;
     height: 80vh;
-    /* display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center; */
 }
 
 /* ---------------------------------------
@@ -35,7 +29,7 @@ main {
 --------------------------------------- */
 
 .contents {
-    padding: 4em 0 4em 0;
+    padding: 4.5em 0 4em 0;
     color: black;
     background-image: url(images/gray.jpeg);
 }
@@ -46,7 +40,7 @@ main {
 }
 
 .contents h2 span {
-    color: rgb(109, 109, 109);
+    color: var(--main-color);
 }
 .contents p {
     font-size: 1em;
@@ -54,7 +48,7 @@ main {
 }
 
 .contents .texts {
-    width: 80%;
+    width: 77%;
     margin: 0 auto;
 }
 
@@ -63,9 +57,52 @@ main {
     font-weight: 700;
     color: rgb(63, 63, 63);
     padding-top: 1.5em;
+    width: 77%;
+    margin: 0 auto;
+}
+
+/* time filter  */
+
+#period_select {
+    padding: 1em 0 2em 0;
+    width: 77%;
+    margin: 0 auto;
 }
 
 .box {
-    padding: 2em 0;
-    background-color:rgb(230, 230, 230);
+    background-color: rgb(245 247 248);
+    border-bottom: 1px solid black;
+    padding: 2.5em 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.box span {
+    color: var(--main-color);
+    /* padding-right: 5em; */
+}
+
+.box .data {
+    color: rgb(63, 63, 63);
+    font-weight: 500;
+    min-width: 14em;
+}
+
+.address-box {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    justify-content: space-between;
+}
+
+.btn-group {
+    position: absolute;
+    right: 2em;
+
+}
+
+.datebox {
+    font-size: 0.8em;
 }

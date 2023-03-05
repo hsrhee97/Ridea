@@ -26,9 +26,6 @@
 
     <!-- navbar -->
     <?php include 'includes/nav.php'; ?>
-    
-
-
 
 <main>
     <?php 
