@@ -116,7 +116,7 @@
         }
             elseif ($type == 'passenger') {
              
-                $sql = "SELECT PassengerID, fname ,lname, address, phone, email, password, biography, credit_card FROM PASSENGER WHERE email='$email'";
+                $sql = "SELECT PassengerID, fname ,lname, address, phone, email, password, biography FROM PASSENGER WHERE email='$email'";
                 $result = mysqli_query($con, $sql);
                 $num_rows = mysqli_num_rows($result);
     
@@ -161,10 +161,7 @@
                                     echo $row["password"] ? str_repeat("*", strlen($row["password"])) : "";
                                 echo "</div>";
 
-                                echo "<div class='label'>";
-                                    echo"<h2>Credt card</h2>";
-                                        echo $row["credit_card"] ;
-                                echo "</div>";
+
 
                                 
                             echo "<div class='btn-group'>";

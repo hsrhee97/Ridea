@@ -1,10 +1,9 @@
 DROP TABLE IF EXISTS CHAT;
+DROP TABLE IF EXISTS PAYMENT;
 DROP TABLE IF EXISTS SURVEY;
 DROP TABLE IF EXISTS HELP;
-DROP TABLE IF EXISTS RATING;
 DROP TABLE IF EXISTS RATING_PASSENGER;
 DROP TABLE IF EXISTS RATING_DRIVER;
-DROP TABLE IF EXISTS PAYMENT;
 DROP TABLE IF EXISTS TRIP;
 DROP TABLE IF EXISTS PASSENGER;
 DROP TABLE IF EXISTS DRIVER;
@@ -34,7 +33,6 @@ CREATE TABLE PASSENGER (
    email VARCHAR(255) NOT NULL,
    password VARCHAR(250) NOT NULL,
    biography TEXT,
-   credit_card VARCHAR(20) NOT NULL,
    PRIMARY KEY (PassengerID)
 );
 
@@ -49,17 +47,6 @@ CREATE TABLE TRIP (
     PRIMARY KEY (TripID),
     FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID),
     FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
-);
-
-CREATE TABLE PAYMENT (
-    PaymentID INT AUTO_INCREMENT,
-    SurveyID INT,
-    payment_gross FLOAT(10,2),
-    txn_id VARCHAR(20),
-    currency_code VARCHAR(5),
-    payment_status VARCHAR(20),
-    PRIMARY KEY (PaymentID),
-    FOREIGN KEY (SurveyID) REFERENCES SURVEY(SurveyID)
 );
 
 CREATE TABLE RATING_DRIVER (
@@ -112,6 +99,17 @@ CREATE TABLE SURVEY (
    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
 
+CREATE TABLE PAYMENT (
+    PaymentID INT AUTO_INCREMENT,
+    SurveyID INT,
+    payment_gross FLOAT(10,2),
+    txn_id VARCHAR(20),
+    currency_code VARCHAR(5),
+    payment_status VARCHAR(20),
+    PRIMARY KEY (PaymentID),
+    FOREIGN KEY (SurveyID) REFERENCES SURVEY(SurveyID)
+);
+
 CREATE TABLE CHAT (
    ChatID INT AUTO_INCREMENT,
    SenderID INT NOT NULL,
@@ -141,20 +139,21 @@ VALUES
     ("Tom", "Anderson", "666 Jordan Ave, Bloomington, IN", "123-456-7890", "tomanderson@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "654321", "/uploads/license9.jpg", "red", "Honda Fit"),
     ("Linda", "Martin", "777 Dunn St, Bloomington, IN", "123-456-7890", "lindamartin@example.com", PASSWORD('11111111'), "Lorem ipsum dolor sit amet", "123456", "/uploads/license10.jpg", "blue", "Nissan Sentra");
 
-INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, credit_card) 
+INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography) 
 VALUES 
-    ('Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee','11111111111'),
-    ('Woojin', 'Choi', '124 N', '812-929-0435', 'choi@iu.edu', PASSWORD('11111111'), 'I am Choi','11111111111'),
-    ("John", "Doe", "123 Main St, Bloomington, IN", "123-456-7890", "johndoe@example.com", PASSWORD('11111111'), "I'm a software engineer", "1234567890123456"),
-    ("Jane", "Doe", "456 Elm St, Bloomington, IN", "234-567-8901", "janedoe@example.com", PASSWORD('11111111'), "I'm a student at IU", "2345678901234567"),
-    ("Bob", "Smith", "789 Walnut St, Bloomington, IN", "345-678-9012", "bobsmith@example.com", PASSWORD('11111111'), "I'm a teacher", "3456789012345678"),
-    ("Alice", "Jones", "321 Oak St, Bloomington, IN", "456-789-0123", "alicejones@example.com", PASSWORD('11111111'), "I'm an artist", "4567890123456789"),
-    ("Tom", "Brown", "654 Pine St, Bloomington, IN", "567-890-1234", "tombrown@example.com", PASSWORD('11111111'), "I'm a musician", "5678901234567890"),
-    ("Samantha", "Miller", "987 Cedar St, Bloomington, IN", "678-901-2345", "samanthamiller@example.com", PASSWORD('11111111'), "I'm a nurse", "6789012345678901"),
-    ("David", "Wilson", "246 Maple St, Bloomington, IN", "789-012-3456", "davidwilson@example.com", PASSWORD('11111111'), "I'm a chef", "7890123456789012"),
-    ("Maria", "Garcia", "135 Cherry St, Bloomington, IN", "890-123-4567", "mariagarcia@example.com", PASSWORD('11111111'), "I'm a librarian", "8901234567890123"),
-    ("Megan", "Lee", "864 Birch St, Bloomington, IN", "901-234-5678", "meganlee@example.com", PASSWORD('11111111'), "I'm a photographer", "9012345678901234"),
-    ("Michael", "Davis", "579 Spruce St, Bloomington, IN", "012-345-6789", "michaeldavis@example.com", PASSWORD('11111111'), "I'm a lawyer", "0123456789012345");
+    ('Hansang', 'Rhee', '524 N', '812-929-0435', 'rheeh@iu.edu', PASSWORD('Bomiles12!'), 'I am Rhee'),
+    ('Woojin', 'Choi', '124 N', '812-929-0435', 'choi@iu.edu', PASSWORD('11111111'), 'I am Choi'),
+    ("John", "Doe", "123 Main St, Bloomington, IN", "123-456-7890", "johndoe@example.com", PASSWORD('11111111'), "I'm a software engineer"),
+    ("Jane", "Doe", "456 Elm St, Bloomington, IN", "234-567-8901", "janedoe@example.com", PASSWORD('11111111'), "I'm a student at IU"),
+    ("Bob", "Smith", "789 Walnut St, Bloomington, IN", "345-678-9012", "bobsmith@example.com", PASSWORD('11111111'), "I'm a teacher"),
+    ("Alice", "Jones", "321 Oak St, Bloomington, IN", "456-789-0123", "alicejones@example.com", PASSWORD('11111111'), "I'm an artist"),
+    ("Tom", "Brown", "654 Pine St, Bloomington, IN", "567-890-1234", "tombrown@example.com", PASSWORD('11111111'), "I'm a musician"),
+    ("Samantha", "Miller", "987 Cedar St, Bloomington, IN", "678-901-2345", "samanthamiller@example.com", PASSWORD('11111111'), "I'm a nurse"),
+    ("David", "Wilson", "246 Maple St, Bloomington, IN", "789-012-3456", "davidwilson@example.com", PASSWORD('11111111'), "I'm a chef"),
+    ("Maria", "Garcia", "135 Cherry St, Bloomington, IN", "890-123-4567", "mariagarcia@example.com", PASSWORD('11111111'), "I'm a librarian"),
+    ("Megan", "Lee", "864 Birch St, Bloomington, IN", "901-234-5678", "meganlee@example.com", PASSWORD('11111111'), "I'm a photographer"),
+    ("Michael", "Davis", "579 Spruce St, Bloomington, IN", "012-345-6789", "michaeldavis@example.com", PASSWORD('11111111'), "I'm a lawyer");
+
     
 INSERT INTO TRIP(DriverID, PassengerID, Start_location, End_location, Distance, Date)
 VALUES 
@@ -169,10 +168,6 @@ VALUES
     (4, 4, 'BOSTON', 'MIAMI', 324.87, '2022-08-04'),
     (5, 6, 'ORLANDO', 'CANCUN', 1234.87, '2022-09-29');
 
-INSERT INTO PAYMENT (Payment_amount, TripID)
-VALUES
-    (25.00, 1),
-    (30.00, 2);
 
 INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments)
 VALUES
@@ -195,6 +190,11 @@ VALUES
     (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL,23, 124.99), 
     (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None', 230, 2.99),
     (8, '534 College St', 'New York', '456 Elm St', 'Bloomington', '2023-04-15', 'None', 11, 3.99);
+
+-- INSERT INTO PAYMENT (Payment_amount, TripID)
+-- VALUES
+--     (25.00, 1),
+--     (30.00, 2);
 
 INSERT INTO CHAT (SenderID, ReceiverID, message)
 VALUES 

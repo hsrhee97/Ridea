@@ -29,7 +29,6 @@
             $address = $row["address"];
             $phone = $row["phone"];
             $biography = $row["biography"];
-            $credit_card = $row["credit_card"];
             }
       } 
       else {
@@ -96,11 +95,6 @@
                     <input class="reg_box" type='text' name = "biography"  value="<?php echo $biography;?>">
                     </div>
 
-                    <div class="form-group">
-                        <span>Credit Card</span>
-                    <input class="reg_box" type='text' name = "credit_card"  value="<?php echo $credit_card;?>">
-                    </div>
-
                     <div class="form-group buttons">
                         <input type="submit" name="submit" value="submit" class="btn">
                     </div>
@@ -137,7 +131,7 @@
         $biography = $_POST['biography'];
         $credit_card = $_POST['credit_card'];
 
-        $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', password = PASSWORD('$password'), biography = '$biography', credit_card = '$credit_card' WHERE PassengerID = '$PassengerID' " ;
+        $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', password = PASSWORD('$password'), biography = '$biography' WHERE PassengerID = '$PassengerID' " ;
 
         $result = mysqli_query($link, $query); 
         if(false===$result){
