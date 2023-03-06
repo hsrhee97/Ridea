@@ -1,3 +1,16 @@
+<?php 
+
+include_once 'paymentconfig.php';
+
+$conn = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
+            if (!$conn) {
+                die("Failed to connect to MySQL: " . mysqli_connect_error());
+            } else {
+                
+            }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +45,38 @@
             echo "<br>";
 
             echo "<a class='last_btn' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
-        
+        //Fetch products from the database
+        $sql = "SELECT * FROM SURVEY WHERE SurveyID = '$user_survey_id' ";
+        $results = $conn->query($sql);   
+        while($row = $results->fetch_assoc()){
+            ?>
+<div class="container">
+                <div class="card">
+                    <div class="body">
+                        <h6>Price: <?php echo '$'.$row['price'].' '.PAYPAL_CURRENCY; ?></h6>
+                        <!-- Paypal payment form for displaying the buy button -->
+                        <form action="<?php echo PAYPAL_URL; ?>" method="POST">
+                            <!-- Identify your bussiness so that you can collect the payment -->
+                            <input type="hidden" name="business" value="<?php echo PAYPAL_ID; ?>">
+                            <!-- Specify a buy now button -->
+                            <input type="hidden" name="cmd" value="_xclick">
+                            <input type="hidden" name="item_name" value="<?php echo $row['SurveyID']; ?>">
+                            <input type="hidden" name="item_number" value="<?php echo $row['Distance']; ?>">
+                            <input type="hidden" name="amount" value="<?php echo $row['price']; ?>">
+                            <!-- Specify details about the item that buyers will purchase -->
+                            <input type="hidden" name="currency_code" value="<?php echo PAYPAL_CURRENCY; ?>">
+                            <!-- Specify URLs -->
+                            <input type="hidden" name="return" value="<?php echo PAYPAL_RETURN_URL; ?>">
+                            <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
+                            <!-- Display the payment button -->
+                            <input type="image" name="submit" style="border:0;" src="https://paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif">
+                        </form>
+                    </div>
+                </div>
+                <?php
+            }
         ?>
+    </div>
     </main>
 </body>
 </html>

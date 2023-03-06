@@ -26,8 +26,13 @@
 
 <body>
 
+<<<<<<< HEAD
+<?php include 'includes/nav.php'; 
+$TripID=$_GET['TripID'];?>
+=======
 <?php include 'includes/nav.php'; ?>
 
+>>>>>>> 8b3384dc9e9280626eb2819d94e8301f6695172d
 <main>
 
     <div class="container">
@@ -62,3 +67,6 @@
 </main>
 </body>
 </html>
+
+
+

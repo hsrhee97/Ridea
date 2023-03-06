@@ -66,23 +66,24 @@
 
     <ul class="list">
         <?php foreach ($users as $user): ?>
+            
             <li>
                 <a class="button" href="chat.php?receiver_id=<?php echo $user["id"]; ?>">
                     <?php
                         $pass_name = "SELECT CONCAT(fname, ' ', lname) AS Name FROM PASSENGER WHERE PassengerID = {$user['id']}";
                         $name_result = mysqli_query($conn, $pass_name);
                         $pass_info = mysqli_fetch_array($name_result, MYSQLI_ASSOC);
-
-                        echo "<div class='wrapper'>";
-                            echo "<div class='box'>";
+                            echo "<div class='label'>";
                                 echo $pass_info["Name"];
                             echo "</div>";
-                        echo "</div>";
                     ?>
                 </a>
             </li>
         <?php endforeach; ?>
     </ul>
+        <div class="img-box">
+            <img src="images/chat.jpeg" alt="chat pic">
+        </div>
     </div>
 </body>
 </html>
