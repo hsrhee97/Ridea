@@ -72,93 +72,93 @@
                 }
             ?>
 
-            <form method= "post">
-
-                <div class="container">
-
-                    <div class="map">
-                        <h1>Find The Distance Between Two Places.</h1>
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label for="from"></label>
-                                <input type="text" id="from" placeholder="Origin" class="form-control">
-                
-                            </div>
-                            <div class="form-group">
-                
-                                <label for="to"></label>
-                                <input type="text" id="to" placeholder="Destination" class="form-control">
-                
-                            </div>
-                
-                        </form>
-                
-                        <div class="form-group">
-                            <button class="btn btn-info btn-lg" onclick="calcRoute();">Calculate</button>
-                        </div>
-
-                        <div class="container-fluid">
-                            <div id="output">
-                    
-                            </div>
-                            <div id="googleMap">
-                    
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-
-                        <div class="form-group">
-                            <label>Pickup Address</label>
-                            <input type="text" name="start_point" class="form-control value=">
-                        </div>    
-
-                        <div class="form-group">
-                            <label>Departure city</label>
-                            <input type="text" name="city_start" class="form-control value=">
-                        </div>   
-
-                        <div class="form-group">
-                            <label>Date:</label>
-                            <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Other:</label>
-                            <input type="text" name="other" class="form-control">
-                        </div>
+            <div class="map">
+                <h1>Find The Distance Between Two Places.</h1>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="from"></label>
+                        <input type="text" id="from" placeholder="Origin" class="form-control">
 
                     </div>
-
-                    <div class="col">
-
-                        <div class="form-group">
-                            <label>Destination Address</label>
-                            <input type="text" name="destination" class="form-control">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Destination City</label>
-                            <input type="text" name="city_end" class="form-control value=">
-                        </div> 
-
-                        <div class="form-group">
-                            <label>Number of luggages:</label>
-                            <input type="text" name="luggage" class="form-control">
-                        </div>
-
-                        <div class="form-group buttons">
-                            <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-                            <input type="submit" name="survey_submit" class="btn btn-primary" value="Submit">
-                        </div>
+                    <div class="form-group">
+                        <label for="to"></label>
+                        <input type="text" id="to" placeholder="Destination" class="form-control">
 
                     </div>
-                    
+                </form>
+
+                <div class="form-group">
+                    <button class="btn btn-info btn-lg" onclick="calcRoute();">Calculate</button>
                 </div>
 
-            </form>
-        </div>    
+                <div class="container-fluid">
+                    <div id="output">
+
+                    </div>
+                    <div id="googleMap">
+
+                    </div>
+                </div>
+
+                <div id="survey-form" style="display:none">
+                    <form method="post">
+                        <div class="container">
+
+                            <div class="col">
+
+                                <div class="form-group">
+                                    <label>Pickup Address</label>
+                                    <input type="text" name="start_point" class="form-control value=">
+                                </div>    
+
+                                <div class="form-group">
+                                    <label>Departure city</label>
+                                    <input type="text" name="city_start" class="form-control value=">
+                                </div>   
+
+                                <div class="form-group">
+                                    <label>Date:</label>
+                                    <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Other:</label>
+                                    <input type="text" name="other" class="form-control">
+                                </div>
+
+                            </div>
+
+                            <div class="col">
+
+                                <div class="form-group">
+                                    <label>Destination Address</label>
+                                    <input type="text" name="destination" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Destination City</label>
+                                    <input type="text" name="city_end" class="form-control value=">
+                                </div> 
+
+                                <div class="form-group">
+                                    <label>Number of luggages:</label>
+                                    <input type="text" name="luggage" class="form-control">
+                                </div>
+
+                                <div class="form-group buttons">
+                                    <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+                                    <input type="submit" name="survey_submit" class="btn btn-primary" value="Submit">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
