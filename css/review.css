@@ -53,10 +53,18 @@ main {
 
 /* REVIEW WRITING */
 
+.create-review {
+    padding: 2em 0;
+    border-bottom: 1px solid black;
+}
+
+.input-group {
+    border-bottom: 1px solid black;
+    padding: 1em 0;
+}
 .Star_rating {
     float: left;
     height: 46px;
-    padding: 0 10px;
 }
 .Star_rating:not(:checked) > input {
     position:absolute;

@@ -1,11 +1,15 @@
+<?php 
+    session_start();
+?>
 <?php  include('config.php'); ?>
 <!DOCTYPE html>
-<html>
 <head>
-	<title>New Review</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Review</title>
 
-
-<!-- google fonts -->
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
@@ -28,10 +32,11 @@
 </div>
 
 <main>
-    <h2>Create Review</h2>
+    <h2 class="create-review">Create Review</h2>
 	<form method="post" action="config.php" >
 
 	<div class="wrapper">
+    <h2>Overall rating</h2>
 		<div class="Star_rating">
             <input type="radio" id="star5" name="Star_rating" value="5" />
             <label for="star5" title="text">5</label>
@@ -46,14 +51,14 @@
         </div>
 	</div>
 
-
+        
 		<div class="input-group">
+            
+        <h2>Add a written review</h2>
 			<input type="text" name="Comments" value="">
 		</div>
 
-
-
-		<div class="input-group">
+		<div class="input-group2">
 			<button class="btn" type="submit" name="save" >Save</button>
 		</div>
     
