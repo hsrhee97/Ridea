@@ -71,7 +71,7 @@
                         $ID = $row["DriverID"];
                     }
 
-                    $sql = "SELECT Rating_D_ID, DriverID ,Star_rating, Comments FROM RATING_DRIVER";
+                    $sql = "SELECT Rating_D_ID, DriverID ,Star_rating, Comments FROM RATING_DRIVER WHERE DriverID = '$ID'";
                     $result = mysqli_query($con, $sql);
                     $num_rows = mysqli_num_rows($result);
 
@@ -106,7 +106,7 @@
                             $ID = $row["PassengerID"];
                         }
     
-                        $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER";
+                        $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER WHERE PassengerID = '$ID'";
                         $result = mysqli_query($con, $sql);
                         $num_rows = mysqli_num_rows($result);
     

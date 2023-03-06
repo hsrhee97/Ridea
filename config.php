@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <?php 
     /* Database credentials. Assuming you are running MySQL
     server with default setting (user 'root' with no password) */
@@ -17,29 +21,66 @@
 	$Star_rating = "";
     $Comments = "";
 	$Rating_P_ID = 0;
-    $PassengerID = 0;
+    $PassengerID = "";
+    $DriverID =  "";
 	$update = false;
-
-	if (isset($_POST['save'])) {
-		$Comments = $_POST['Comments'];
-        $Star_rating = $_POST['Star_rating'];
-        echo $Comments;
-        //change static passengerid of 2 to dynamic passengerid that is retrieved from session 
-        $qcheck = "INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments) VALUES (2, $Star_rating, '$Comments')";
-        echo $qcheck;
-        $result = mysqli_query($link, $qcheck); 
-        if(false===$result){
-            printf("error: %s\n", mysqli_error($link));
-        }
-        else {
-            echo 'done';
-            header('location: review1.php');
-        }
+    $type = $_SESSION['type'];
+    $email = $_SESSION['login'];
+    $ID = '';
+    
+	if ($type =='driver') {
+        $sql = "SELECT * FROM DRIVER WHERE email='$email'";
+        $result = $link->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $ID = $row["DriverID"];
+            }
+    
+            if (isset($_POST['save'])) {
+                $Comments = $_POST['Comments'];
+                $Star_rating = $_POST['Star_rating'];
+                echo $Comments;
+                //change static passengerid of 2 to dynamic passengerid that is retrieved from session 
+                $qcheck = "INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments) VALUES ($ID, $Star_rating, '$Comments')";
+                echo $qcheck;
+                $result = mysqli_query($link, $qcheck); 
+                if(false===$result){
+                    printf("error: %s\n", mysqli_error($link));
+                }
+                else {
+                    echo 'done';
+                    header('location: review1.php');
+                }
+            }  
+        } 
+    }
+    elseif ($type == 'passenger') {
+        $sql = "SELECT * FROM PASSENGER WHERE email='$email'";
+        $result = $link->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $ID = $row["PassengerID"];
+            }
         
-		//$_SESSION['message'] = "Address saved"; 
-		/* $Star_rating = $_POST['Star_rating']; */
+            if (isset($_POST['save'])) {
+                $Comments = $_POST['Comments'];
+                $Star_rating = $_POST['Star_rating'];
+                echo $Comments;
+                //change static passengerid of 2 to dynamic passengerid that is retrieved from session 
+                $qcheck = "INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments) VALUES ($ID, $Star_rating, '$Comments')";
+                echo $qcheck;
+                $result = mysqli_query($link, $qcheck); 
+                if(false===$result){
+                    printf("error: %s\n", mysqli_error($link));
+                }
+                else {
+                    echo 'done';
+                    header('location: review1.php');
+                }
+            }
+        }
+    }
 
-	} 
 
 ?>
 
