@@ -53,10 +53,13 @@ CREATE TABLE TRIP (
 
 CREATE TABLE PAYMENT (
     PaymentID INT AUTO_INCREMENT,
-    Payment_amount DECIMAL(10,2),
-    TripID INT,
+    SurveyID INT,
+    payment_gross FLOAT(10,2),
+    txn_id VARCHAR(20),
+    currency_code VARCHAR(5),
+    payment_status VARCHAR(20),
     PRIMARY KEY (PaymentID),
-    FOREIGN KEY (TripID) REFERENCES TRIP(TripID)
+    FOREIGN KEY (SurveyID) REFERENCES SURVEY(SurveyID)
 );
 
 CREATE TABLE RATING_DRIVER (
@@ -81,6 +84,7 @@ CREATE TABLE HELP (
    HelpID INT AUTO_INCREMENT,
    DriverID INT,
    PassengerID INT,
+   TripID INT,
    email VARCHAR(255),
    trip_date DATE NOT NULL,
    lost_items VARCHAR(255),
@@ -88,7 +92,8 @@ CREATE TABLE HELP (
    help_type TEXT NOT NULL,
    PRIMARY KEY (HelpID),
    FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID),
-   FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
+   FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID),
+   FOREIGN KEY (TripID) REFERENCES TRIP(TripID)
 );
 
 CREATE TABLE SURVEY (
@@ -100,6 +105,9 @@ CREATE TABLE SURVEY (
    end_city VARCHAR(100),
    trip_date DATE NOT NULL,
    other TEXT,
+   status tinyint(1) NOT NULL DEFAULT '1',
+   Distance INT,
+   price FLOAT(10,2),
    PRIMARY KEY (SurveyID),
    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
@@ -177,16 +185,16 @@ VALUES
     (3, 3.5, 'Bob is a new driver and still needs improvement.'),
     (4, 3.5, 'Bob is a new driver and still needs improvement.');
 
-INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other) 
+INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other, Distance, price) 
 VALUES 
-    (1, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None'),
-    (2, '456 Elm St', 'Boston', '789 Maple Ave', 'Portland', '2024-02-02', 'Traffic was terrible!'),
-    (3, '444 1st Ave', 'Seattle', '555 2nd St', 'Los Angeles', '2024-02-02', NULL),
-    (6, '423 Elm St', 'Boston', '723 Ave', 'Portland', '2024-02-02', 'Traffic was terrible!'),
-    (5, '900 Beach Blvd', 'New York', '1000 Ocean Ave', 'Jacksonville', '2023-05-12', 'Stopped for lunch in Orlando.'),
-    (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL), 
-    (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None'),
-    (8, '534 College St', 'New York', '456 Elm St', 'Bloomington', '2023-04-15', 'None');
+    (1, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None', 230, 3.99),
+    (2, '456 Elm St', 'Boston', '789 Maple Ave', 'Portland', '2024-02-02', 'Traffic was terrible!', 250, 3.99),
+    (3, '444 1st Ave', 'Seattle', '555 2nd St', 'Los Angeles', '2024-02-02', NULL, 100, 9.99),
+    (6, '423 Elm St', 'Boston', '723 Ave', 'Portland', '2024-02-02', 'Traffic was terrible!',234, 103.99),
+    (5, '900 Beach Blvd', 'New York', '1000 Ocean Ave', 'Jacksonville', '2023-05-12', 'Stopped for lunch in Orlando.',23, 6.99),
+    (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL,23, 124.99), 
+    (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None', 230, 2.99),
+    (8, '534 College St', 'New York', '456 Elm St', 'Bloomington', '2023-04-15', 'None', 11, 3.99);
 
 INSERT INTO CHAT (SenderID, ReceiverID, message)
 VALUES 

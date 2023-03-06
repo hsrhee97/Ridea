@@ -132,8 +132,6 @@
                         $num_rows = mysqli_num_rows($result);
             
                         if ($num_rows > 0) {
-                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                            echo "<tr style='border:1px solid black;'><th>Start Location</th><th>End Location</th><th>Date</th>";
                             
                             while ($row = $result->fetch_assoc()) {
                                 echo "<div class='box'>";

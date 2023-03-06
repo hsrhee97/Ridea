@@ -14,12 +14,11 @@
 }
 
 body {
-    background-image: url(images/3dgeo.jpeg);
     height: 100vh;
     font-size: 16px;
     line-height: 1.6;
-    /* background-color: #ffffff; */
 }
+
 
 .header {
     font-size: 1.5em;
@@ -32,6 +31,7 @@ body {
 }
 
 .container {
+    height: 90%;
     display: flex;
     font-size: 1.6em;
     align-items: center;
@@ -40,16 +40,21 @@ body {
 
 .label {
     border-bottom: 1px solid black;
-    margin-bottom: 1em;
-    border-left: 1em solid var(--main-color);
     color: black;
-    padding: 1em;
-    font-size: 1em;
+    padding: 1em 1em 0 0;
     transition: 0.3s ease-out, color 0.3s ease-out;
 }
 
-.wrapper:hover {
+.label:hover {
     background-color: #cdcdcd;
+}
+
+.image-box img {
+    width: 50vw;
+    animation: floating;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 
 /* --------------------------------
@@ -112,4 +117,15 @@ main {
     border: none;
     border-radius: 0.2rem;
     padding: 0.5rem 1rem;
+}
+
+
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+  }
+
+@keyframes slideright {
+    
 }

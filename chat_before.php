@@ -58,15 +58,10 @@
 <body>
 <?php include 'includes/nav.php'; ?>
 
-<div class="header">
-    <h1>My Chat list </h1>
-    </div>
-
 <div class="container">
-
     <ul class="list">
+        <h2>Chats</h2>
         <?php foreach ($users as $user): ?>
-            
             <li>
                 <a class="button" href="chat.php?receiver_id=<?php echo $user["id"]; ?>">
                     <?php
@@ -81,9 +76,9 @@
             </li>
         <?php endforeach; ?>
     </ul>
-        <div class="img-box">
-            <img src="images/chat.jpeg" alt="chat pic">
-        </div>
+    <div class="image-box">
+        <img src="images/laptop.jpeg" alt="chat-image">
+    </div>
     </div>
 </body>
 </html>

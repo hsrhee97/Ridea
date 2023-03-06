@@ -6,7 +6,7 @@
 <html>
 <head>
 	<title>New Review</title>
-    <style>  <?php include 'css/review.css'; ?>  </style>
+
 
 <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,28 +16,41 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <style>  <?php include 'css/review.css'; ?>  </style>
+
 </head>
 <body>
+<?php include 'includes/nav.php'; ?>
+
+<div class="contents">
+    <div class="texts">
+    <h2>My <span>Review</span></h2>
+    <p>Let other passengers know how your ride went! Write, view, and edit your reviews below.</p>
+    </div>
+</div>
+
+<main>
     <h2>Create Review</h2>
 	<form method="post" action="config.php" >
+
 	<div class="wrapper">
 		<div class="Star_rating">
-    	<input type="radio" id="star5" name="Star_rating" value="5" />
-    	<label for="star5" title="text">5</label>
-    	<input type="radio" id="star4" name="Star_rating" value="4" />
-    	<label for="star4" title="text">4</label>
-    	<input type="radio" id="star3" name="Star_rating" value="3" />
-    	<label for="star3" title="text">3</label>
-    	<input type="radio" id="star2" name="Star_rating" value="2" />
-    	<label for="star2" title="text">2</label>
-    	<input type="radio" id="star1" name="Star_rating" value="1" />
-    	<label for="star1" title="text">1</label>
-    </div>
-		</div>
+            <input type="radio" id="star5" name="Star_rating" value="5" />
+            <label for="star5" title="text">5</label>
+            <input type="radio" id="star4" name="Star_rating" value="4" />
+            <label for="star4" title="text">4</label>
+            <input type="radio" id="star3" name="Star_rating" value="3" />
+            <label for="star3" title="text">3</label>
+            <input type="radio" id="star2" name="Star_rating" value="2" />
+            <label for="star2" title="text">2</label>
+            <input type="radio" id="star1" name="Star_rating" value="1" />
+            <label for="star1" title="text">1</label>
+        </div>
+	</div>
 
 
 		<div class="input-group">
-			<label>Add a written review</label>
 			<input type="text" name="Comments" value="">
 		</div>
 
@@ -46,7 +59,9 @@
 		<div class="input-group">
 			<button class="btn" type="submit" name="save" >Save</button>
 		</div>
+    
 	</form> 
+
 	<?php ＄results == mysqli_query(＄link, "SELECT * FROM RATING_PASSENGER"); ?>
 
         <div class='table'>
@@ -133,6 +148,7 @@
                     }
                 }
             ?>
+    </main>
 </body>
 </html>
 

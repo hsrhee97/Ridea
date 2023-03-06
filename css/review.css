@@ -13,6 +13,44 @@
     --main-color: #EC4E20;
 }
 
+body {
+    height: 100vh;
+    font-size: 16px;
+    color: #666666;
+    /* background-color: #f6f6f6; */
+}
+
+main {
+    margin: 0 auto;
+    width: 77%;
+    height: 80vh;
+}
+
+
+.contents {
+    padding: 4.5em 0 4em 0;
+    color: black;
+    background-image: url(images/gray.jpeg);
+}
+
+.contents h2 {
+    font-size: 4em;
+    font-weight: 700;
+}
+
+.contents h2 span {
+    color: var(--main-color);
+}
+.contents p {
+    font-size: 1em;
+    color: rgb(63, 63, 63);
+}
+
+.contents .texts {
+    width: 77%;
+    margin: 0 auto;
+}
+
 /* REVIEW WRITING */
 
 .Star_rating {

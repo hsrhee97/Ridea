@@ -117,3 +117,28 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+.btn.btn-warning {
+    color: white;
+    padding: 0.5em 0.8em;
+    background-color: rgb(68 68 68);
+    border-radius: 25px;
+    transition: 0.3s ease-out, color 0.3s ease-out;
+}
+
+.btn.btn-warning:hover {
+    color: rgb(41, 41, 41);
+    background-color: rgb(233 233 233);
+}
+
+
+/* -----------------------------------------
+                RIDE details
+----------------------------------------- */
+
+.detail-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
