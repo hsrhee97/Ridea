@@ -23,23 +23,6 @@ body {
 }
 
 
-/* .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
-    overflow: hidden;
-}
-  
-.form-wrapper {
-    max-width: 60vw;
-    height: 80vh;
-    width: 100%;
-    padding: 40px 40px 40px 40px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-} */
 
 .form-container {
     display: flex;
@@ -59,7 +42,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     box-sizing: border-box;
-    overflow-y: auto; /* 스크롤바 추가 */
+    overflow-y: auto;
+    margin-bottom: 3em;
 }
 
 
@@ -68,7 +52,7 @@ body {
 }
 
 .form-group.buttons {
-    padding: 7em 0 0 0;
+    padding: 7em 0 2em 0;
     text-align: right;
 }
 
@@ -98,7 +82,7 @@ input[type="reset"] {
     cursor: pointer;
 }
 
-input[type="submit"] {
+input[type="submit"], .roll_but {
     background-color: var(--main-color);
     border: none;
     color: #fff;
@@ -113,7 +97,7 @@ input[type="reset"]:hover {
     background-color: #808080;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, .roll_but:hover {
     background-color: #ffa500;
 }
 

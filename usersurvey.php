@@ -73,7 +73,7 @@
             ?>
 
             <div class="map">
-                <h1>Find The Distance Between Two Places.</h1>
+                <!-- <h1>Find The Distance Between Two Places.</h1> -->
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label for="from"></label>
@@ -88,7 +88,7 @@
                 </form>
 
                 <div class="form-group">
-                    <button class="btn btn-info btn-lg" onclick="calcRoute();">Calculate</button>
+                    <button class="roll_but" onclick="calcRoute();">Continue to Booking Form</button>
                 </div>
 
                 <div class="container-fluid">

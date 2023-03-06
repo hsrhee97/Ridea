@@ -5,13 +5,13 @@ var input2 = document.getElementById("to");
 var autocomplete2 = new google.maps.places.Autocomplete(input2);
 
 var myLatLng = {
-    lat: 38.346,
-    lng: -0.4907
+    lat: 39.172725,
+    lng: -86.523295
 }
 
 var mapOptions = {
     center: myLatLng,
-    zoom: 7,
+    zoom: 15,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
 }
 
@@ -67,6 +67,8 @@ function calcRoute() {
       document.getElementById("survey-form").style.display = "block"; //show the survey form
       document.querySelector(".form-wrapper").appendChild(document.getElementById("survey-form"));
 
+      document.querySelector('#survey-form').scrollIntoView({ behavior: 'smooth' });
+
     } else {
       //delete route from map
       directionsDisplay.setDirections({ routes: [] });
@@ -74,8 +76,8 @@ function calcRoute() {
       map.setCenter(myLatLng);
 
       //show error message
-      output.innerHTML =
-        "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> Could not retrieve driving distance.</div>";
+      // output.innerHTML =
+      //   "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> Could not retrieve driving distance.</div>";
     }
   });
 }
