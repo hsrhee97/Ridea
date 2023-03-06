@@ -152,7 +152,8 @@ VALUES
     ("David", "Wilson", "246 Maple St, Bloomington, IN", "789-012-3456", "davidwilson@example.com", PASSWORD('11111111'), "I'm a chef"),
     ("Maria", "Garcia", "135 Cherry St, Bloomington, IN", "890-123-4567", "mariagarcia@example.com", PASSWORD('11111111'), "I'm a librarian"),
     ("Megan", "Lee", "864 Birch St, Bloomington, IN", "901-234-5678", "meganlee@example.com", PASSWORD('11111111'), "I'm a photographer"),
-    ("Michael", "Davis", "579 Spruce St, Bloomington, IN", "012-345-6789", "michaeldavis@example.com", PASSWORD('11111111'), "I'm a lawyer");
+    ("Michael", "Davis", "579 Spruce St, Bloomington, IN", "012-345-6789", "michaeldavis@example.com", PASSWORD('11111111'), "I'm a lawyer"),
+    ('Krutang', 'Desai', '455 N', '317-313-1280', 'desaikr@iu.edu', PASSWORD('hello1234'), 'Nice to meet you');
 
     
 INSERT INTO TRIP(DriverID, PassengerID, Start_location, End_location, Distance, Date)
