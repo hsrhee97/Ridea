@@ -81,9 +81,9 @@
             </li>
         <?php endforeach; ?>
     </ul>
-        <div class="img-box">
-            <img src="images/chat.jpeg" alt="chat pic">
-        </div>
+    <div class="image-box">
+        <img src="images/chatting.jpeg" alt="chat-image">
+    </div>
     </div>
 </body>
 </html>
