@@ -104,10 +104,10 @@ CREATE TABLE SURVEY (
    end_address VARCHAR(255),
    end_city VARCHAR(100),
    trip_date DATE NOT NULL,
-   Distance INT,
-   status tinyint(1) NOT NULL DEFAULT '1',
-   price FLOAT(10,2),
    other TEXT,
+   status tinyint(1) NOT NULL DEFAULT '1',
+   Distance INT,
+   price FLOAT(10,2),
    PRIMARY KEY (SurveyID),
    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
 );
