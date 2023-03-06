@@ -91,6 +91,8 @@
                         echo "<td>" . $row["End_location"] . "</td>";
                         echo "<td>" . $row["Distance"] . "</td>";
                         echo "<td>" . $row["Date"] . "</td>";
+                        echo "<a class='btn btn-warning'href='review1.php'>Create a review for this trip</a>";
+                        
 
 
                     }
@@ -146,6 +148,7 @@
                             echo $row["End_location"];
                             echo $row["Distance"];
                             echo $row["Date"];
+                            echo "<a class='btn btn-warning'href='review1.php'>Create a review for this trip</a>";
                         echo "</div>";
                     }
 
