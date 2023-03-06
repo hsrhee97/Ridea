@@ -90,11 +90,11 @@
                             $driver_id = $D_row["DriverID"];
 
                             if(mysqli_num_rows($sql_email)==0) {
-                                $email_error = "This email is not registered! Use registration form to create an account.";
+                                $email_error = "This email is not registered!";
                             }
                             else {
                                 if(mysqli_num_rows($sql_password)==0) {
-                                    $password_error = "This password is not registered! Use registration form to create an account.";
+                                    $password_error = "This password is not registered!";
                                 }
                                 else{
                                     $_SESSION['login'] = $varemail;
@@ -109,7 +109,7 @@
                         }
                         else {
                             if(mysqli_num_rows($sql_password)==0) {
-                                $password_error = "This password is not registered! Use registration form to create an account.";
+                                $password_error = "This password is not registered!";
                             }
                             else{
                                 $_SESSION['login'] = $varemail;
@@ -140,11 +140,11 @@
                 <form method="post">
                     <div class="inputbox">
                         <span>Email</span>
-                        <input class="reg_box" type='email' name = "login_email" size="40">
+                        <input class="reg_box" type='email' name = "login_email" size="40" placeholder="<?php echo $email_error;?>">
                     </div>
                     <div class="inputbox">
                         <span>Password</span>
-                        <input class="reg_box" type='password' name = "login_password" size="40">
+                        <input class="reg_box" type='password' name = "login_password" size="40" placeholder="<?php echo $password_error;?>">
                     </div>
                     <div class="inputbox">
                         <input class="input_state" type="submit" name="login_submit" value="Login"> 
@@ -152,9 +152,9 @@
                     <div class="inputbox">
                         <p>New to RIDEA? <a href="register1.php">Register</a></p>
                     </div>
-                    </div>
                 </form>
             </div>
+        </div>
     </section>
 
 </body>

@@ -162,42 +162,42 @@
         <form method="POST">
             <div class="inputbox">
                 <span>First name</span>
-                <input class="reg_box" type='text' name = "fname">
+                <input class="reg_box" type='text' name = "fname" placeholder="<?php echo $fname_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Last name</span>
-                <input class="reg_box" type='text' name = "lname">
+                <input class="reg_box" type='text' name = "lname" placeholder="<?php echo $lname_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Email</span>
-            <input class="reg_box" type='email' name = "email" >
+            <input class="reg_box" type='email' name = "email" placeholder="<?php echo $email_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Password </span>
-            <input class="reg_box" type='password' name = "password" >
+            <input class="reg_box" type='password' name = "password" placeholder="<?php echo $password_error;?>">
             </div>
             
             <div class="inputbox">
                 <span>Address </span>
-            <input class="reg_box" type='text' name = "address" size="40">
+            <input class="reg_box" type='text' name = "address" size="40" placeholder="<?php echo $address_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Phone</span>
-            <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40">
+            <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40" placeholder="<?php echo $phone_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Biography</span>
-            <input class="reg_box" type='text' name = "biography" size="40">
+            <input class="reg_box" type='text' name = "biography" size="40"placeholder="<?php echo $biography_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>License number</span>
-            <input class="reg_box" type='text' name = "license_num" size="40">
+            <input class="reg_box" type='text' name = "license_num" size="40" placeholder="<?php echo $license_error;?>">
             </div>
 
             <div class="inputbox">
@@ -207,16 +207,16 @@
 
             <div class="inputbox">
                 <span>Vehicle Color</span>
-            <input class="reg_box" type='text' name = "vehicle_color" size="40">
+            <input class="reg_box" type='text' name = "vehicle_color" size="40" placeholder="<?php echo $color_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Model Name</span>
-            <input class="reg_box" type='text' name = "vehicle_model" size="40">
+            <input class="reg_box" type='text' name = "vehicle_model" size="40" placeholder="<?php echo $model_error;?>">
             </div>
 
             <div class="inputbox">
-                <input type="submit" name="registration_submit" value="Register" class="btn">
+                <input type="submit" name="registration_submit" value="Register" class="btn" >
             </div>
         </form>
     </div>

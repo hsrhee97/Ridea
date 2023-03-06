@@ -91,7 +91,7 @@ section .contentbox .formbox .inputbox span {
     margin-bottom: 5px;
     display: inline-block;
     color: var(--text-color-black);
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 1px;
 }
 
