@@ -59,7 +59,7 @@ function calcRoute() {
 
 
       const distance = parseInt(result.routes[0].legs[0].distance.text.replace(/,/g, ''));
-      const price = distance * 1.2;
+      const price = 6+ distance * 0.1;
 
       document.getElementsByName("distance")[0].value = distance;
       document.getElementsByName("price")[0].value = price.toFixed(2);
