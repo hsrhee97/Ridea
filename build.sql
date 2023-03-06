@@ -1,10 +1,9 @@
 DROP TABLE IF EXISTS CHAT;
+DROP TABLE IF EXISTS PAYMENT;
 DROP TABLE IF EXISTS SURVEY;
 DROP TABLE IF EXISTS HELP;
-DROP TABLE IF EXISTS RATING;
 DROP TABLE IF EXISTS RATING_PASSENGER;
 DROP TABLE IF EXISTS RATING_DRIVER;
-DROP TABLE IF EXISTS PAYMENT;
 DROP TABLE IF EXISTS TRIP;
 DROP TABLE IF EXISTS PASSENGER;
 DROP TABLE IF EXISTS DRIVER;
@@ -48,17 +47,6 @@ CREATE TABLE TRIP (
     PRIMARY KEY (TripID),
     FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID),
     FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
-);
-
-CREATE TABLE PAYMENT (
-    PaymentID INT AUTO_INCREMENT,
-    SurveyID INT,
-    payment_gross FLOAT(10,2),
-    txn_id VARCHAR(20),
-    currency_code VARCHAR(5),
-    payment_status VARCHAR(20),
-    PRIMARY KEY (PaymentID),
-    FOREIGN KEY (SurveyID) REFERENCES SURVEY(SurveyID)
 );
 
 CREATE TABLE RATING_DRIVER (
@@ -109,6 +97,17 @@ CREATE TABLE SURVEY (
    price FLOAT(10,2),
    PRIMARY KEY (SurveyID),
    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
+);
+
+CREATE TABLE PAYMENT (
+    PaymentID INT AUTO_INCREMENT,
+    SurveyID INT,
+    payment_gross FLOAT(10,2),
+    txn_id VARCHAR(20),
+    currency_code VARCHAR(5),
+    payment_status VARCHAR(20),
+    PRIMARY KEY (PaymentID),
+    FOREIGN KEY (SurveyID) REFERENCES SURVEY(SurveyID)
 );
 
 CREATE TABLE CHAT (
@@ -169,10 +168,6 @@ VALUES
     (4, 4, 'BOSTON', 'MIAMI', 324.87, '2022-08-04'),
     (5, 6, 'ORLANDO', 'CANCUN', 1234.87, '2022-09-29');
 
-INSERT INTO PAYMENT (Payment_amount, TripID)
-VALUES
-    (25.00, 1),
-    (30.00, 2);
 
 INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments)
 VALUES
@@ -195,6 +190,11 @@ VALUES
     (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL,23, 124.99), 
     (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None', 230, 2.99),
     (8, '534 College St', 'New York', '456 Elm St', 'Bloomington', '2023-04-15', 'None', 11, 3.99);
+
+-- INSERT INTO PAYMENT (Payment_amount, TripID)
+-- VALUES
+--     (25.00, 1),
+--     (30.00, 2);
 
 INSERT INTO CHAT (SenderID, ReceiverID, message)
 VALUES 

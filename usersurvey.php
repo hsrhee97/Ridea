@@ -37,12 +37,12 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label for="from"></label>
-                        <input type="text" id="from" placeholder="Origin" class="form-control">
+                        <input type="text" id="from" placeholder="Please enter the address in the street format only!" class="form-control">
 
                     </div>
                     <div class="form-group">
                         <label for="to"></label>
-                        <input type="text" id="to" placeholder="Destination" class="form-control">
+                        <input type="text" id="to" placeholder="Please enter the address in the street format only!" class="form-control">
 
                     </div>
                 </form>
@@ -68,7 +68,7 @@
 
                                 <div class="form-group">
                                     <label>Pickup Address</label>
-                                    <input type="text" name="start_point" class="form-control value=">
+                                    <input type="text" name="start_point" class="form-control">
                                 </div>    
 
                                 <div class="form-group">

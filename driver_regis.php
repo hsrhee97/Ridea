@@ -73,7 +73,7 @@
 
                     //phone error check
                     if (empty($_POST["phone"])) {
-                        $phone_error = "Phone is required!";
+                        $phone_error = "Phone number is required!";
                     }
                     else {
                         $varphone = mysqli_real_escape_string($con, $_POST['phone']);

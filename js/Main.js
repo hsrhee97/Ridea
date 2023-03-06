@@ -54,8 +54,8 @@ function calcRoute() {
       // Fill in the pickup and destination address fields in the survey form
       document.getElementsByName("start_point")[0].value = start_address;
       document.getElementsByName("destination")[0].value = end_address;
-      document.getElementsByName("city_start")[0].value = start_address.split(',')[0].trim();
-      document.getElementsByName("city_end")[0].value = end_address.split(',')[0].trim();
+      document.getElementsByName("city_start")[0].value = start_address.split(',')[1].trim();
+      document.getElementsByName("city_end")[0].value = end_address.split(',')[1].trim();
 
 
       const distance = parseInt(result.routes[0].legs[0].distance.text.replace(/,/g, ''));
