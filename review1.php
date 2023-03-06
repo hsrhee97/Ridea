@@ -1,4 +1,7 @@
 <?php  include('config.php'); ?>
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,30 +73,80 @@
         
             }
 
-            $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER";
-            $result = mysqli_query($con, $sql);
-            $num_rows = mysqli_num_rows($result);
+            $type = $_SESSION['type'];
+            $email = $_SESSION['login'];
+            $ID = '';
 
-            if ($num_rows > 0) {
-                echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                echo "<tr style='border:1px solid black;'><th>Rating</th><th>Comment</th>";
+            if ($type =='driver') {
+                
+                $sql = "SELECT * FROM DRIVER WHERE email='$email'";
+                $result = $con->query($sql);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $ID = $row["DriverID"];
+                    }
 
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr style='border:1px solid black;'>";
-                    echo "<td>" .$row["Star_rating"] . "</td>";
-                    echo "<td>" . $row["Comments"] . "</td>";
-                    echo "<td>";
-                    echo "<div class='btn-group'>";
-                    echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
-                    echo "<a class='btn btn-warning'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
-                    echo "</div>";
-                    echo "</td>";
-                    echo "</tr>";
+                    $sql = "SELECT Rating_D_ID, DriverID ,Star_rating, Comments FROM RATING_DRIVER WHERE DriverID = '$ID'";
+                    $result = mysqli_query($con, $sql);
+                    $num_rows = mysqli_num_rows($result);
+
+                    if ($num_rows > 0) {
+                        echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                        echo "<tr style='border:1px solid black;'><th>Rating</th><th>Comment</th>";
+
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr style='border:1px solid black;'>";
+                            echo "<td>" .$row["Star_rating"] . "</td>";
+                            echo "<td>" . $row["Comments"] . "</td>";
+                            echo "<td>";
+                            echo "<div class='btn-group'>";
+                            echo "<a class='btn btn-warning'href='edit.php?Rating_D_ID=".$row['Rating_D_ID']."'>Edit</a>";
+                            echo "<a class='btn btn-warning'href='delete.php?Rating_D_ID=".$row['Rating_D_ID']."'>Delete</a>";
+                            echo "</div>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "0 results";
+                    }
                 }
-                echo "</table>";
-            } else {
-                echo "0 results";
-            }
+            } 
+                elseif ($type == 'passenger')
+                {
+                    $sql = "SELECT * FROM PASSENGER WHERE email='$email'";
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            $ID = $row["PassengerID"];
+                        }
+    
+                        $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER WHERE PassengerID = '$ID'";
+                        $result = mysqli_query($con, $sql);
+                        $num_rows = mysqli_num_rows($result);
+    
+                        if ($num_rows > 0) {
+                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
+                            echo "<tr style='border:1px solid black;'><th>Rating</th><th>Comment</th>";
+    
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr style='border:1px solid black;'>";
+                                echo "<td>" .$row["Star_rating"] . "</td>";
+                                echo "<td>" . $row["Comments"] . "</td>";
+                                echo "<td>";
+                                echo "<div class='btn-group'>";
+                                echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
+                                echo "<a class='btn btn-warning'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+                                echo "</div>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "0 results";
+                        } 
+                    }
+                }
             ?>
     </main>
 </body>
