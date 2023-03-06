@@ -43,25 +43,27 @@ function calcRoute() {
   //pass the request to the route method
   directionsService.route(request, function (result, status) {
     if (status == google.maps.DirectionsStatus.OK) {
-      //Get distance and time
-      const output = document.querySelector("#output");
-      output.innerHTML =
-        "<div class='alert-info'>From: " +
-        document.getElementById("from").value +
-        ".<br />To: " +
-        document.getElementById("to").value +
-        ".<br /> Driving distance <i class='fas fa-road'></i> : " +
-        result.routes[0].legs[0].distance.text +
-        ".<br />Duration <i class='fas fa-hourglass-start'></i> : " +
-        result.routes[0].legs[0].duration.text +
-        ".</div>";
-
+      
       //display route
       directionsDisplay.setDirections(result);
 
       // Fill in the pickup and destination address fields in the survey form
-      document.getElementsByName("start_point")[0].value = document.getElementById("from").value;
-      document.getElementsByName("destination")[0].value = document.getElementById("to").value;
+      const start_address = result.routes[0].legs[0].start_address;
+      const end_address = result.routes[0].legs[0].end_address;
+      
+      // Fill in the pickup and destination address fields in the survey form
+      document.getElementsByName("start_point")[0].value = start_address;
+      document.getElementsByName("destination")[0].value = end_address;
+      document.getElementsByName("city_start")[0].value = start_address.split(',')[0].trim();
+      document.getElementsByName("city_end")[0].value = end_address.split(',')[0].trim();
+
+
+      const distance = parseInt(result.routes[0].legs[0].distance.text.replace(/,/g, ''));
+      const price = distance * 1.2;
+
+      document.getElementsByName("distance")[0].value = distance;
+      document.getElementsByName("price")[0].value = price.toFixed(2);
+
 
       // Show the survey form
       document.getElementById("survey-form").style.display = "block"; //show the survey form
@@ -69,16 +71,14 @@ function calcRoute() {
 
       document.querySelector('#survey-form').scrollIntoView({ behavior: 'smooth' });
 
+      
     } else {
       //delete route from map
       directionsDisplay.setDirections({ routes: [] });
-      //center map in London
+
       map.setCenter(myLatLng);
 
-      //show error message
-      // output.innerHTML =
-      //   "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> Could not retrieve driving distance.</div>";
-    }
+     }
   });
 }
 
