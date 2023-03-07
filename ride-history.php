@@ -1,28 +1,3 @@
-<!--OPEN AND CLOSE PHP TAG HERE 
-    /* session_start();
-    $r=session_id();
-    
-    $sql = "select * from TRIP";
-    $result = mysqli_query($con, $sql);
-    while($row = mysqli_fetch_array($result)) {
-        echo print_r($row);
-    } 
-    $_SESSION['PassengerID']=$PassengerID;
-    echo $PassengerID;
-    echo "the session id: ".$r;
-    echo " and the session has been registered for: ".$_SESSION['PassengerID']; */
- 
-
-/* UNCOMMENT THIS CODE NOT THE PREVIOUS ONE */
-/*     session_start();
-    $user_check=$_SESSION['login'];
-    echo $user_check;
-    $ses_sql=mysqli_query($con,"select Start_location, End_Location, PassengerID from TRIP where email='$user_check'");
-    $row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
-    $loggedin_session=$row['Start_location'];
-    $loggedin_id=$row['login'];
-    echo $loggedin_id */
--->
 <?php 
     session_start();
 ?>

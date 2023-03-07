@@ -22,13 +22,14 @@
 
 $Rating_P_ID=$_GET['Rating_P_ID'];
 $qcheck = "DELETE FROM RATING_PASSENGER WHERE Rating_P_ID=$Rating_P_ID"; 
-echo $qcheck;
+// echo $qcheck;
 $result = mysqli_query($link, $qcheck); 
 if(false===$result){
-  printf("error: %s\n", mysqli_error($link));}
+  printf("error: %s\n", mysqli_error($link));
+}
 else {
   echo ("<script>alert('Review deleted successfully!')</script>");
-  header('location: ride-history.php');
+  echo("<script>location.replace('ride-history.php');</script>");
   }
 
 ?>
