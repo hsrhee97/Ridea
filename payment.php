@@ -22,6 +22,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,14 +33,14 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- another icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <style> <?php include 'css/matching.css'; ?> </style>
+    <style> <?php include 'css/payment.css'; ?> </style>
     
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 </head>
 <?php include 'includes/nav.php'; ?>
+
 <body>
-    <main>
         <?php
             $user_id = $_SESSION["id"];
             $user_survey_id = $_GET["user_survey_id"];
@@ -47,15 +49,6 @@
             $_SESSION["user_survey_id"] = $user_survey_id;
             $_SESSION["pass_survey_id"] = $pass_survey_id;
 
-            echo "U_survey:", $user_survey_id;
-            echo "<br>";
-            echo "P_survey:", $pass_survey_id;
-            echo "<br>";
-            echo "user id:", $user_id;
-            echo "<br>";
-
-            // echo "<a class='last_btn' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
-        //Fetch products from the database
         $sql = "SELECT * FROM SURVEY WHERE SurveyID = '$user_survey_id' ";
         $results = $conn->query($sql);   
         while($row = $results->fetch_assoc()){
@@ -63,7 +56,7 @@
             <div class="container">
                 <div class="card">
                     <div class="body">
-                        <img src="images/high5.png" alt="highfive">
+                    <img src="images/high5.png" alt="highfive">
                         <h6>Your Ride from<?php echo $row['start_address']?> to <?php echo $row['end_address']?></h6>
                         <h6>Price: <?php echo '$'.$row['price'].' '.PAYPAL_CURRENCY; ?></h6>
                         <!-- Paypal payment form for displaying the buy button -->
@@ -90,6 +83,6 @@
             }
         ?>
     </div>
-    </main>
+
 </body>
 </html>
