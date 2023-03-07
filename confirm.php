@@ -35,14 +35,6 @@
             $user_survey_id = $_SESSION["user_survey_id"];  
             $pass_survey_id = $_SESSION["pass_survey_id"];
 
-
-            echo "U_survey:", $user_survey_id;
-            echo "<br>";
-            echo "P_survey:", $pass_survey_id;
-            echo "<br>";
-            echo "user id:", $user_id;
-            echo "<br>";
-
             $conn = mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
 
             if (!$conn) {
@@ -66,17 +58,17 @@
                     VALUES ('$driver_id', '$passenger_id', '$start_location', '$end_location', '$distance', '$date')";
 
                     if ($conn->query($sql_insert) === TRUE) {
-                        echo "Record moved to trip";
+                        // echo "Record moved to trip";
                     } else {
-                        echo "Error: " . $sql_insert . "<br>" . $conn->error;
+                        // echo "Error: " . $sql_insert . "<br>" . $conn->error;
                     }
                 }
 
                 $sql_delete = "DELETE FROM SURVEY WHERE SurveyID = $user_survey_id";
                 if ($conn->query($sql_delete) === TRUE) {
-                    echo "Record deleted from survey";
+                    // echo "Record deleted from survey";
                 } else {
-                    echo "Error: " . $sql_delete . "<br>" . $conn->error;
+                    // echo "Error: " . $sql_delete . "<br>" . $conn->error;
                 }
             } else {
                 echo "0 results";
@@ -101,21 +93,21 @@
                     VALUES ('$p_driver_id', '$p_passenger_id', '$p_start_location', '$p_end_location', '$p_distance', '$p_date')";
 
                     if ($conn->query($p_sql_insert) === TRUE) {
-                        echo "passenger record moved to trip";
+                        // echo "passenger record moved to trip";
                     } else {
-                        echo "Error: " . $p_sql_insert . "<br>" . $conn->error;
+                        // echo "Error: " . $p_sql_insert . "<br>" . $conn->error;
                     }
                 }
 
                 $p_sql_delete = "DELETE FROM SURVEY WHERE SurveyID = $pass_survey_id";
 
                 if ($conn->query($p_sql_delete) === TRUE) {
-                    echo "passenger record deleted from survey";
+                    // echo "passenger record deleted from survey";
                 } else {
-                    echo "Error: " . $p_sql_delete . "<br>" . $conn->error;
+                    // echo "Error: " . $p_sql_delete . "<br>" . $conn->error;
                 }
             } else {
-                echo "0 results";
+                // echo "0 results";
             }
 
             $chat_sql_insert = "INSERT INTO CHAT (SenderID, ReceiverID, message) VALUES ('$passenger_id', '$p_passenger_id', '')";
