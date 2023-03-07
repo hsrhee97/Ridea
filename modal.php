@@ -13,15 +13,17 @@
     }
     if (isset($_GET['id'])) {
         $eventId = $_GET['id'];
-        $sql = "SELECT * FROM SURVEY WHERE SurveyID = '$eventId'";
+        $sql = "SELECT SURVEY.*, PASSENGER.fname, PASSENGER.lname FROM SURVEY
+                JOIN PASSENGER ON SURVEY.PassengerID = PASSENGER.PassengerID
+                WHERE SurveyID = '$eventId'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $event = $result->fetch_assoc();
             echo "<h2>" . $event['trip_date'] . "</h2>";
             echo "<p>Start City: " . $event['start_city'] . "</p>";
             echo "<p>End City: " . $event['end_city'] . "</p>";
-            echo "<p>Passenger: " . $event['PassengerID'] . "</p>";
-            echo "<a class='last_btn' href='payment.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
+            echo "<p>Passenger: " . $event['fname'] . " " . $event['lname'] . "</p>";
+            echo "<a class='last_btn' href='survey_insert.php?survey_id=".$event['SurveyID']."&pass_survey_id=".$event['PassengerID']."'>Reserve your spot</a>";
         }
     }
 ?>
