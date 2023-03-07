@@ -36,18 +36,18 @@
 
             $type = $_SESSION['type'];
             $email = $_SESSION['login'];
-            $ID = '';
-            $TripID = 0 ;
-            $passenger_name ='';
-            $driver_name ='';
-            $D_ID ='';
-            $d_name ='';
-            $d_fname = '';
-            $d_lname ='';
-            $P_ID ='';
-            $p_name ='';
-            $p_fname ='';
-            $p_lname ='';
+            // $ID = '';
+            // $TripID = 0 ;
+            // $passenger_name ='';
+            // $driver_name ='';
+            // $D_ID ='';
+            // $d_name ='';
+            // $d_fname = '';
+            // $d_lname ='';
+            // $P_ID ='';
+            // $p_name ='';
+            // $p_fname ='';
+            // $p_lname ='';
             
             if ($type =='driver') {
                 $TripID = $_GET['TripID'];
@@ -75,7 +75,7 @@
                     }
 
                 
-                $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
+                $sql = "SELECT * FROM TRIP WHERE TripID = $TripID";
                 $result = mysqli_query($conn, $sql);
                 $num_rows = mysqli_num_rows($result);
             
@@ -87,8 +87,8 @@
                         echo "<td>" . $p_fname . "</td>";
                         echo "<td>" . $p_lname . "</td>";
                         echo "<td>" . $row["PassengerID"] . "</td>";
-                        echo "<td>" . $row["Start_location"] . "</td>";
-                        echo "<td>" . $row["End_location"] . "</td>";
+                        echo "<td>" . $row["Start_location"] . ", " . $row["start_city"] . "</td>";
+                        echo "<td>" . $row["End_location"] . ", " . $row["end_city"] . "</td>";
                         echo "<td>" . $row["Distance"] . "</td>";
                         echo "<td>" . $row["Date"] . "</td>";
                         echo "<a class='btn btn-warning'href='review1.php'>Create a review for this trip</a>";
@@ -133,7 +133,7 @@
 
                 
 
-                $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
+                $sql = "SELECT * FROM TRIP WHERE TripID = $TripID";
                 $result = mysqli_query($conn, $sql);
                 $num_rows = mysqli_num_rows($result);
             
@@ -144,8 +144,8 @@
                             echo $row["TripID"];
                             echo $d_fname;
                             echo $d_lname;
-                            echo $row["Start_location"];
-                            echo $row["End_location"];
+                            echo "<td>" . $row["Start_location"] . ", " . $row["start_city"] . "</td>";
+                            echo "<td>" . $row["End_location"] . ", " . $row["end_city"] . "</td>";
                             echo $row["Distance"];
                             echo $row["Date"];
                             echo "<a class='btn btn-warning'href='review1.php'>Create a review for this trip</a>";

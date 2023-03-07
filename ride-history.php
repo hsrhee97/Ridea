@@ -136,8 +136,8 @@
                             while ($row = $result->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address'>";
-                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
-                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["start_city"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["end_city"]."</span>";
                                         echo "<div class='datebox'>";
                                             echo $row["Date"];
                                         echo "</div>";
@@ -169,8 +169,8 @@
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address'>";
-                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
-                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["start_city"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["end_city"]."</span>";
                                         echo "<div class='datebox'>";
                                             echo $row["Date"];
                                         echo "</div>";
@@ -216,8 +216,8 @@
                             while ($row = $result->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address'>";
-                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
-                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["start_city"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["end_city"]."</span>";
                                         echo "<div class='datebox'>";
                                             echo $row["Date"];
                                         echo "</div>";
@@ -247,8 +247,8 @@
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address-box'>";
-                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
-                                        echo "<span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["start_city"]."</span>";
+                                        echo "<span>TO</span>". "<span class='data'>". $row["end_city"]."</span>";
                                             echo "<div class='datebox'>";
                                                 echo $row["Date"];
                                             echo "</div>";

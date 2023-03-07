@@ -41,7 +41,9 @@ CREATE TABLE TRIP (
     DriverID INT,
     PassengerID INT,
     Start_location VARCHAR(255),
+    start_city VARCHAR(100),
     End_location VARCHAR(255),
+    end_city VARCHAR(100),
     Distance DECIMAL(10,2),
     Date DATE,
     PRIMARY KEY (TripID),
@@ -159,21 +161,19 @@ VALUES
     ("Michael", "Davis", "579 Spruce St, Bloomington, IN", "012-345-6789", "michaeldavis@example.com", PASSWORD('11111111'), "I'm a lawyer"),
     ('Krutang', 'Desai', '455 N', '317-313-1280', 'desaikr@iu.edu', PASSWORD('hello1234'), 'Nice to meet you');
 
-    
-INSERT INTO TRIP(DriverID, PassengerID, Start_location, End_location, Distance, Date)
-VALUES 
-    (3, 13, 'Bloomington', 'Miami', 482, '2023-03-19'),
-    (2, 13, 'Greenville', 'Brownville', 123, '2022-07-26'),
-    (3, 13, 'Chicago', 'Miami', 456, '2022-07-29'),
-    (4, 13, 'San Francisco', 'Seattle', 456, '2022-07-21'),
-    (6, 13, 'Boston', 'Bloomington', 598, '2022-07-12'),
-    (6, 13, 'Los Angeles', 'San Francisco', 383, '2022-02-13'),
-    (2, 13, '789 Oak St', '321 Pine St', 15, '2022-02-14'),
-    (3, 5, 'Chicago', 'Los Angeles', 432, '2022-08-23'),
-    (4, 3, 'BOSTON', 'MIAMI', 324.87, '2022-08-04'),
-    (3, 2, 'Bloomington', 'Los Angeles', 23, '2022-08-23'),
-    (4, 4, 'BOSTON', 'MIAMI', 324, '2022-08-04'),
-    (5, 6, 'ORLANDO', 'CANCUN', 123, '2021-09-29');
+
+INSERT INTO TRIP (DriverID, PassengerID, Start_location, start_city, End_location, end_city, Distance, Date)
+VALUES
+    (2, 13, '123 Main St', 'San Francisco', '456 Elm St', 'Oakland', 12.5, '2022-02-01'),
+    (1, 13, '789 Maple Ave', 'Los Angeles', '321 Pine St', 'Santa Monica', 8.2, '2022-02-02'),
+    (3, 13, '555 Broadway', 'New York', '123 Main St', 'Brooklyn', 15.8, '2022-02-03'),
+    (4, 13, '1111 Market St', 'San Francisco', '555 5th Ave', 'New York', 39.2, '2022-02-04'),
+    (5, 13, '321 Pine St', 'Santa Monica', '789 Maple Ave', 'Los Angeles', 8.2, '2022-02-05'),
+    (2, 1, '123 Main St', 'San Francisco', '1111 Market St', 'San Francisco', 5.6, '2022-02-06'),
+    (3, 4, '555 Broadway', 'New York', '456 Elm St', 'Oakland', 22.3, '2022-02-07'),
+    (1, 2, '789 Maple Ave', 'Los Angeles', '555 Broadway', 'New York', 41.8, '2022-02-08'),
+    (4, 2, '1111 Market St', 'San Francisco', '321 Pine St', 'Santa Monica', 7.3, '2022-02-09'),
+    (5, 1, '321 Pine St', 'Santa Monica', '123 Main St', 'San Francisco', 7.8, '2022-02-10');
 
 
 INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments, TripID)
