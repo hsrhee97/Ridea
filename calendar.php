@@ -35,6 +35,7 @@
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
+        $pass_id = $_SESSION['id'];
         // Set locale to English
         setlocale(LC_TIME, 'en_US.utf8');
 
@@ -67,7 +68,7 @@
 
         for ($day = 1; $day <= $last_day; $day++, $first_day++) {
             $date = $ym . '-' . $day;
-            $sql = "SELECT * FROM SURVEY WHERE trip_date = '$date'";
+            $sql = "SELECT * FROM SURVEY WHERE trip_date = '$date' AND PassengerID != '$pass_id'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
