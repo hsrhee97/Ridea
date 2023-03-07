@@ -23,6 +23,7 @@
             echo "<p>Start City: " . $event['start_city'] . "</p>";
             echo "<p>End City: " . $event['end_city'] . "</p>";
             echo "<p>Passenger: " . $event['fname'] . " " . $event['lname'] . "</p>";
+            echo "<br>";
             echo "<a class='last_btn' href='survey_insert.php?survey_id=".$event['SurveyID']."&pass_survey_id=".$event['PassengerID']."'>Reserve your spot</a>";
         }
     }

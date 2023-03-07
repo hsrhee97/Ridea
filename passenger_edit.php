@@ -130,24 +130,81 @@
     }
 
     if (isset($_POST['submit'])) {
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $password = $_POST['password'];
-        $address = $_POST['address'];
-        $phone = $_POST['phone'];
-        $biography = $_POST['biography'];
-        $credit_card = $_POST['credit_card'];
+        $fname_error = $lname_error = $address_error = $phone_error = $email_error = $password_error = $biography_error = $card_error  =  "";
 
-        $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', password = PASSWORD('$password'), biography = '$biography' WHERE PassengerID = '$PassengerID' " ;
-
-        $result = mysqli_query($link, $query); 
-        if(false===$result){
-            printf("error: %s\n", mysqli_error($link));
+        //fname error check
+        if (empty($_POST["fname"])) {
+            $fname_error = "First Name is required!";
         }
         else {
-            echo ("<script>alert('Your profile has been successfully updated')</script>");
-            echo("<script>location.replace('profile.php');</script>");
-            exit;
+            $fname = mysqli_real_escape_string($con, $_POST['fname']);
         }
+
+        //lanme error check
+        if (empty($_POST["lname"])) {
+            $lname_error = "Last Name is required!";
+        }
+        else {
+            $lname = mysqli_real_escape_string($con, $_POST['lname']);
+        }
+
+        //email error check
+        if (empty($_POST["email"])) {
+            $email_error = "Email is required!";
+            
+        }
+        else {
+            $email = mysqli_real_escape_string($con, $_POST['email']);
+            if (!filter_($email, FILTER_VALIDATE_EMAIL)) {
+                $email_error = "Invalid email format!";
+            }
+        }
+
+        //password error check
+        if (empty($_POST["password"])) {
+            $password_error = "Password is required!";
+        }
+        else {
+            $password = mysqli_real_escape_string($con, $_POST['password']);
+            if(mb_strlen($password)<8){
+                $password_error = "Password should be more than 8 letters!";
+            }        
+        }                            
+
+        //address error check
+        if (empty($_POST["address"])) {
+            $address_error = "address is required!";
+        }
+        else {
+            $address = mysqli_real_escape_string($con, $_POST['address']);
+        }
+
+        //phone error check
+        if (empty($_POST["phone"])) {
+            $phone_error = "Phone number is required!";
+        }
+        else {
+            $phone = mysqli_real_escape_string($con, $_POST['phone']);
+        }
+
+        $biography = $_POST['biography'];
+
+        if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 ) {
+
+        }
+        else{
+            $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', password = PASSWORD('$password'), biography = '$biography' WHERE PassengerID = '$PassengerID' " ;
+
+            $result = mysqli_query($link, $query); 
+            if(false===$result){
+                printf("error: %s\n", mysqli_error($link));
+            }
+            else {
+                echo ("<script>alert('Your profile has been successfully updated')</script>");
+                echo("<script>location.replace('profile.php');</script>");
+                exit;
+            }
+        }
+        
     }
 ?>
