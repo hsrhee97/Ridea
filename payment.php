@@ -1,13 +1,13 @@
 <?php 
+    session_start();
+    include_once 'paymentconfig.php';
 
-include_once 'paymentconfig.php';
-
-$conn = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
-            if (!$conn) {
-                die("Failed to connect to MySQL: " . mysqli_connect_error());
-            } else {
-                
-            }
+    $conn = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
+                if (!$conn) {
+                    die("Failed to connect to MySQL: " . mysqli_connect_error());
+                } else {
+                    
+                }
 
 ?>
 

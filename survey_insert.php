@@ -13,7 +13,7 @@
         $distance = $_POST['distance'];
         $price = $_POST['price'];
 
-        $_SESSION["pass_survey_id"] = $distance;
+        $_SESSION["distance"] = $distance;
 
         $conn=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
 
