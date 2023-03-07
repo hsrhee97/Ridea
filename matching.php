@@ -214,11 +214,11 @@
 
             //None
             if (count($matches['different_all']) > 0) {
-                echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+                // echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
                 
-                echo "<div class='button-box'>";
-                echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
-                echo "</div>";
+                // echo "<div class='button-box'>";
+                // echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
+                // echo "</div>";
             }
 
 
