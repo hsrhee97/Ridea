@@ -152,11 +152,11 @@
                                 echo "</div>";
 
                                 echo "<div class='label'>";
-                                        echo "<h3>Pickup Point - </h3>". $row["Start_location"];
+                                    echo "<h3>Pickup Point - </h3>". $row["Start_location"];
                                 echo "</div>";
 
                                 echo "<div class='label'>";
-                                    echo "<h3>Pickup Point - </h3>". $row["End_location"];
+                                    echo "<h3>Destination - </h3>". $row["End_location"];
                                 echo "</div>";
 
 
