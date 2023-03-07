@@ -205,9 +205,7 @@
                 echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
                 
                 echo "<div class='button-box'>";
-                // echo ("<script>alert('Your reservation has been registered. We will contact you if we find a match with another passenger.')</script>");
-                // echo("<script>location.replace('calendar.php');</script>");
-                echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
+                echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
                 echo "</div>";
             }
 
@@ -216,9 +214,7 @@
             echo "<p class='ask_book'>There are no cases. You can still proceed with the booking even if there are no matching results for your search criteria</p>";
 
             echo "<div class='button-box'>";
-            // echo ("<script>alert('Your reservation has been registered. We will contact you if we find a match with another passenger.')</script>");
-            // echo("<script>location.replace('calendar.php');</script>");
-            echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
+            echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
             echo "</div>";
         }
 
