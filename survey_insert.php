@@ -33,10 +33,10 @@
             $new_survey_id = mysqli_insert_id($conn);
             mysqli_stmt_close($stmt);
         }
-        $conn->close();
 
         // Redirect to payment page with new survey ID
         header("Location: payment.php?user_survey_id=".$new_survey_id."&pass_survey_id=".$other_surID);
+        $conn->close();
         exit();
     }
     

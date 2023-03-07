@@ -51,8 +51,9 @@
             printf("error: %s\n", mysqli_error($link));
         }
         else {
-            echo 'done';
-            header('location: lostandfound.php');
+            echo ("<script>alert('Your lost and found form has been submitted. Thank you for reporting!')</script>");
+            echo("<script>location.replace('home.php');</script>");
+            exit;
         }
         
 		//$_SESSION['message'] = "Address saved"; 
