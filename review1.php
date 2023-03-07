@@ -2,6 +2,9 @@
     session_start();
 ?>
 <?php  include('config.php'); ?>
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -77,9 +80,9 @@
         
             }
 
-            $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER";
-            $result = mysqli_query($con, $sql);
-            $num_rows = mysqli_num_rows($result);
+            $type = $_SESSION['type'];
+            $email = $_SESSION['login'];
+            $ID = '';
 
             if ($num_rows > 0) {
 

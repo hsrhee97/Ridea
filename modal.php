@@ -13,7 +13,7 @@
             echo "<p>Start City: " . $event['start_city'] . "</p>";
             echo "<p>End City: " . $event['end_city'] . "</p>";
             echo "<p>Passenger: " . $event['PassengerID'] . "</p>";
-            echo "<a class='last_btn' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
+            echo "<a class='last_btn' href='payment.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
         }
     }
 ?>

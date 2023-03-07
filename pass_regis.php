@@ -95,7 +95,7 @@
 
                     //phone error check
                     if (empty($_POST["phone"])) {
-                        $phone_error = "Phone is required!";
+                        $phone_error = "Phone number is required!";
                     }
                     else {
                         $varphone = mysqli_real_escape_string($con, $_POST['phone']);
@@ -112,15 +112,15 @@
                     }
 
                     //credit card error check
-                    if (empty($_POST["card"])) {
-                        $card_error = "Credit-card is required!";
-                    }
-                    else {
-                        $varcard = mysqli_real_escape_string($con, $_POST['card']);
-                    }
+                    // if (empty($_POST["card"])) {
+                    //     $card_error = "Credit-card is required!";
+                    // }
+                    // else {
+                    //     $varcard = mysqli_real_escape_string($con, $_POST['card']);
+                    // }
                     
 
-                    if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 OR empty($_POST["card"])) {
+                    if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 ) {
 
                     }
                     else{
@@ -131,7 +131,7 @@
                             $email_error = "This email is already registered!";
                         }
                         else {
-                            mysqli_query($con,("INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography, credit_card) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography' ,'$varcard')"));
+                            mysqli_query($con,("INSERT INTO PASSENGER (fname, lname, address, phone, email, password, biography) VALUES ('$varfname', '$varlname', '$varaddress', '$varphone', '$varemail', PASSWORD('$varpassword'),'$varbiography')"));
                             echo ("<script>alert('You have been registered!')</script>");
                             echo("<script>location.replace('home.php');</script>");
                         }
@@ -146,43 +146,43 @@
         <form method="POST">
             <div class="inputbox">
                 <span>First name</span>
-                <input class="reg_box" type='text' name = "fname">
+                <input class="reg_box" type='text' name = "fname" placeholder="<?php echo $fname_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Last name</span>
-                <input class="reg_box" type='text' name = "lname">
+                <input class="reg_box" type='text' name = "lname" placeholder="<?php echo $lname_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Email</span>
-            <input class="reg_box" type='email' name = "email" >
+            <input class="reg_box" type='email' name = "email" placeholder="<?php echo $email_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Password </span>
-            <input class="reg_box" type='password' name = "password" >
+            <input class="reg_box" type='password' name = "password" placeholder="<?php echo $password_error;?>">
             </div>
             
             <div class="inputbox">
                 <span>Address </span>
-            <input class="reg_box" type='text' name = "address" size="40">
+            <input class="reg_box" type='text' name = "address" size="40" placeholder="<?php echo $address_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Phone</span>
-            <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40">
+            <input class="reg_box" type='tel' name = "phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="40" placeholder="<?php echo $phone_error;?>">
             </div>
 
             <div class="inputbox">
                 <span>Biography</span>
-            <input class="reg_box" type='text' name = "biography" size="40">
+            <input class="reg_box" type='text' name = "biography" size="40" placeholder="<?php echo $biography_error;?>">
             </div>
 
-            <div class="inputbox">
+            <!-- <div class="inputbox">
                 <span>Credit Card</span>
             <input class="reg_box" type='text' name = "card" size="40">
-            </div>
+            </div> -->
 
             <div class="inputbox">
                 <input type="submit" name="registration_submit" value="Register" class="btn">
