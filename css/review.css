@@ -192,3 +192,15 @@ form {
     color: rgb(41, 41, 41);
     background-color: rgb(233 233 233);
 }
+
+
+/* EDIT */
+
+.edit-button {
+    float: right;
+    background-color: rgb(255 71 71);
+    border: none;
+    padding: 1em;
+    border-radius: 7px;
+    color: white;
+}
