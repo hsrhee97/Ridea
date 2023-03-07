@@ -1,13 +1,15 @@
+<?php  include('config.php'); ?>
 <?php 
     session_start();
 ?>
-<?php  include('config.php'); ?>
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Review</title>
+    <title>My Review</title>
+
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,15 +58,14 @@
         
 		<div class="input-group"> 
         <h2>Add a written review</h2>
-			<textarea class="text-area" type="text" name="Comments" cols="40" rows="8" value=""></textarea>
+			<textarea class="text-area" type="text" name="Comments" cols="40" rows="8" value="" placeholder="What did you like/dislike about the ride?"></textarea>
 		</div>
 
 		<div class="input-group2">
-			<button class="btn" type="submit" name="save" >Save</button>
+			<button class="btn" type="submit" name="save" >Submit Review</button>
 		</div>
     
 	</form> 
-
 
 	<?php ＄results == mysqli_query(＄link, "SELECT * FROM RATING_PASSENGER"); ?>
 
@@ -77,31 +78,82 @@
         
             }
 
-            $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER";
-            $result = mysqli_query($con, $sql);
-            $num_rows = mysqli_num_rows($result);
+            $type = $_SESSION['type'];
+            $email = $_SESSION['login'];
+            $ID = '';
 
-            if ($num_rows > 0) {
+            if ($type =='driver') {
+                
+                $sql = "SELECT * FROM DRIVER WHERE email='$email'";
+                $result = $con->query($sql);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $ID = $row["DriverID"];
+                    }
 
-                while ($row = $result->fetch_assoc()) {
+                    $sql = "SELECT Rating_D_ID, DriverID ,Star_rating, Comments FROM RATING_DRIVER WHERE DriverID = '$ID'";
+                    $result = mysqli_query($con, $sql);
+                    $num_rows = mysqli_num_rows($result);
 
-                    echo "<div class='history-wrapper'>";
-                        echo $row["Star_rating"];
-                        echo $row["Comments"];
-                        
-                        echo "<div class='btn-group'>";
-                            echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
-                            echo "<a class='btn btn-warning'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+                    if ($num_rows > 0) {
+
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<div class='history-wrapper'>";
+                            echo "<div class='databox'>";
+    
+                                echo "<span class='starrate'>".$row["Star_rating"]."</span>";
+                                echo "<span class='data'>".$row["Comments"]."</span>";
+                            
+                                echo "<div class='btn-group'>";
+                                    echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
+                                    echo "<a class='btn btn-warning2'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+                                echo "</div>";
+    
+                            echo "</div>";
                         echo "</div>";
-                    echo "</div>";
+                        }
+                    } else {
+                        echo "";
+                    }
                 }
-            } else {
-                echo "0 results";
-            }
+            } 
+                elseif ($type == 'passenger')
+                {
+                    $sql = "SELECT * FROM PASSENGER WHERE email='$email'";
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            $ID = $row["PassengerID"];
+                        }
+    
+                        $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER WHERE PassengerID = '$ID'";
+                        $result = mysqli_query($con, $sql);
+                        $num_rows = mysqli_num_rows($result);
+    
+                        if ($num_rows > 0) {
+    
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<div class='history-wrapper'>";
+                                echo "<div class='databox'>";
+        
+                                    echo "<span class='starrate'>".$row["Star_rating"]."</span>";
+                                    echo "<span class='data'>".$row["Comments"]."</span>";
+                                
+                                    echo "<div class='btn-group'>";
+                                        echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
+                                        echo "<a class='btn btn-warning2'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+                                    echo "</div>";
+        
+                                echo "</div>";
+                            echo "</div>";
+                            }
+                        } else {
+                            echo "";
+                        } 
+                    }
+                }
             ?>
     </main>
 </body>
 </html>
-
-
 
