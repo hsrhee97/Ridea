@@ -9,6 +9,7 @@
 <?php
     $other_surID = $_GET['survey_id'];
     $other_pass_id = $_GET['pass_survey_id'];
+    $user_id = $_SESSION["id"];
     echo $other_surID;
     if (isset($other_surID)) {
         $conn=mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
@@ -28,7 +29,7 @@
         $sql = "INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other, Distance, price) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         if ($stmt = mysqli_prepare($conn, $sql)) {
-            mysqli_stmt_bind_param($stmt, 'issssssdd', $other_pass_id, $start_address, $start_city, $end_address, $end_city, $trip_date, $other, $distance, $price);
+            mysqli_stmt_bind_param($stmt, 'issssssdd', $user_id, $start_address, $start_city, $end_address, $end_city, $trip_date, $other, $distance, $price);
             mysqli_stmt_execute($stmt);
             $new_survey_id = mysqli_insert_id($conn);
             mysqli_stmt_close($stmt);
