@@ -57,47 +57,15 @@
             //echo $insert;
         }    
 
+        header('Location: confirm.php');
+        exit;
+
     }
     else {
     }
-    ?>
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayPal Payment Status</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
-    <div class="container">
-        <div class="main">
-            <div class="status">
-            <?php if(!empty($payment_id)){ ?>
-                <h1 class="success">Your Payment has been successful</h1>
-                <h4>Payment Information</h4>
-                <p><b>Transaction ID:</b> <?php echo $txn_id; ?></p>
-                <p><b>Paid Amount:</b> <?php echo $payment_gross; ?></p>
-                <p><b>Payment Status:</b> <?php echo $payment_status; ?></p>
-
-                <h4>Test</h4>
-                <p><b>U_survey:</b> <?php echo $user_survey_id; ?></p>
-                <p><b>P_survey:</b> <?php echo $pass_survey_id; ?></p>
-                <p><b>Distance:</b> <?php echo $distance; ?></p>
-
-                <?php }else{ ?>
-                    <h1 class="error">Your Payment has failed</h1>
-                <?php } ?>
-            </div>
-            <?php echo "<a class='btn btn-warning' href='confirm.php'>Confirm</a>";?>
-            <!-- <a href="home.php" class="btn-link">Back to Trips</a> -->
-        </div>
-    </div>
-</body>
-</html>
 
 
 
