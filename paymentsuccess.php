@@ -4,7 +4,6 @@
     include_once 'paymentconfig.php';
     $user_survey_id = $_SESSION["user_survey_id"];  
     $pass_survey_id = $_SESSION["pass_survey_id"];
-    $distance = $_SESSION["distance"];
 
     echo "U_survey:", $user_survey_id;
     echo "Hi";

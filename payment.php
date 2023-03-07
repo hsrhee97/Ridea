@@ -56,6 +56,7 @@
             <div class="container">
                 <div class="card">
                     <div class="body">
+                        <h6>Your Ride from<?php echo $row['start_address']?> to <?php echo $row['end_address']?></h6>
                         <h6>Price: <?php echo '$'.$row['price'].' '.PAYPAL_CURRENCY; ?></h6>
                         <!-- Paypal payment form for displaying the buy button -->
                         <form action="<?php echo PAYPAL_URL; ?>" method="POST">
