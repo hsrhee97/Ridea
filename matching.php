@@ -132,7 +132,7 @@
                 echo "</div>";
             }
             else {
-                echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
+                echo "<h2 class='header'>Cases where all of the date, destination, or departure is the same.</h2>";
                 echo "<p class='ask_book'> There are no cases where all of the date, destination, and origin are the same. </p>";
             }
             
@@ -165,7 +165,7 @@
             else {
                 // echo "<h2>When two of the following match: date, destination, and departure</h2>";
                 // echo "There are no cases where two of the date, destination, and origin are the same.";
-                echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
+                echo "<h2 class='header'>Cases where two of the date, destination, or departure is the same.</h2>";
                 echo "<p class='ask_book'> There are no cases where two of the date, destination, and origin are the same. </p>";
             }
 
