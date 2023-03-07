@@ -1,12 +1,5 @@
-<?php
-    session_start();
-    $login = $_SESSION['login'];
-    if (!isset($login)) {
-    header('Location: home.php');
-    exit;
-    }
-?>
 <?php 
+    session_start();
     /* Database credentials. Assuming you are running MySQL
     server with default setting (user 'root' with no password) */
     define('DB_SERVER', 'db.luddy.indiana.edu');
@@ -129,72 +122,21 @@
       die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-    if (isset($_POST['submit'])) {
-        $fname_error = $lname_error = $address_error = $phone_error = $email_error = $password_error = $biography_error = $card_error  =  "";
-
-        //fname error check
-        if (empty($_POST["fname"])) {
-            $fname_error = "First Name is required!";
-        }
-        else {
-            $fname = mysqli_real_escape_string($con, $_POST['fname']);
-        }
-
-        //lanme error check
-        if (empty($_POST["lname"])) {
-            $lname_error = "Last Name is required!";
-        }
-        else {
-            $lname = mysqli_real_escape_string($con, $_POST['lname']);
-        }
-
-        //email error check
-        if (empty($_POST["email"])) {
-            $email_error = "Email is required!";
-            
-        }
-        else {
-            $email = mysqli_real_escape_string($con, $_POST['email']);
-            if (!filter_($email, FILTER_VALIDATE_EMAIL)) {
-                $email_error = "Invalid email format!";
-            }
-        }
-
-        //password error check
-        if (empty($_POST["password"])) {
-            $password_error = "Password is required!";
-        }
-        else {
-            $password = mysqli_real_escape_string($con, $_POST['password']);
-            if(mb_strlen($password)<8){
-                $password_error = "Password should be more than 8 letters!";
-            }        
-        }                            
-
-        //address error check
-        if (empty($_POST["address"])) {
-            $address_error = "address is required!";
-        }
-        else {
-            $address = mysqli_real_escape_string($con, $_POST['address']);
-        }
-
-        //phone error check
-        if (empty($_POST["phone"])) {
-            $phone_error = "Phone number is required!";
-        }
-        else {
-            $phone = mysqli_real_escape_string($con, $_POST['phone']);
-        }
-
+    if(isset($_POST['submit'])) {
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $password = $_POST['password'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
         $biography = $_POST['biography'];
-
-        if (empty($_POST["fname"]) OR empty($_POST["lname"]) OR empty($_POST["address"]) OR empty($_POST["phone"]) OR empty($_POST["email"]) OR !filter_var($varemail, FILTER_VALIDATE_EMAIL) OR empty($_POST["password"]) OR mb_strlen($varpassword)<8 ) {
-
+        $credit_card = $_POST['credit_card'];
+    
+        if(empty($fname) || empty($lname) || empty($password) || empty($address) || empty($phone) || empty($biography) || empty($credit_card)) {
+            echo ("<script>alert('Please fill in all the required fields')</script>");
         }
-        else{
+        else {
             $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', password = PASSWORD('$password'), biography = '$biography' WHERE PassengerID = '$PassengerID' " ;
-
+    
             $result = mysqli_query($link, $query); 
             if(false===$result){
                 printf("error: %s\n", mysqli_error($link));
@@ -205,6 +147,6 @@
                 exit;
             }
         }
-        
     }
+    
 ?>
