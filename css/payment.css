@@ -20,6 +20,39 @@ body {
     /* background-color: #f6f6f6; */
 }
 
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
 .body img {
-    width: 50%;
+    width: 27%;
+}
+
+.container .card .body h6{
+    font-size: 2em;
+}
+
+.container .card .body .price {
+    font-size: 1.5em;
+    padding-top: 0.2em;
+}
+
+.last-button {
+    font-size: 1.5em;
+    margin-top: 1em;
+    padding: 1em 1.5em;
+    border: none;
+    border-radius: 10px;
+    background-color: #EC4E20;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease-out, color 0.3s ease-out;
+}
+
+.last-button:hover {
+    color: rgb(41, 41, 41);
+    background-color: #ffa500;
 }

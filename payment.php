@@ -58,7 +58,7 @@
                     <div class="body">
                     <img src="images/high5.png" alt="highfive">
                         <h6>Your Ride from<?php echo $row['start_address']?> to <?php echo $row['end_address']?></h6>
-                        <h6>Price: <?php echo '$'.$row['price'].' '.PAYPAL_CURRENCY; ?></h6>
+                        <h6 class="price">Price: <?php echo '$'.$row['price'].' '.PAYPAL_CURRENCY; ?></h6>
                         <!-- Paypal payment form for displaying the buy button -->
                         <form action="<?php echo PAYPAL_URL; ?>" method="POST">
                             <!-- Identify your bussiness so that you can collect the payment -->
@@ -74,14 +74,15 @@
                             <input type="hidden" name="return" value="<?php echo PAYPAL_RETURN_URL; ?>">
                             <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
                             <!-- Display the payment button -->
-                            <input type="image" name="submit" style="border:0;" src="https://paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif">
+                            <input class="last-button" type="submit" name="submit">
                         </form>
                     </div>
                 </div>
+            </div>
                 <?php
             }
         ?>
-    </div>
+
 
 </body>
 </html>
