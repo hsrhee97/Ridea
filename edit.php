@@ -2,21 +2,18 @@
     session_start();
 ?>
 <?php 
-    /* Database credentials. Assuming you are running MySQL
-    server with default setting (user 'root' with no password) */
+
     define('DB_SERVER', 'db.luddy.indiana.edu');
     define('DB_USERNAME', 'i494f22_team06');
     define('DB_PASSWORD', 'my+sql=i494f22_team06');
     define('DB_NAME', 'i494f22_team06');
  
-    /* Attempt to connect to MySQL database */
     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
-    // Check connection
     if($link === false){
       die("ERROR: Could not connect. " . mysqli_connect_error());
     }
-	// initializing variables
+
 	$Star_rating = "";
   $Comments = "";
     $Rating_P_ID = 0;
@@ -61,32 +58,35 @@ $row = mysqli_fetch_assoc($result);
     </div>
 </div>
 
+<main>
 <div>
-<form method="post" action="./update_review_edit.php?Rating_P_ID=<?= $Rating_P_ID ?>"" >
-	<div class="wrapper">
-		<div class="Star_rating">
-    	<input type="radio" id="star5" name="Star_rating" value="5" />
-    	<label for="star5" title="text">5</label>
-    	<input type="radio" id="star4" name="Star_rating" value="4" />
-    	<label for="star4" title="text">4</label>
-    	<input type="radio" id="star3" name="Star_rating" value="3" />
-    	<label for="star3" title="text">3</label>
-    	<input type="radio" id="star2" name="Star_rating" value="2" />
-    	<label for="star2" title="text">2</label>
-    	<input type="radio" id="star1" name="Star_rating" value="1" />
-    	<label for="star1" title="text">1</label>
-        </div>
-	</div>
+<form method="post" action="./update_review_edit.php?Rating_P_ID=<?= $Rating_P_ID ?>"">
 
+	<div class="wrapper">
+        <h2>Overall rating</h2>
+            <div class="Star_rating">
+                <input type="radio" id="star5" name="Star_rating" value="5" />
+                <label for="star5" title="text">5</label>
+                <input type="radio" id="star4" name="Star_rating" value="4" />
+                <label for="star4" title="text">4</label>
+                <input type="radio" id="star3" name="Star_rating" value="3" />
+                <label for="star3" title="text">3</label>
+                <input type="radio" id="star2" name="Star_rating" value="2" />
+                <label for="star2" title="text">2</label>
+                <input type="radio" id="star1" name="Star_rating" value="1" />
+                <label for="star1" title="text">1</label>
+            </div>
+        </div>
 
 	<div class="input-group">
-			<label>Add a written review</label>
-			<input type="text" name="Comments" required value="<?php echo $row['Comments'];?>"/>
+    <h2>Add a written review</h2>
+        <textarea class="text-area" type="text" name="Comments" cols="40" rows="8"><?php echo $row['Comments'];?></textarea>
 	</div>
 
-<p><input name="submit" type="submit" value="Update"/></p>
-</form>
+<p><input class="edit-button" name="submit" type="submit" value="Update"/></p>
 
+</form>
+</main>
 </body>
 </html>
 
