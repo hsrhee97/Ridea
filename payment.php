@@ -74,7 +74,7 @@
                             <input type="hidden" name="return" value="<?php echo PAYPAL_RETURN_URL; ?>">
                             <input type="hidden" name="cancel_return" value="<?php echo PAYPAL_CANCEL_URL; ?>">
                             <!-- Display the payment button -->
-                            <input class="last-button" type="submit" name="submit">
+                            <input class="last-button" type="submit" name="submit" value="make a payment">
                         </form>
                     </div>
                 </div>
