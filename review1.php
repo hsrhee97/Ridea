@@ -32,30 +32,31 @@
 </div>
 
 <main>
-    <h2 class="create-review">Create Review</h2>
-	<form method="post" action="config.php" >
 
-	<div class="wrapper">
-    <h2>Overall rating</h2>
-		<div class="Star_rating">
-            <input type="radio" id="star5" name="Star_rating" value="5" />
-            <label for="star5" title="text">5</label>
-            <input type="radio" id="star4" name="Star_rating" value="4" />
-            <label for="star4" title="text">4</label>
-            <input type="radio" id="star3" name="Star_rating" value="3" />
-            <label for="star3" title="text">3</label>
-            <input type="radio" id="star2" name="Star_rating" value="2" />
-            <label for="star2" title="text">2</label>
-            <input type="radio" id="star1" name="Star_rating" value="1" />
-            <label for="star1" title="text">1</label>
+    <h2 class="create-review">Create Review</h2>
+
+	<form method="post" action="config.php">
+
+        <div class="wrapper">
+        <h2>Overall rating</h2>
+            <div class="Star_rating">
+                <input type="radio" id="star5" name="Star_rating" value="5" />
+                <label for="star5" title="text">5</label>
+                <input type="radio" id="star4" name="Star_rating" value="4" />
+                <label for="star4" title="text">4</label>
+                <input type="radio" id="star3" name="Star_rating" value="3" />
+                <label for="star3" title="text">3</label>
+                <input type="radio" id="star2" name="Star_rating" value="2" />
+                <label for="star2" title="text">2</label>
+                <input type="radio" id="star1" name="Star_rating" value="1" />
+                <label for="star1" title="text">1</label>
+            </div>
         </div>
-	</div>
 
         
-		<div class="input-group">
-            
+		<div class="input-group"> 
         <h2>Add a written review</h2>
-			<input type="text" name="Comments" value="">
+			<textarea class="text-area" type="text" name="Comments" cols="40" rows="8" value=""></textarea>
 		</div>
 
 		<div class="input-group2">
@@ -63,6 +64,7 @@
 		</div>
     
 	</form> 
+
 
 	<?php ＄results == mysqli_query(＄link, "SELECT * FROM RATING_PASSENGER"); ?>
 
@@ -80,22 +82,19 @@
             $num_rows = mysqli_num_rows($result);
 
             if ($num_rows > 0) {
-                echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                echo "<tr style='border:1px solid black;'><th>Rating</th><th>Comment</th>";
 
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr style='border:1px solid black;'>";
-                    echo "<td>" .$row["Star_rating"] . "</td>";
-                    echo "<td>" . $row["Comments"] . "</td>";
-                    echo "<td>";
-                    echo "<div class='btn-group'>";
-                    echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
-                    echo "<a class='btn btn-warning'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+
+                    echo "<div class='history-wrapper'>";
+                        echo $row["Star_rating"];
+                        echo $row["Comments"];
+                        
+                        echo "<div class='btn-group'>";
+                            echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
+                            echo "<a class='btn btn-warning'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+                        echo "</div>";
                     echo "</div>";
-                    echo "</td>";
-                    echo "</tr>";
                 }
-                echo "</table>";
             } else {
                 echo "0 results";
             }

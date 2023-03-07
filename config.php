@@ -21,7 +21,7 @@
 	$update = false;
 
 	if (isset($_POST['save'])) {
-		$Comments = $_POST['comments'];
+		$Comments = $_POST['Comments'];
         $Star_rating = $_POST['Star_rating'];
         echo $Comments;
         $qcheck = "INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments) VALUES (2, $Star_rating, '$Comments')";
