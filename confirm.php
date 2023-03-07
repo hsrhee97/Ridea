@@ -86,15 +86,15 @@
                     //임시 드라이버
                     $p_driver_id = 1; 
                     $p_passenger_id = $pass_row["PassengerID"];
-                    $p_start_location = $pass_row["start_address"] . ", " . $pass_row["start_city"];
+                    $p_start_location = $pass_row["start_address"];
                     $p_start_city = $pass_row["start_city"]; 
-                    $p_end_location = $pass_row["end_address"] . ", " . $pass_row["end_city"];
+                    $p_end_location = $pass_row["end_address"];
                     $p_end_city = $pass_row["end_city"]; 
                     $p_distance = $pass_row["Distance"]; 
                     $p_date = $pass_row["trip_date"];
 
                     $p_sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, start_city, End_location, end_city, Distance, Date)
-                    VALUES ('$p_driver_id', '$p_passenger_id', '$p_start_location', '$p_start_city' , '$p_end_location',, '$p_end_city' '$p_distance', '$p_date')";
+                    VALUES ('$p_driver_id', '$p_passenger_id', '$p_start_location', '$p_start_city' , '$p_end_location', '$p_end_city', '$p_distance', '$p_date')";
 
                     if ($conn->query($p_sql_insert) === TRUE) {
                         // echo "passenger record moved to trip";
