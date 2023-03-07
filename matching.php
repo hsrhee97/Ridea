@@ -195,7 +195,7 @@
                 }
                 echo "</div>";
 
-                echo "<p class='ask_book'>There are no cases. You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+                echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
 
                 echo "<div class='button-box'>";
                 echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
@@ -205,7 +205,7 @@
                 echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
                 echo "<p class='ask_book'> There are no cases where one of the date, destination, and departure is the same. </p>";
                 
-                echo "<p class='ask_book'>There are no cases. You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+                echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
 
                 echo "<div class='button-box'>";
                 echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
