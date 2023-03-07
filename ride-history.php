@@ -157,7 +157,9 @@
                         } else {
                             echo "0 results";
                         }
-                    } else {
+                    } 
+                    
+                    else {
                         $sql_check = "SELECT * FROM TRIP WHERE PassengerID = $ID  ORDER BY Date DESC";
                         $result_check = mysqli_query($conn, $sql_check);
                         $num_rows_check = mysqli_num_rows($result_check);

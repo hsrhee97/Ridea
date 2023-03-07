@@ -54,8 +54,10 @@ CREATE TABLE RATING_DRIVER (
     DriverID INT NOT NULL,
     Star_rating DECIMAL(5,1),
     Comments VARCHAR(255),
+    TripID INT,
     PRIMARY KEY (Rating_D_ID),
-    FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID)
+    FOREIGN KEY (DriverID) REFERENCES DRIVER(DriverID),
+    FOREIGN KEY (TripID) REFERENCES TRIP(TripID)
 );
 
 CREATE TABLE RATING_PASSENGER (
@@ -63,8 +65,10 @@ CREATE TABLE RATING_PASSENGER (
     PassengerID INT NOT NULL,
     Star_rating DECIMAL(5,1),
     Comments VARCHAR(255),
+    TripID INT,
     PRIMARY KEY (Rating_P_ID),
-    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID)
+    FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID),
+    FOREIGN KEY (TripID) REFERENCES TRIP(TripID)
 );
 
 CREATE TABLE HELP (
@@ -158,28 +162,31 @@ VALUES
     
 INSERT INTO TRIP(DriverID, PassengerID, Start_location, End_location, Distance, Date)
 VALUES 
-    (3, 16, 'Bloomington', 'Miami', 482.12, '2023-03-19'),
-    (2, 16, 'Greenville', 'Brownville', 123.98, '2022-07-26'),
-    (3, 16, 'Chicago', 'Miami', 456.32, '2022-07-29'),
-    (4, 16, 'San Francisco', 'Seattle', 456.32, '2022-07-21'),
-    (6, 16, 'Boston', 'Bloomington', 5982.34, '2022-07-12'),
-    (6, 16, 'Los Angeles', 'San Francisco', 383.22, '2022-02-13'),
-    (2, 16, '789 Oak St', '321 Pine St', 15.25, '2022-02-14'),
-    (3, 5, 'Chicago', 'Los Angeles', 4329.45, '2022-08-23'),
-    (4, 4, 'BOSTON', 'MIAMI', 324.87, '2022-08-04'),
-    (5, 6, 'ORLANDO', 'CANCUN', 1234.87, '2022-09-29');
+    (3, 13, 'Bloomington', 'Miami', 482, '2023-03-19'),
+    (2, 13, 'Greenville', 'Brownville', 123, '2022-07-26'),
+    (3, 13, 'Chicago', 'Miami', 456, '2022-07-29'),
+    (4, 13, 'San Francisco', 'Seattle', 456, '2022-07-21'),
+    (6, 13, 'Boston', 'Bloomington', 598, '2022-07-12'),
+    (6, 13, 'Los Angeles', 'San Francisco', 383, '2022-02-13'),
+    (2, 13, '789 Oak St', '321 Pine St', 15, '2022-02-14'),
+    (3, 5, 'Chicago', 'Los Angeles', 432, '2022-08-23'),
+    (4, 3, 'BOSTON', 'MIAMI', 324.87, '2022-08-04'),
+    (3, 2, 'Bloomington', 'Los Angeles', 23, '2022-08-23'),
+    (4, 4, 'BOSTON', 'MIAMI', 324, '2022-08-04'),
+    (5, 6, 'ORLANDO', 'CANCUN', 123, '2021-09-29');
 
 
-INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments)
+INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments, TripID)
 VALUES
-    (2, 4.5, 'Bob was a great driver and the ride was very comfortable.');
+    (2, 4.5, 'Bob was a great driver and the ride was very comfortable.', 1);
 
-INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments)
+INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments, TripID)
 VALUES
-    (1, 3.5, 'Bob is a new driver and still needs improvement.'),
-    (2, 3.5, 'Bob is a new driver and still needs improvement.'),
-    (3, 3.5, 'Bob is a new driver and still needs improvement.'),
-    (4, 3.5, 'Bob is a new driver and still needs improvement.');
+    (1, 3.5, 'Bob is a new driver and still needs improvement.', 1),
+    (2, 3.5, 'Bob is a new driver and still needs improvement.', 2),
+    (3, 3.5, 'Bob is a new driver and still needs improvement.', 3),
+    (4, 3.5, 'Bob is a new driver and still needs improvement.', 4);
+
 
 INSERT INTO SURVEY (PassengerID, start_address, start_city, end_address, end_city, trip_date, other, Distance, price) 
 VALUES 
@@ -191,11 +198,6 @@ VALUES
     (4, '1000 Ocean Ave', 'Boston', '123 Main St', 'New York', '2023-06-25', NULL,23, 124.99), 
     (6, '123 Main St', 'New York', '456 Elm St', 'Portland', '2023-01-15', 'None', 230, 2.99),
     (8, '534 College St', 'New York', '456 Elm St', 'Bloomington', '2023-04-15', 'None', 11, 3.99);
-
--- INSERT INTO PAYMENT (Payment_amount, TripID)
--- VALUES
---     (25.00, 1),
---     (30.00, 2);
 
 INSERT INTO CHAT (SenderID, ReceiverID, message)
 VALUES 
