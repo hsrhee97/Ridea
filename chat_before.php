@@ -29,9 +29,9 @@
             ";
     $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) == 0) {
-        die("There are no chat partners.");
-    }
+    // if (mysqli_num_rows($result) == 0) {
+    //     die("There are no chat partners.");
+    // }
 
     $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -73,9 +73,13 @@
                         $pass_name = "SELECT CONCAT(fname, ' ', lname) AS Name FROM PASSENGER WHERE PassengerID = {$user['id']}";
                         $name_result = mysqli_query($conn, $pass_name);
                         $pass_info = mysqli_fetch_array($name_result, MYSQLI_ASSOC);
-                            echo "<div class='label'>";
-                                echo $pass_info["Name"];
-                            echo "</div>";
+                        echo "<div class='label'>";
+                        if (mysqli_num_rows($name_result) > 0) {
+                            echo $pass_info["Name"];
+                        } else {
+                            echo "There are no chat partners.";
+                        }
+                        echo "</div>";
                     ?>
                 </a>
             </li>
