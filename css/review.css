@@ -57,11 +57,20 @@ form {
 /* REVIEW WRITING */
 
 .create-review {
-    padding: 2em 0;
-    font-size: 2em;
-    border-bottom: 1px solid black;
+    color: rgb(26, 26, 26);
+    font-size: 2.3em;
 }
 
+.heading {
+    border-bottom: 1px solid black;
+    padding: 2em 0;
+}
+
+.details {
+    padding-top: 1em;
+    font-size: 1.5em;
+    font-weight: 500;
+}
 .input-group {
     border-top: 1px solid black;
     padding: 1em 0;
@@ -140,6 +149,7 @@ form {
 /* -------------------------------------
             REVIEW HISTORY
 ------------------------------------- */
+
 
 .history-wrapper {
     border-bottom: 1px solid black;
