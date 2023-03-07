@@ -36,6 +36,9 @@ $conn = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22
             $user_id = $_SESSION["id"];
             $user_survey_id = $_GET["user_survey_id"];
             $pass_survey_id = $_GET["pass_survey_id"];
+            
+            $_SESSION["user_survey_id"] = $user_survey_id;
+            $_SESSION["pass_survey_id"] = $pass_survey_id;
 
             echo "U_survey:", $user_survey_id;
             echo "<br>";
@@ -44,13 +47,13 @@ $conn = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22
             echo "user id:", $user_id;
             echo "<br>";
 
-            echo "<a class='last_btn' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
+            // echo "<a class='last_btn' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Pay & Confirm</a>";
         //Fetch products from the database
         $sql = "SELECT * FROM SURVEY WHERE SurveyID = '$user_survey_id' ";
         $results = $conn->query($sql);   
         while($row = $results->fetch_assoc()){
             ?>
-<div class="container">
+            <div class="container">
                 <div class="card">
                     <div class="body">
                         <h6>Price: <?php echo '$'.$row['price'].' '.PAYPAL_CURRENCY; ?></h6>

@@ -17,6 +17,8 @@ if(!empty($_GET['item_name']) && !empty($_GET['txn_id']) && !empty($_GET['paymen
     $payment_gross = $_GET['payment_gross'];
     $currency_code = $_GET['mc_currency'];
     $payment_status = $_GET['payment_status'];
+    // $user_survey_id = $_GET["user_survey_id"];
+    // $pass_survey_id = $_GET["pass_survey_id"];
 
     //Get SURVEY infomation from the database
     $SURVEYResult = $conn->query("SELECT * FROM SURVEY WHERE SurveyID = '".$item_name."'");
@@ -64,7 +66,8 @@ else {
                     <h1 class="error">Your Payment has failed</h1>
                 <?php } ?>
             </div>
-            <a href="home.php" class="btn-link">Back to Trips</a>
+            <?php echo "<a class='btn btn-warning' href='confirm.php'>Confirm</a>";?>
+            <!-- <a href="home.php" class="btn-link">Back to Trips</a> -->
         </div>
     </div>
 </body>

@@ -24,8 +24,12 @@
     <main>
         <?php 
             $user_id = $_SESSION["id"];
-            $user_survey_id = $_GET["user_survey_id"];
-            $pass_survey_id = $_GET["pass_survey_id"];
+            // $user_survey_id = $_GET["user_survey_id"];
+            // $pass_survey_id = $_GET["pass_survey_id"];
+            // confirm.php 파일
+            $user_survey_id = $_SESSION["user_survey_id"];  
+            $pass_survey_id = $_SESSION["pass_survey_id"];
+
 
             echo "U_survey:", $user_survey_id;
             echo "<br>";
@@ -112,6 +116,8 @@
             $chat_sql_insert = "INSERT INTO CHAT (SenderID, ReceiverID, message) VALUES ('$passenger_id', '$p_passenger_id', '')";
 
             if ($conn->query($chat_sql_insert) === TRUE) {
+                unset($_SESSION["user_survey_id"]); // user_survey_id 변수 삭제
+                unset($_SESSION["pass_survey_id"]); // pass_survey_id 변수 삭제
                 echo ("<script>alert('Now you can start the CHAT!')</script>");
                 echo("<script>location.replace('chat_before.php');</script>");
                 exit;
