@@ -21,6 +21,7 @@ body {
 }
 
 main {
+    padding-bottom: 2em;
     margin: 0 auto;
     width: 50%;
     /* height: 80vh; */
@@ -97,6 +98,11 @@ form {
 
 .input-group2 button {
     float: right;
+    background-color: rgb(255 71 71);
+    border: none;
+    padding: 1em;
+    border-radius: 7px;
+    color: white;
 }
 
 .Star_rating:not(:checked) > input {
@@ -136,8 +142,53 @@ form {
 ------------------------------------- */
 
 .history-wrapper {
-    display: flex;
     border-bottom: 1px solid black;
-    padding: 1em 0;
-    background-color: gray;
+    padding: 2em 0;
+    background-color: #efefef;
+}
+
+.databox {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    justify-content: space-between;
+}
+
+.btn-group {
+    display: flex;
+}
+
+.databox .data {
+    max-width: 30em;
+    min-width: 30em;
+}
+
+.databox .starrate {
+    font-size: 1.3em;
+    color: var(--main-color);
+}
+
+.btn-group .btn.btn-warning {
+    margin-right: 0.1em;
+    color: white;
+    padding: 0.5em 0.8em;
+    background-color: rgb(68 68 68);
+    transition: 0.3s ease-out, color 0.3s ease-out;
+    border-radius: 7px;
+}
+
+.btn-group .btn.btn-warning2 {
+    color: white;
+    padding: 0.5em 0.8em;
+    background-color: rgb(255, 0, 0);
+    transition: 0.3s ease-out, color 0.3s ease-out;
+    border-radius: 7px;
+}
+.btn.btn-warning:hover,
+.btn-group .btn.btn-warning2:hover 
+{
+    color: rgb(41, 41, 41);
+    background-color: rgb(233 233 233);
 }

@@ -1,4 +1,7 @@
 <?php 
+    session_start();
+?>
+<?php 
     /* Database credentials. Assuming you are running MySQL
     server with default setting (user 'root' with no password) */
     define('DB_SERVER', 'db.luddy.indiana.edu');
@@ -24,82 +27,39 @@ $Rating_P_ID=$_GET['Rating_P_ID'];
 $qcheck = "SELECT * from RATING_PASSENGER where Rating_P_ID=$Rating_P_ID"; 
 $result = mysqli_query($link, $qcheck); 
 $row = mysqli_fetch_assoc($result);
-
-
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Review</title>
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Update Review</title>
-<style type="text/css">        
-    *{
-    margin: 0;
-    padding: 0;
-}
-.Star_rating {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.Star_rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.Star_rating:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.Star_rating:not(:checked) > label:before {
-    content: '★ ';
-}
-.Star_rating > input:checked ~ label {
-    color: #ffc700;    
-}
-.Star_rating:not(:checked) > label:hover,
-.Star_rating:not(:checked) > label:hover ~ label {
-    color: #deb217;  
-}
-.Star_rating > input:checked + label:hover,
-.Star_rating > input:checked + label:hover ~ label,
-.Star_rating > input:checked ~ label:hover,
-.Star_rating > input:checked ~ label:hover ~ label,
-.Star_rating > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
-    </style>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <style>  <?php include 'css/review.css'; ?>  </style>
+
 </head>
 <body>
-<h1>Update Record</h1>
 
-<h2>Edit</h2>
+<?php include 'includes/nav.php'; ?>
 
-<!-- 
-/* $status = "";
-if(isset($_POST['update']))
-{
-$Rating_P_ID = $_REQUEST['Rating_P_ID'];
-$Star_rating = $_REQUEST['Star_rating'];
-$Comments = $_REQUEST['Comments'];
-$PassengerID = $_REQUEST['PassengerID'];
-$update="Rating_P_ID".$Rating_P_ID."',
-Star_rating='".$Star_rating."', Comments='".$Comments."',
-PassengerID='".$PassengerID."'";
-mysqli_query($con, $update) or die(mysqli_error());
-$status = "Record Updated Successfully. </br></br>
-<a href='index.php'>View Updated Record</a>";
-echo '<p style="color:#FF0000;">'.$status.'</p>';
-}else { */
-?> -->
+<div class="contents">
+    <div class="texts">
+    <h2>Edit <span>Review</span></h2>
+    <p>Let other passengers know how your ride went! Write, view, and edit your reviews below.</p>
+    </div>
+</div>
 
 <div>
 <form method="post" action="./update_review_edit.php?Rating_P_ID=<?= $Rating_P_ID ?>"" >
