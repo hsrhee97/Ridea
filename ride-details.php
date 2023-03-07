@@ -70,38 +70,38 @@
                         $P_ID = $row["PassengerID"];
                     }
 
-                $passenger_name = "SELECT * FROM PASSENGER WHERE PassengerID = '$P_ID'";
-                $result = $conn->query($passenger_name);
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        $p_name = $row["PassengerID"];
-                        $p_fname = $row["fname"];
-                        $p_lname = $row["lname"];
-                    }
+                    $passenger_name = "SELECT * FROM PASSENGER WHERE PassengerID = '$P_ID'";
+                    $result = $conn->query($passenger_name);
+                    if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                $p_name = $row["PassengerID"];
+                                $p_fname = $row["fname"];
+                                $p_lname = $row["lname"];
+                            }
 
-                
-                $sql = "SELECT * FROM TRIP WHERE TripID = $TripID";
-                $result = mysqli_query($conn, $sql);
-                $num_rows = mysqli_num_rows($result);
-            
-                if ($num_rows > 0) {
-                
-                    while ($row = $result->fetch_assoc()) {
-
-                        echo $row["Start_location"] . ", " . $row["start_city"] . "</td>";
-                        echo $row["End_location"] . ", " . $row["end_city"] . "</td>";
-                        echo $row["Distance"] . "</td>";
-                        echo $row["Date"] . "</td>";
-                        echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
                         
+                        $sql = "SELECT * FROM TRIP WHERE TripID = $TripID";
+                        $result = mysqli_query($conn, $sql);
+                        $num_rows = mysqli_num_rows($result);
+                    
+                        if ($num_rows > 0) {
+                        
+                            while ($row = $result->fetch_assoc()) {
+
+                                echo $row["Start_location"] . ", " . $row["start_city"] . "</td>";
+                                echo $row["End_location"] . ", " . $row["end_city"] . "</td>";
+                                echo $row["Distance"] . "</td>";
+                                echo $row["Date"] . "</td>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
+                                
+                            }
+                        } else {
+                            echo "0 results";
+                        }
                     }
-                } else {
-                    echo "0 results";
                 }
                 }
             }
-        }
-    }
             elseif ($type == 'passenger'){
                 $TripID = $_GET['TripID'];
                 $sql = "SELECT * FROM PASSENGER WHERE email='$email'";

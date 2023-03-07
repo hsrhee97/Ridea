@@ -49,13 +49,15 @@
                 while($user_row = $user_result->fetch_assoc()) {
                     $driver_id = 1;
                     $passenger_id = $user_row["PassengerID"];
-                    $start_location = $user_row["start_address"] . ", " . $user_row["start_city"];
-                    $end_location = $user_row["end_address"] . ", " . $user_row["end_city"];
+                    $start_location = $user_row["start_address"];
+                    $start_city = $user_row["start_city"];
+                    $end_location = $user_row["end_address"];
+                    $end_city = $user_row["end_city"];
                     $distance = $user_row["Distance"];
                     $date = $user_row["trip_date"];
 
-                    $sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, End_location, Distance, Date)
-                    VALUES ('$driver_id', '$passenger_id', '$start_location', '$end_location', '$distance', '$date')";
+                    $sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, start_city, End_location, end_city, Distance, Date)
+                    VALUES ('$driver_id', '$passenger_id', '$start_location', '$start_city', '$end_location', '$end_city', '$distance', '$date')";
 
                     if ($conn->query($sql_insert) === TRUE) {
                         // echo "Record moved to trip";
@@ -85,12 +87,14 @@
                     $p_driver_id = 1; 
                     $p_passenger_id = $pass_row["PassengerID"];
                     $p_start_location = $pass_row["start_address"] . ", " . $pass_row["start_city"];
+                    $p_start_city = $pass_row["start_city"]; 
                     $p_end_location = $pass_row["end_address"] . ", " . $pass_row["end_city"];
+                    $p_end_city = $pass_row["end_city"]; 
                     $p_distance = $pass_row["Distance"]; 
                     $p_date = $pass_row["trip_date"];
 
-                    $p_sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, End_location, Distance, Date)
-                    VALUES ('$p_driver_id', '$p_passenger_id', '$p_start_location', '$p_end_location', '$p_distance', '$p_date')";
+                    $p_sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, start_city, End_location, end_city, Distance, Date)
+                    VALUES ('$p_driver_id', '$p_passenger_id', '$p_start_location', '$p_start_city' , '$p_end_location',, '$p_end_city' '$p_distance', '$p_date')";
 
                     if ($conn->query($p_sql_insert) === TRUE) {
                         // echo "passenger record moved to trip";
