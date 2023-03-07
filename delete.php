@@ -27,8 +27,9 @@ $result = mysqli_query($link, $qcheck);
 if(false===$result){
   printf("error: %s\n", mysqli_error($link));}
 else {
-  echo 'done';
-  header('location: review1.php');}
+  echo ("<script>alert('Review deleted successfully!')</script>");
+  header('location: ride-history.php');
+  }
 
 ?>
 

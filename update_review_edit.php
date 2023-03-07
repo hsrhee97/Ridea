@@ -32,8 +32,8 @@
             printf("error: %s\n", mysqli_error($link));
         }
         else {
-            echo 'done'; 
-            header('location: review1.php');
+            echo ("<script>alert('Review updated successfully!')</script>");
+            header('location: ride-history.php');
         }
     }
         ?>
