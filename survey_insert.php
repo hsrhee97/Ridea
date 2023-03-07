@@ -1,5 +1,12 @@
 <?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
+?>
+<?php
 
     if (isset($_POST['survey_submit'])){ 
         $passenger_id = $_SESSION['id'];

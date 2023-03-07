@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
+?>
+<?php
 /* 
 PayPal Setting and Database configuration
 */

@@ -1,5 +1,12 @@
- <?php
+<?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
+?>
+ <?php
     //Include Configuration File
     include_once 'paymentconfig.php';
     $user_survey_id = $_SESSION["user_survey_id"];  

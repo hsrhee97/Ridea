@@ -1,6 +1,11 @@
 <?php  include('config.php'); ?>
-<?php 
+<?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

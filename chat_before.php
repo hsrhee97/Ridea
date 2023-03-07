@@ -1,5 +1,10 @@
 <?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+}
 ?>
 <?php
     // 데이터베이스 연결
