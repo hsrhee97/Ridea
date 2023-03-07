@@ -24,8 +24,12 @@
     <main>
         <?php 
             $user_id = $_SESSION["id"];
-            $user_survey_id = $_GET["user_survey_id"];
-            $pass_survey_id = $_GET["pass_survey_id"];
+            // $user_survey_id = $_GET["user_survey_id"];
+            // $pass_survey_id = $_GET["pass_survey_id"];
+            // confirm.php 파일
+            $user_survey_id = $_SESSION["user_survey_id"];  
+            $pass_survey_id = $_SESSION["pass_survey_id"];
+
 
             echo "U_survey:", $user_survey_id;
             echo "<br>";
@@ -50,7 +54,7 @@
                     $passenger_id = $user_row["PassengerID"];
                     $start_location = $user_row["start_address"] . ", " . $user_row["start_city"];
                     $end_location = $user_row["end_address"] . ", " . $user_row["end_city"];
-                    $distance = 0.0;
+                    $distance = $user_row["Distance"];
                     $date = $user_row["trip_date"];
 
                     $sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, End_location, Distance, Date)
@@ -85,7 +89,7 @@
                     $p_passenger_id = $pass_row["PassengerID"];
                     $p_start_location = $pass_row["start_address"] . ", " . $pass_row["start_city"];
                     $p_end_location = $pass_row["end_address"] . ", " . $pass_row["end_city"];
-                    $p_distance = 0.0; 
+                    $p_distance = $pass_row["Distance"]; 
                     $p_date = $pass_row["trip_date"];
 
                     $p_sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, End_location, Distance, Date)
@@ -112,6 +116,8 @@
             $chat_sql_insert = "INSERT INTO CHAT (SenderID, ReceiverID, message) VALUES ('$passenger_id', '$p_passenger_id', '')";
 
             if ($conn->query($chat_sql_insert) === TRUE) {
+                unset($_SESSION["user_survey_id"]); // user_survey_id 변수 삭제
+                unset($_SESSION["pass_survey_id"]); // pass_survey_id 변수 삭제
                 echo ("<script>alert('Now you can start the CHAT!')</script>");
                 echo("<script>location.replace('chat_before.php');</script>");
                 exit;
