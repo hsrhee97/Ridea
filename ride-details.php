@@ -88,14 +88,10 @@
                 
                     while ($row = $result->fetch_assoc()) {
 
-                        echo "<td>" . $row["TripID"] . "</td>";
-                        echo "<td>" . $p_fname . "</td>";
-                        echo "<td>" . $p_lname . "</td>";
-                        echo "<td>" . $row["PassengerID"] . "</td>";
-                        echo "<td>" . $row["Start_location"] . ", " . $row["start_city"] . "</td>";
-                        echo "<td>" . $row["End_location"] . ", " . $row["end_city"] . "</td>";
-                        echo "<td>" . $row["Distance"] . "</td>";
-                        echo "<td>" . $row["Date"] . "</td>";
+                        echo $row["Start_location"] . ", " . $row["start_city"] . "</td>";
+                        echo $row["End_location"] . ", " . $row["end_city"] . "</td>";
+                        echo $row["Distance"] . "</td>";
+                        echo $row["Date"] . "</td>";
                         echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
                         
                     }
@@ -144,14 +140,37 @@
 
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='detail-box'>";
-                            echo $row["TripID"];
-                            echo $d_fname;
-                            echo $d_lname;
-                            echo "<td>" . $row["Start_location"] . ", " . $row["start_city"] . "</td>";
-                            echo "<td>" . $row["End_location"] . ", " . $row["end_city"] . "</td>";
-                            echo $row["Distance"];
-                            echo $row["Date"];
-                            echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
+
+                            echo "<div class='detail-contents'>";
+                            
+                                echo "<div class='label'>";
+                                    echo "<h3>Start City - </h3>". $row["start_city"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo "<h3>End City - </h3>". $row["end_city"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                        echo "<h3>Pickup Point - </h3>". $row["Start_location"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo "<h3>Pickup Point - </h3>". $row["End_location"];
+                                echo "</div>";
+
+
+                                echo "<div class='label'>";
+                                    echo "<h3>Distance - </h3>". $row["Distance"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo "<h3>Date - </h3>". $row["Date"];
+                                echo "</div>";
+
+                                echo "<a class='btn btn-notwarning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
+                            echo "</div>";
+                            
                         echo "</div>";
                     }
 

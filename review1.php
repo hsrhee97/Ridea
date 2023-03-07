@@ -42,9 +42,10 @@ $Date = $_GET['date'];?>
 </div>
 
 <main>
-
-    <h2 class="create-review">Create Review</h2>
-    <h2><?php echo $End_city , ' ', $Date?></h2>
+    <div class="heading">
+        <h2 class="create-review">Create Review</h2>
+        <h2 class="details"><?php echo $End_city , ' ', $Date?></h2>
+    </div>
     
 
 	<form method="post" action="config.php">
