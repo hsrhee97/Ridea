@@ -38,9 +38,10 @@
             if (isset($_POST['save'])) {
                 $Comments = $_POST['Comments'];
                 $Star_rating = $_POST['Star_rating'];
+                $TripID = $_POST['TripID'];
                 echo $Comments;
                 //change static passengerid of 2 to dynamic passengerid that is retrieved from session 
-                $qcheck = "INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments) VALUES ($ID, $Star_rating, '$Comments')";
+                $qcheck = "INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments, TripID) VALUES ($ID, $Star_rating, '$Comments', '$TripID')";
                 echo $qcheck;
                 $result = mysqli_query($link, $qcheck); 
                 if(false===$result){
@@ -48,7 +49,7 @@
                 }
                 else {
                     echo 'done';
-                    header('location: review1.php');
+                    header('location: ride-history.php');
                 }
             }  
         } 
@@ -64,9 +65,10 @@
             if (isset($_POST['save'])) {
                 $Comments = $_POST['Comments'];
                 $Star_rating = $_POST['Star_rating'];
+                $TripID = $_POST['TripID'];
                 echo $Comments;
                 //change static passengerid of 2 to dynamic passengerid that is retrieved from session 
-                $qcheck = "INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments) VALUES ($ID, $Star_rating, '$Comments')";
+                $qcheck = "INSERT INTO RATING_PASSENGER (PassengerID, Star_rating, Comments, TripID) VALUES ($ID, $Star_rating, '$Comments', '$TripID')";
                 echo $qcheck;
                 $result = mysqli_query($link, $qcheck); 
                 if(false===$result){
@@ -74,7 +76,7 @@
                 }
                 else {
                     echo 'done';
-                    header('location: review1.php');
+                    header('location: ride-history.php');
                 }
             }
         }

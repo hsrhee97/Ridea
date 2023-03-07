@@ -24,7 +24,10 @@
 
 </head>
 <body>
-<?php include 'includes/nav.php'; ?>
+<?php include 'includes/nav.php'; 
+$TripID = $_GET['TripID'];
+$End_city = $_GET['end_city'];
+$Date = $_GET['date'];?>
 
 <div class="contents">
     <div class="texts">
@@ -36,6 +39,8 @@
 <main>
 
     <h2 class="create-review">Create Review</h2>
+    <h2><?php echo $End_city , ' ', $Date?></h2>
+    
 
 	<form method="post" action="config.php">
 
@@ -62,6 +67,7 @@
 		</div>
 
 		<div class="input-group2">
+            <input type="hidden" name="TripID" value="<?php echo $TripID; ?>">
 			<button class="btn" type="submit" name="save" >Submit Review</button>
 		</div>
     
@@ -81,6 +87,9 @@
             $type = $_SESSION['type'];
             $email = $_SESSION['login'];
             $ID = '';
+            $TripID = $_GET['TripID'];
+            $End_city = $_GET['end_city'];
+            $Date = $_GET['Date'];
 
             if ($type =='driver') {
                 
@@ -91,7 +100,7 @@
                         $ID = $row["DriverID"];
                     }
 
-                    $sql = "SELECT Rating_D_ID, DriverID ,Star_rating, Comments FROM RATING_DRIVER WHERE DriverID = '$ID'";
+                    $sql = "SELECT * FROM RATING_DRIVER WHERE DriverID = '$ID'";
                     $result = mysqli_query($con, $sql);
                     $num_rows = mysqli_num_rows($result);
 
@@ -126,7 +135,7 @@
                             $ID = $row["PassengerID"];
                         }
     
-                        $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER WHERE PassengerID = '$ID'";
+                        $sql = "SELECT * FROM RATING_PASSENGER WHERE PassengerID = '$ID'";
                         $result = mysqli_query($con, $sql);
                         $num_rows = mysqli_num_rows($result);
     

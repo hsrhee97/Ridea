@@ -91,10 +91,8 @@
                         echo "<td>" . $row["End_location"] . ", " . $row["end_city"] . "</td>";
                         echo "<td>" . $row["Distance"] . "</td>";
                         echo "<td>" . $row["Date"] . "</td>";
-                        echo "<a class='btn btn-warning'href='review1.php'>Create a review for this trip</a>";
+                        echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
                         
-
-
                     }
                 } else {
                     echo "0 results";
@@ -148,7 +146,7 @@
                             echo "<td>" . $row["End_location"] . ", " . $row["end_city"] . "</td>";
                             echo $row["Distance"];
                             echo $row["Date"];
-                            echo "<a class='btn btn-warning'href='review1.php'>Create a review for this trip</a>";
+                            echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
                         echo "</div>";
                     }
 
