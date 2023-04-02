@@ -1,6 +1,11 @@
  <?php
 //Include Configuration File
 include_once 'paymentconfig.php';
+
+$user_id = $_SESSION["id"];
+$user_survey_id = $_GET["user_survey_id"];
+$pass_survey_id = $_GET["pass_survey_id"];
+
 //Inlcude Database Connection File
 $conn = mysqli_connect("db.luddy.indiana.edu", "i494f22_team06", "my+sql=i494f22_team06", "i494f22_team06");
             if (!$conn) {
@@ -64,7 +69,7 @@ else {
                     <h1 class="error">Your Payment has failed</h1>
                 <?php } ?>
             </div>
-            <a href="home.php" class="btn-link">Back to Trips</a>
+            <?php echo "<a class='last_btn' href='confirm.php?user_survey_id=".$user_survey_id."&pass_survey_id=".$pass_survey_id."'>Go back</a>";?>
         </div>
     </div>
 </body>
