@@ -1,14 +1,22 @@
 <?php  include('config.php'); ?>
-<?php 
+<?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>New Review</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Review</title>
 
 
-<!-- google fonts -->
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
@@ -21,7 +29,10 @@
 
 </head>
 <body>
-<?php include 'includes/nav.php'; ?>
+<?php include 'includes/nav.php'; 
+$TripID = $_GET['TripID'];
+$End_city = $_GET['end_city'];
+$Date = $_GET['date'];?>
 
 <div class="contents">
     <div class="texts">
@@ -31,33 +42,39 @@
 </div>
 
 <main>
-    <h2>Create Review</h2>
-	<form method="post" action="config.php" >
+    <div class="heading">
+        <h2 class="create-review">Create Review</h2>
+        <h2 class="details"><?php echo $End_city , ' ', $Date?></h2>
+    </div>
+    
 
-	<div class="wrapper">
-		<div class="Star_rating">
-            <input type="radio" id="star5" name="Star_rating" value="5" />
-            <label for="star5" title="text">5</label>
-            <input type="radio" id="star4" name="Star_rating" value="4" />
-            <label for="star4" title="text">4</label>
-            <input type="radio" id="star3" name="Star_rating" value="3" />
-            <label for="star3" title="text">3</label>
-            <input type="radio" id="star2" name="Star_rating" value="2" />
-            <label for="star2" title="text">2</label>
-            <input type="radio" id="star1" name="Star_rating" value="1" />
-            <label for="star1" title="text">1</label>
+	<form method="post" action="config.php">
+
+        <div class="wrapper">
+        <h2>Overall rating</h2>
+            <div class="Star_rating">
+                <input type="radio" id="star5" name="Star_rating" value="5" />
+                <label for="star5" title="text">5</label>
+                <input type="radio" id="star4" name="Star_rating" value="4" />
+                <label for="star4" title="text">4</label>
+                <input type="radio" id="star3" name="Star_rating" value="3" />
+                <label for="star3" title="text">3</label>
+                <input type="radio" id="star2" name="Star_rating" value="2" />
+                <label for="star2" title="text">2</label>
+                <input type="radio" id="star1" name="Star_rating" value="1" />
+                <label for="star1" title="text">1</label>
+            </div>
         </div>
-	</div>
 
-
-		<div class="input-group">
-			<input type="text" name="Comments" value="">
+        
+		<div class="input-group"> 
+        <h2>Add a written review</h2>
+			<textarea class="text-area" type="text" name="Comments" cols="40" rows="8" value="" placeholder="What did you like/dislike about the ride?"></textarea>
 		</div>
 
-
-
-		<div class="input-group">
-			<button class="btn" type="submit" name="save" >Save</button>
+		<div class="input-group2">
+            <input type="hidden" name="TripID" value="<?php echo $TripID; ?>">
+			<button class="btn" type="submit" name="save" >Submit Review</button>
 		</div>
     
 	</form> 
@@ -76,6 +93,9 @@
             $type = $_SESSION['type'];
             $email = $_SESSION['login'];
             $ID = '';
+            $TripID = $_GET['TripID'];
+            $End_city = $_GET['end_city'];
+            $Date = $_GET['Date'];
 
             if ($type =='driver') {
                 
@@ -86,29 +106,29 @@
                         $ID = $row["DriverID"];
                     }
 
-                    $sql = "SELECT Rating_D_ID, DriverID ,Star_rating, Comments FROM RATING_DRIVER WHERE DriverID = '$ID'";
+                    $sql = "SELECT * FROM RATING_DRIVER WHERE DriverID = '$ID'";
                     $result = mysqli_query($con, $sql);
                     $num_rows = mysqli_num_rows($result);
 
                     if ($num_rows > 0) {
-                        echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                        echo "<tr style='border:1px solid black;'><th>Rating</th><th>Comment</th>";
 
                         while ($row = $result->fetch_assoc()) {
-                            echo "<tr style='border:1px solid black;'>";
-                            echo "<td>" .$row["Star_rating"] . "</td>";
-                            echo "<td>" . $row["Comments"] . "</td>";
-                            echo "<td>";
-                            echo "<div class='btn-group'>";
-                            echo "<a class='btn btn-warning'href='edit.php?Rating_D_ID=".$row['Rating_D_ID']."'>Edit</a>";
-                            echo "<a class='btn btn-warning'href='delete.php?Rating_D_ID=".$row['Rating_D_ID']."'>Delete</a>";
+                            echo "<div class='history-wrapper'>";
+                            echo "<div class='databox'>";
+    
+                                echo "<span class='starrate'>".$row["Star_rating"]."</span>";
+                                echo "<span class='data'>".$row["Comments"]."</span>";
+                            
+                                echo "<div class='btn-group'>";
+                                    echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
+                                    echo "<a class='btn btn-warning2'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+                                echo "</div>";
+    
                             echo "</div>";
-                            echo "</td>";
-                            echo "</tr>";
+                        echo "</div>";
                         }
-                        echo "</table>";
                     } else {
-                        echo "0 results";
+                        echo "";
                     }
                 }
             } 
@@ -121,29 +141,29 @@
                             $ID = $row["PassengerID"];
                         }
     
-                        $sql = "SELECT Rating_P_ID, PassengerID ,Star_rating, Comments FROM RATING_PASSENGER WHERE PassengerID = '$ID'";
+                        $sql = "SELECT * FROM RATING_PASSENGER WHERE PassengerID = '$ID'";
                         $result = mysqli_query($con, $sql);
                         $num_rows = mysqli_num_rows($result);
     
                         if ($num_rows > 0) {
-                            echo "<table style='border:1px red; border-collapse: collapse; width:40%; border: solid 2px solid black;'>";
-                            echo "<tr style='border:1px solid black;'><th>Rating</th><th>Comment</th>";
     
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr style='border:1px solid black;'>";
-                                echo "<td>" .$row["Star_rating"] . "</td>";
-                                echo "<td>" . $row["Comments"] . "</td>";
-                                echo "<td>";
-                                echo "<div class='btn-group'>";
-                                echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
-                                echo "<a class='btn btn-warning'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+                                echo "<div class='history-wrapper'>";
+                                echo "<div class='databox'>";
+        
+                                    echo "<span class='starrate'>".$row["Star_rating"]."</span>";
+                                    echo "<span class='data'>".$row["Comments"]."</span>";
+                                
+                                    echo "<div class='btn-group'>";
+                                        echo "<a class='btn btn-warning'href='edit.php?Rating_P_ID=".$row['Rating_P_ID']."'>Edit</a>";
+                                        echo "<a class='btn btn-warning2'href='delete.php?Rating_P_ID=".$row['Rating_P_ID']."'>Delete</a>";
+                                    echo "</div>";
+        
                                 echo "</div>";
-                                echo "</td>";
-                                echo "</tr>";
+                            echo "</div>";
                             }
-                            echo "</table>";
                         } else {
-                            echo "0 results";
+                            echo "";
                         } 
                     }
                 }
@@ -151,6 +171,3 @@
     </main>
 </body>
 </html>
-
-
-
