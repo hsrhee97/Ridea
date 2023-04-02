@@ -1,5 +1,10 @@
 <?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,15 +29,11 @@
     <main>
         <?php 
             $user_id = $_SESSION["id"];
-            $user_survey_id = $_GET["user_survey_id"];
-            $pass_survey_id = $_GET["pass_survey_id"];
-
-            echo "U_survey:", $user_survey_id;
-            echo "<br>";
-            echo "P_survey:", $pass_survey_id;
-            echo "<br>";
-            echo "user id:", $user_id;
-            echo "<br>";
+            // $user_survey_id = $_GET["user_survey_id"];
+            // $pass_survey_id = $_GET["pass_survey_id"];
+            // confirm.php 파일
+            $user_survey_id = $_SESSION["user_survey_id"];  
+            $pass_survey_id = $_SESSION["pass_survey_id"];
 
             $conn = mysqli_connect("db.luddy.indiana.edu","i494f22_team06","my+sql=i494f22_team06","i494f22_team06");
 
@@ -48,26 +49,28 @@
                 while($user_row = $user_result->fetch_assoc()) {
                     $driver_id = 1;
                     $passenger_id = $user_row["PassengerID"];
-                    $start_location = $user_row["start_address"] . ", " . $user_row["start_city"];
-                    $end_location = $user_row["end_address"] . ", " . $user_row["end_city"];
-                    $distance = 0.0;
+                    $start_location = $user_row["start_address"];
+                    $start_city = $user_row["start_city"];
+                    $end_location = $user_row["end_address"];
+                    $end_city = $user_row["end_city"];
+                    $distance = $user_row["Distance"];
                     $date = $user_row["trip_date"];
 
-                    $sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, End_location, Distance, Date)
-                    VALUES ('$driver_id', '$passenger_id', '$start_location', '$end_location', '$distance', '$date')";
+                    $sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, start_city, End_location, end_city, Distance, Date)
+                    VALUES ('$driver_id', '$passenger_id', '$start_location', '$start_city', '$end_location', '$end_city', '$distance', '$date')";
 
                     if ($conn->query($sql_insert) === TRUE) {
-                        echo "Record moved to trip";
+                        // echo "Record moved to trip";
                     } else {
-                        echo "Error: " . $sql_insert . "<br>" . $conn->error;
+                        // echo "Error: " . $sql_insert . "<br>" . $conn->error;
                     }
                 }
 
                 $sql_delete = "DELETE FROM SURVEY WHERE SurveyID = $user_survey_id";
                 if ($conn->query($sql_delete) === TRUE) {
-                    echo "Record deleted from survey";
+                    // echo "Record deleted from survey";
                 } else {
-                    echo "Error: " . $sql_delete . "<br>" . $conn->error;
+                    // echo "Error: " . $sql_delete . "<br>" . $conn->error;
                 }
             } else {
                 echo "0 results";
@@ -83,35 +86,39 @@
                     //임시 드라이버
                     $p_driver_id = 1; 
                     $p_passenger_id = $pass_row["PassengerID"];
-                    $p_start_location = $pass_row["start_address"] . ", " . $pass_row["start_city"];
-                    $p_end_location = $pass_row["end_address"] . ", " . $pass_row["end_city"];
-                    $p_distance = 0.0; 
+                    $p_start_location = $pass_row["start_address"];
+                    $p_start_city = $pass_row["start_city"]; 
+                    $p_end_location = $pass_row["end_address"];
+                    $p_end_city = $pass_row["end_city"]; 
+                    $p_distance = $pass_row["Distance"]; 
                     $p_date = $pass_row["trip_date"];
 
-                    $p_sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, End_location, Distance, Date)
-                    VALUES ('$p_driver_id', '$p_passenger_id', '$p_start_location', '$p_end_location', '$p_distance', '$p_date')";
+                    $p_sql_insert = "INSERT INTO TRIP (DriverID, PassengerID, Start_location, start_city, End_location, end_city, Distance, Date)
+                    VALUES ('$p_driver_id', '$p_passenger_id', '$p_start_location', '$p_start_city' , '$p_end_location', '$p_end_city', '$p_distance', '$p_date')";
 
                     if ($conn->query($p_sql_insert) === TRUE) {
-                        echo "passenger record moved to trip";
+                        // echo "passenger record moved to trip";
                     } else {
-                        echo "Error: " . $p_sql_insert . "<br>" . $conn->error;
+                        // echo "Error: " . $p_sql_insert . "<br>" . $conn->error;
                     }
                 }
 
                 $p_sql_delete = "DELETE FROM SURVEY WHERE SurveyID = $pass_survey_id";
 
                 if ($conn->query($p_sql_delete) === TRUE) {
-                    echo "passenger record deleted from survey";
+                    // echo "passenger record deleted from survey";
                 } else {
-                    echo "Error: " . $p_sql_delete . "<br>" . $conn->error;
+                    // echo "Error: " . $p_sql_delete . "<br>" . $conn->error;
                 }
             } else {
-                echo "0 results";
+                // echo "0 results";
             }
 
             $chat_sql_insert = "INSERT INTO CHAT (SenderID, ReceiverID, message) VALUES ('$passenger_id', '$p_passenger_id', '')";
 
             if ($conn->query($chat_sql_insert) === TRUE) {
+                unset($_SESSION["user_survey_id"]); // user_survey_id 변수 삭제
+                unset($_SESSION["pass_survey_id"]); // pass_survey_id 변수 삭제
                 echo ("<script>alert('Now you can start the CHAT!')</script>");
                 echo("<script>location.replace('chat_before.php');</script>");
                 exit;

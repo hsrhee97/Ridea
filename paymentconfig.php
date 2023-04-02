@@ -1,13 +1,22 @@
 <?php
+    session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
+?>
+<?php
 /* 
 PayPal Setting and Database configuration
 */
 //Paypal Settings and Configuration
 define('PAYPAL_ID','ridea@team06capstone.com');
 define('PAYPAL_SANDBOX', TRUE); //TRUE OR FALSE
-define('PAYPAL_RETURN_URL','https://cgi.luddy.indiana.edu/~team-06/paymentsuccess.php');
-define('PAYPAL_CANCEL_URL','https://cgi.luddy.indiana.edu/~team-06/paymentcancel.php');
-define('PAYPAL_NOTIFY_URL','https://cgi.luddy.indiana.edu/team-06/ipn.php');
+define('PAYPAL_RETURN_URL','https://cgi.luddy.indiana.edu/~team06/paymentsuccess.php');
+define('PAYPAL_CANCEL_URL','https://cgi.luddy.indiana.edu/~team06/paymentcancel.php');
+define('PAYPAL_NOTIFY_URL','https://cgi.luddy.indiana.edu/~team06/ipn.php');
+
 define('PAYPAL_CURRENCY','USD');
 //Database Configuration
 define('DB_SERVER', 'db.luddy.indiana.edu');
