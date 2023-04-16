@@ -1,3 +1,12 @@
+
+<?php
+    session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
+?>
 <?php 
     /* Database credentials. Assuming you are running MySQL
     server with default setting (user 'root' with no password) */
@@ -24,17 +33,17 @@
         $Comments = $_POST['Comments'];
         $Star_rating = $_POST['Star_rating'];
         $Rating_P_ID=$_GET['Rating_P_ID'];
-        echo $Comments;
+        // echo $Comments;
         $query = "UPDATE RATING_PASSENGER SET Comments = '$Comments', Star_rating = '$Star_rating' WHERE Rating_P_ID='$Rating_P_ID'";
-        echo $qcheck;
+        // echo $qcheck;
         $result = mysqli_query($link, $query); 
         if(false===$result){
             printf("error: %s\n", mysqli_error($link));
         }
         else {
-            echo 'done'; 
-            header('location: review1.php');
+            echo ("<script>alert('Review updated successfully!')</script>");
+            echo("<script>location.replace('ride-history.php');</script>");
         }
     }
-        ?>
+?>
         

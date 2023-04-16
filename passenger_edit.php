@@ -122,7 +122,7 @@
       die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-    if (isset($_POST['submit'])) {
+    if(isset($_POST['submit'])) {
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $password = $_POST['password'];
@@ -130,17 +130,23 @@
         $phone = $_POST['phone'];
         $biography = $_POST['biography'];
         $credit_card = $_POST['credit_card'];
-
-        $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', password = PASSWORD('$password'), biography = '$biography' WHERE PassengerID = '$PassengerID' " ;
-
-        $result = mysqli_query($link, $query); 
-        if(false===$result){
-            printf("error: %s\n", mysqli_error($link));
+    
+        if(empty($fname) || empty($lname) || empty($password) || empty($address) || empty($phone) || empty($biography) || empty($credit_card)) {
+            echo ("<script>alert('Please fill in all the required fields')</script>");
         }
         else {
-            echo ("<script>alert('Your profile has been successfully updated')</script>");
-            echo("<script>location.replace('profile.php');</script>");
-            exit;
+            $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', password = PASSWORD('$password'), biography = '$biography' WHERE PassengerID = '$PassengerID' " ;
+    
+            $result = mysqli_query($link, $query); 
+            if(false===$result){
+                printf("error: %s\n", mysqli_error($link));
+            }
+            else {
+                echo ("<script>alert('Your profile has been successfully updated')</script>");
+                echo("<script>location.replace('profile.php');</script>");
+                exit;
+            }
         }
     }
+    
 ?>

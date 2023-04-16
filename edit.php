@@ -1,19 +1,24 @@
+<?php
+    session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
+?>
 <?php 
-    /* Database credentials. Assuming you are running MySQL
-    server with default setting (user 'root' with no password) */
+
     define('DB_SERVER', 'db.luddy.indiana.edu');
     define('DB_USERNAME', 'i494f22_team06');
     define('DB_PASSWORD', 'my+sql=i494f22_team06');
     define('DB_NAME', 'i494f22_team06');
  
-    /* Attempt to connect to MySQL database */
     $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
-    // Check connection
     if($link === false){
       die("ERROR: Could not connect. " . mysqli_connect_error());
     }
-	// initializing variables
+
 	$Star_rating = "";
   $Comments = "";
     $Rating_P_ID = 0;
@@ -24,109 +29,69 @@ $Rating_P_ID=$_GET['Rating_P_ID'];
 $qcheck = "SELECT * from RATING_PASSENGER where Rating_P_ID=$Rating_P_ID"; 
 $result = mysqli_query($link, $qcheck); 
 $row = mysqli_fetch_assoc($result);
-
-
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Review</title>
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Update Review</title>
-<style type="text/css">        
-    *{
-    margin: 0;
-    padding: 0;
-}
-.Star_rating {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.Star_rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.Star_rating:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.Star_rating:not(:checked) > label:before {
-    content: '★ ';
-}
-.Star_rating > input:checked ~ label {
-    color: #ffc700;    
-}
-.Star_rating:not(:checked) > label:hover,
-.Star_rating:not(:checked) > label:hover ~ label {
-    color: #deb217;  
-}
-.Star_rating > input:checked + label:hover,
-.Star_rating > input:checked + label:hover ~ label,
-.Star_rating > input:checked ~ label:hover,
-.Star_rating > input:checked ~ label:hover ~ label,
-.Star_rating > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
-    </style>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <style>  <?php include 'css/review.css'; ?>  </style>
+
 </head>
 <body>
-<h1>Update Record</h1>
 
-<h2>Edit</h2>
+<?php include 'includes/nav.php'; ?>
 
-<!-- 
-/* $status = "";
-if(isset($_POST['update']))
-{
-$Rating_P_ID = $_REQUEST['Rating_P_ID'];
-$Star_rating = $_REQUEST['Star_rating'];
-$Comments = $_REQUEST['Comments'];
-$PassengerID = $_REQUEST['PassengerID'];
-$update="Rating_P_ID".$Rating_P_ID."',
-Star_rating='".$Star_rating."', Comments='".$Comments."',
-PassengerID='".$PassengerID."'";
-mysqli_query($con, $update) or die(mysqli_error());
-$status = "Record Updated Successfully. </br></br>
-<a href='index.php'>View Updated Record</a>";
-echo '<p style="color:#FF0000;">'.$status.'</p>';
-}else { */
-?> -->
+<div class="contents">
+    <div class="texts">
+    <h2>Edit <span>Review</span></h2>
+    <p>Let other passengers know how your ride went! Write, view, and edit your reviews below.</p>
+    </div>
+</div>
 
+<main>
 <div>
-<form method="post" action="./update_review_edit.php?Rating_P_ID=<?= $Rating_P_ID ?>"" >
-	<div class="wrapper">
-		<div class="Star_rating">
-    	<input type="radio" id="star5" name="Star_rating" value="5" />
-    	<label for="star5" title="text">5</label>
-    	<input type="radio" id="star4" name="Star_rating" value="4" />
-    	<label for="star4" title="text">4</label>
-    	<input type="radio" id="star3" name="Star_rating" value="3" />
-    	<label for="star3" title="text">3</label>
-    	<input type="radio" id="star2" name="Star_rating" value="2" />
-    	<label for="star2" title="text">2</label>
-    	<input type="radio" id="star1" name="Star_rating" value="1" />
-    	<label for="star1" title="text">1</label>
-        </div>
-	</div>
+<form method="post" action="./update_review_edit.php?Rating_P_ID=<?= $Rating_P_ID ?>"">
 
+	<div class="wrapper">
+        <h2>Overall rating</h2>
+            <div class="Star_rating">
+                <input type="radio" id="star5" name="Star_rating" value="5" />
+                <label for="star5" title="text">5</label>
+                <input type="radio" id="star4" name="Star_rating" value="4" />
+                <label for="star4" title="text">4</label>
+                <input type="radio" id="star3" name="Star_rating" value="3" />
+                <label for="star3" title="text">3</label>
+                <input type="radio" id="star2" name="Star_rating" value="2" />
+                <label for="star2" title="text">2</label>
+                <input type="radio" id="star1" name="Star_rating" value="1" />
+                <label for="star1" title="text">1</label>
+            </div>
+        </div>
 
 	<div class="input-group">
-			<label>Add a written review</label>
-			<input type="text" name="Comments" required value="<?php echo $row['Comments'];?>"/>
+    <h2>Add a written review</h2>
+        <textarea class="text-area" type="text" name="Comments" cols="40" rows="8"><?php echo $row['Comments'];?></textarea>
 	</div>
 
-<p><input name="submit" type="submit" value="Update"/></p>
-</form>
+<p><input class="edit-button" name="submit" type="submit" value="Update"/></p>
 
+</form>
+</main>
 </body>
 </html>
 
