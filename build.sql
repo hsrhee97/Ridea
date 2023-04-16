@@ -68,6 +68,7 @@ CREATE TABLE RATING_PASSENGER (
     Star_rating DECIMAL(5,1),
     Comments VARCHAR(255),
     TripID INT,
+    FOREIGN KEY (TripID) REFERENCES TRIP(TripID), 
     PRIMARY KEY (Rating_P_ID),
     FOREIGN KEY (PassengerID) REFERENCES PASSENGER(PassengerID),
     FOREIGN KEY (TripID) REFERENCES TRIP(TripID)
@@ -160,6 +161,26 @@ VALUES
     ("Megan", "Lee", "864 Birch St, Bloomington, IN", "901-234-5678", "meganlee@example.com", PASSWORD('11111111'), "I'm a photographer"),
     ("Michael", "Davis", "579 Spruce St, Bloomington, IN", "012-345-6789", "michaeldavis@example.com", PASSWORD('11111111'), "I'm a lawyer"),
     ('Krutang', 'Desai', '455 N', '317-313-1280', 'desaikr@iu.edu', PASSWORD('hello1234'), 'Nice to meet you');
+
+
+    
+INSERT INTO TRIP(DriverID, PassengerID, Start_location, End_location, Distance, Date)
+VALUES 
+    (3, 14, 'Bloomington', 'Miami', 482.12, '2023-03-19'),
+    (2, 14, 'Greenville', 'Brownville', 123.98, '2022-07-26'),
+    (3, 14, 'Chicago', 'Miami', 456.32, '2022-07-29'),
+    (4, 14, 'San Francisco', 'Seattle', 456.32, '2022-07-21'),
+    (6, 14, 'Boston', 'Bloomington', 5982.34, '2022-07-12'),
+    (6, 14, 'Los Angeles', 'San Francisco', 383.22, '2022-02-13'),
+    (2, 16, '789 Oak St', '321 Pine St', 15.25, '2022-02-14'),
+    (3, 5, 'Chicago', 'Los Angeles', 4329.45, '2022-08-23'),
+    (4, 4, 'BOSTON', 'MIAMI', 324.87, '2022-08-04'),
+    (5, 6, 'ORLANDO', 'CANCUN', 1234.87, '2022-09-29');
+
+
+INSERT INTO RATING_DRIVER (DriverID, Star_rating, Comments)
+VALUES
+    (2, 4.5, 'Bob was a great driver and the ride was very comfortable.');
 
 
 INSERT INTO TRIP (DriverID, PassengerID, Start_location, start_city, End_location, end_city, Distance, Date)
