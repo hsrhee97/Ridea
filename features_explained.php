@@ -27,4 +27,11 @@
         perfect match our algorithm will say that you there is at least one other passenger who fits all three criterias as 
         you. If not it will show you the people that have 2 of the 3 criterias that meet and so on.
     </p>
+    <h2>Safety Features</h2>
+    <p>Ridea offers the basic safety features that users require when it comes to traveling in a ridesharing service.
+        We offer a lost and found feature so that users can submit a form mentioning anything that they may have found 
+        or may have lost/forgotten in the car. The other feature we offer is any other problems that a passenger may 
+        have faced while completing their trip. This is to be used when they believe that this is something that should 
+        be brought to our attention and is more important than leaving a review. 
+    </p>
 </body>
