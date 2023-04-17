@@ -4,7 +4,6 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    // POST 방식으로 받은 이메일, 유저 유형, 새 비밀번호 처리
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $user_type = $_POST['user_type'];
@@ -18,8 +17,6 @@
         }
 
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-
-        // 해당 이메일 주소와 유저 유형을 가진 사용자의 비밀번호를 업데이트합니다.
 
         if($user_type == 'driver') {
             $sql_e = "SELECT COUNT(*) FROM DRIVER WHERE email='$email'";

@@ -151,7 +151,7 @@
                     </div>
                     <div class="inputbox">
                         <p>New to RIDEA? <a href="register1.php">Register</a></p>
-                        <a href="reset_password.php">Register</a>
+                        <a href="reset_password.php">Forgot Password?</a>
                     </div>
                 </form>
             </div>
