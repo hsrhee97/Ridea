@@ -49,12 +49,6 @@
             </div>
         </div>
 
-        <div class="content" onclick="location.href='emergency.php';" style="cursor: pointer;">
-        <div class="words">
-            <p>Emergency</p>
-            </div>
-        </div>
-
         <div class="content" onclick="location.href='otherproblems.php';" style="cursor: pointer;">
         <div class="words">
             <p>Other Problems</p>
