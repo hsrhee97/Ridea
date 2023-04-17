@@ -11,6 +11,7 @@
     <title>Features Explained</title>
 </head>
 <body>
+    <?php include 'includes/nav.php'; ?>
     <h1> How our features work!</h1>
     <h2>Pricing Algorithm</h2>
     <p> Our pricing is based on a simple formula that we have created which has a set constant base amount of $6
