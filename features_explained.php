@@ -11,6 +11,7 @@
     <title>Features Explained</title>
 </head>
 <body>
+    <?php include 'includes/nav.php'; ?>
     <h1> How our features work!</h1>
     <h2>Pricing Algorithm</h2>
     <p> Our pricing is based on a simple formula that we have created which has a set constant base amount of $6
@@ -26,5 +27,12 @@
         be shown other passengers that you can select from. Ridea tells you how many of your criterias match. If it is a 
         perfect match our algorithm will say that you there is at least one other passenger who fits all three criterias as 
         you. If not it will show you the people that have 2 of the 3 criterias that meet and so on.
+    </p>
+    <h2>Safety Features</h2>
+    <p>Ridea offers the basic safety features that users require when it comes to traveling in a ridesharing service.
+        We offer a lost and found feature so that users can submit a form mentioning anything that they may have found 
+        or may have lost/forgotten in the car. The other feature we offer is any other problems that a passenger may 
+        have faced while completing their trip. This is to be used when they believe that this is something that should 
+        be brought to our attention and is more important than leaving a review. 
     </p>
 </body>
