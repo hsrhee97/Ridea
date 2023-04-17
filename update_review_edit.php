@@ -38,7 +38,6 @@
         // echo $qcheck;
         $result = mysqli_query($link, $query); 
         if(false===$result){
-            printf("error: %s\n", mysqli_error($link));
         }
         else {
             echo ("<script>alert('Review updated successfully!')</script>");
