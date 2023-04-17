@@ -1,5 +1,10 @@
-<?php 
+<?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,18 +41,18 @@
 
             $type = $_SESSION['type'];
             $email = $_SESSION['login'];
-            $ID = '';
-            $TripID = 0 ;
-            $passenger_name ='';
-            $driver_name ='';
-            $D_ID ='';
-            $d_name ='';
-            $d_fname = '';
-            $d_lname ='';
-            $P_ID ='';
-            $p_name ='';
-            $p_fname ='';
-            $p_lname ='';
+            // $ID = '';
+            // $TripID = 0 ;
+            // $passenger_name ='';
+            // $driver_name ='';
+            // $D_ID ='';
+            // $d_name ='';
+            // $d_fname = '';
+            // $d_lname ='';
+            // $P_ID ='';
+            // $p_name ='';
+            // $p_fname ='';
+            // $p_lname ='';
             
             if ($type =='driver') {
                 $TripID = $_GET['TripID'];
@@ -65,44 +70,38 @@
                         $P_ID = $row["PassengerID"];
                     }
 
-                $passenger_name = "SELECT * FROM PASSENGER WHERE PassengerID = '$P_ID'";
-                $result = $conn->query($passenger_name);
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        $p_name = $row["PassengerID"];
-                        $p_fname = $row["fname"];
-                        $p_lname = $row["lname"];
-                    }
+                    $passenger_name = "SELECT * FROM PASSENGER WHERE PassengerID = '$P_ID'";
+                    $result = $conn->query($passenger_name);
+                    if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                $p_name = $row["PassengerID"];
+                                $p_fname = $row["fname"];
+                                $p_lname = $row["lname"];
+                            }
 
-                
-                $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
-                $result = mysqli_query($conn, $sql);
-                $num_rows = mysqli_num_rows($result);
-            
-                if ($num_rows > 0) {
-                
-                    while ($row = $result->fetch_assoc()) {
-
-                        echo "<td>" . $row["TripID"] . "</td>";
-                        echo "<td>" . $p_fname . "</td>";
-                        echo "<td>" . $p_lname . "</td>";
-                        echo "<td>" . $row["PassengerID"] . "</td>";
-                        echo "<td>" . $row["Start_location"] . "</td>";
-                        echo "<td>" . $row["End_location"] . "</td>";
-                        echo "<td>" . $row["Distance"] . "</td>";
-                        echo "<td>" . $row["Date"] . "</td>";
-                        echo "<a class='btn btn-warning'href='review1.php'>Create a review for this trip</a>";
                         
+                        $sql = "SELECT * FROM TRIP WHERE TripID = $TripID";
+                        $result = mysqli_query($conn, $sql);
+                        $num_rows = mysqli_num_rows($result);
+                    
+                        if ($num_rows > 0) {
+                        
+                            while ($row = $result->fetch_assoc()) {
 
-
+                                echo $row["Start_location"] . ", " . $row["start_city"] . "</td>";
+                                echo $row["End_location"] . ", " . $row["end_city"] . "</td>";
+                                echo $row["Distance"] . "</td>";
+                                echo $row["Date"] . "</td>";
+                                echo "<a class='btn btn-warning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
+                                
+                            }
+                        } else {
+                            echo "0 results";
+                        }
                     }
-                } else {
-                    echo "0 results";
                 }
                 }
             }
-        }
-    }
             elseif ($type == 'passenger'){
                 $TripID = $_GET['TripID'];
                 $sql = "SELECT * FROM PASSENGER WHERE email='$email'";
@@ -133,7 +132,7 @@
 
                 
 
-                $sql = "SELECT TripID, Start_location, End_location, Distance, Date FROM TRIP WHERE TripID = $TripID";
+                $sql = "SELECT * FROM TRIP WHERE TripID = $TripID";
                 $result = mysqli_query($conn, $sql);
                 $num_rows = mysqli_num_rows($result);
             
@@ -141,14 +140,37 @@
 
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='detail-box'>";
-                            echo $row["TripID"];
-                            echo $d_fname;
-                            echo $d_lname;
-                            echo $row["Start_location"];
-                            echo $row["End_location"];
-                            echo $row["Distance"];
-                            echo $row["Date"];
-                            echo "<a class='btn btn-warning'href='review1.php'>Create a review for this trip</a>";
+
+                            echo "<div class='detail-contents'>";
+                            
+                                echo "<div class='label'>";
+                                    echo "<h3>Start City - </h3>". $row["start_city"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo "<h3>End City - </h3>". $row["end_city"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo "<h3>Pickup Point - </h3>". $row["Start_location"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo "<h3>Destination - </h3>". $row["End_location"];
+                                echo "</div>";
+
+
+                                echo "<div class='label'>";
+                                    echo "<h3>Distance - </h3>". $row["Distance"];
+                                echo "</div>";
+
+                                echo "<div class='label'>";
+                                    echo "<h3>Date - </h3>". $row["Date"];
+                                echo "</div>";
+
+                                echo "<a class='btn btn-notwarning'href='review1.php?TripID=".$row['TripID']."&end_city=".$row['end_city']."&date=".$row['Date']."'>Create a review for this trip</a>";
+                            echo "</div>";
+                            
                         echo "</div>";
                     }
 

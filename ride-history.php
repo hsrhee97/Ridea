@@ -1,30 +1,10 @@
-<!--OPEN AND CLOSE PHP TAG HERE 
-    /* session_start();
-    $r=session_id();
-    
-    $sql = "select * from TRIP";
-    $result = mysqli_query($con, $sql);
-    while($row = mysqli_fetch_array($result)) {
-        echo print_r($row);
-    } 
-    $_SESSION['PassengerID']=$PassengerID;
-    echo $PassengerID;
-    echo "the session id: ".$r;
-    echo " and the session has been registered for: ".$_SESSION['PassengerID']; */
- 
-
-/* UNCOMMENT THIS CODE NOT THE PREVIOUS ONE */
-/*     session_start();
-    $user_check=$_SESSION['login'];
-    echo $user_check;
-    $ses_sql=mysqli_query($con,"select Start_location, End_Location, PassengerID from TRIP where email='$user_check'");
-    $row=mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
-    $loggedin_session=$row['Start_location'];
-    $loggedin_id=$row['login'];
-    echo $loggedin_id */
--->
-<?php 
+<?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,8 +116,8 @@
                             while ($row = $result->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address'>";
-                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
-                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["start_city"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["end_city"]."</span>";
                                         echo "<div class='datebox'>";
                                             echo $row["Date"];
                                         echo "</div>";
@@ -157,7 +137,9 @@
                         } else {
                             echo "0 results";
                         }
-                    } else {
+                    } 
+                    
+                    else {
                         $sql_check = "SELECT * FROM TRIP WHERE PassengerID = $ID  ORDER BY Date DESC";
                         $result_check = mysqli_query($conn, $sql_check);
                         $num_rows_check = mysqli_num_rows($result_check);
@@ -167,8 +149,8 @@
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address'>";
-                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
-                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["start_city"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["end_city"]."</span>";
                                         echo "<div class='datebox'>";
                                             echo $row["Date"];
                                         echo "</div>";
@@ -214,8 +196,8 @@
                             while ($row = $result->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address'>";
-                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
-                                        echo "<br><span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["start_city"]."</span>";
+                                        echo "<br><span>TO</span>". "<span class='data'>". $row["end_city"]."</span>";
                                         echo "<div class='datebox'>";
                                             echo $row["Date"];
                                         echo "</div>";
@@ -245,8 +227,8 @@
                             while ($row = $result_check->fetch_assoc()) {
                                 echo "<div class='box'>";
                                     echo "<div class='address-box'>";
-                                        echo "<span>FROM</span>". "<span class='data'>". $row["Start_location"]."</span>";
-                                        echo "<span>TO</span>". "<span class='data'>". $row["End_location"]."</span>";
+                                        echo "<span>FROM</span>". "<span class='data'>". $row["start_city"]."</span>";
+                                        echo "<span>TO</span>". "<span class='data'>". $row["end_city"]."</span>";
                                             echo "<div class='datebox'>";
                                                 echo $row["Date"];
                                             echo "</div>";

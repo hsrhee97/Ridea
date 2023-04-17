@@ -1,5 +1,10 @@
 <?php
     session_start();
+    $login = $_SESSION['login'];
+    if (!isset($login)) {
+    header('Location: home.php');
+    exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +132,7 @@
                 echo "</div>";
             }
             else {
-                echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
+                echo "<h2 class='header'>Cases where all of the date, destination, or departure is the same.</h2>";
                 echo "<p class='ask_book'> There are no cases where all of the date, destination, and origin are the same. </p>";
             }
             
@@ -160,7 +165,7 @@
             else {
                 // echo "<h2>When two of the following match: date, destination, and departure</h2>";
                 // echo "There are no cases where two of the date, destination, and origin are the same.";
-                echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
+                echo "<h2 class='header'>Cases where two of the date, destination, or departure is the same.</h2>";
                 echo "<p class='ask_book'> There are no cases where two of the date, destination, and origin are the same. </p>";
             }
 
@@ -189,32 +194,40 @@
                     echo "</div>";
                 }
                 echo "</div>";
+
+                echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+
+                echo "<div class='button-box'>";
+                echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
+                echo "</div>";
             }
             else {
                 echo "<h2 class='header'>Cases where one of the date, destination, or departure is the same.</h2>";
                 echo "<p class='ask_book'> There are no cases where one of the date, destination, and departure is the same. </p>";
+                
+                echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+
+                echo "<div class='button-box'>";
+                echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
+                echo "</div>";
             }
 
             //None
             if (count($matches['different_all']) > 0) {
-                echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+                // echo "<p class='ask_book'>You can still proceed with the booking even if there are no matching results for your search criteria</p>";
                 
-                echo "<div class='button-box'>";
-                // echo ("<script>alert('Your reservation has been registered. We will contact you if we find a match with another passenger.')</script>");
-                // echo("<script>location.replace('calendar.php');</script>");
-                echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
-                echo "</div>";
+                // echo "<div class='button-box'>";
+                // echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
+                // echo "</div>";
             }
 
 
         } else {
-            echo "<p class='ask_book'>There are no cases. You can still proceed with the booking even if there are no matching results for your search criteria</p>";
+            // echo "<p class='ask_book'>There are no cases. You can still proceed with the booking even if there are no matching results for your search criteria</p>";
 
-            echo "<div class='button-box'>";
-            // echo ("<script>alert('Your reservation has been registered. We will contact you if we find a match with another passenger.')</script>");
-            // echo("<script>location.replace('calendar.php');</script>");
-            echo "<a class='last_btn'href='calendar.php?TripID=".$row['TripID']."'>Book for future trip</a>";
-            echo "</div>";
+            // echo "<div class='button-box'>";
+            // echo "<a class='last_btn' href='calendar.php'>Book for future trip</a>";
+            // echo "</div>";
         }
 
         mysqli_close($conn);
