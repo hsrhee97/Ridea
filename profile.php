@@ -83,7 +83,7 @@
 
                         echo "<div class='label'>";
                             echo"<h2>Password</h2>";
-                            echo $row["password"] ? str_repeat("*", strlen($row["password"])) : "";
+                            echo $row["password"] ? substr(str_repeat("*", 8), 0, min(8, strlen($row["password"]))) : "";
                         echo "</div>";
                         
                     echo "<div class='btn-group'>";
@@ -165,7 +165,7 @@
 
                                 echo "<div class='label'>";
                                     echo"<h2>Password</h2>";
-                                    echo $row["password"] ? str_repeat("*", strlen($row["password"])) : "";
+                                    echo $row["password"] ? substr(str_repeat("*", 8), 0, min(8, strlen($row["password"]))) : "";
                                 echo "</div>";
 
 
