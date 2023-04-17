@@ -131,7 +131,6 @@
         <div class="imgbox">
             <img src="images/rocket.jpeg" alt="#">
             <div class="imagetext">
-                <!-- <p>Do not Follow Where the path may lead.<br>Go instead where there is no path and leave a trail.<br><span>- Ralph Waldo Emerson</span></p> -->
             </div>
         </div>
         <div class="contentbox">

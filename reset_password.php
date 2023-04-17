@@ -56,34 +56,70 @@
     }
 ?>
 
-<form method="post">
-    <label>
-        <input type="radio" name="user_type" value="driver" required>
-        Driver
-    </label>
-    <label>
-        <input type="radio" name="user_type" value="passenger" required>
-        Passenger
-    </label>
-    <br>
-    <label>
-        Email:
-        <input type="email" name="email" required>
-    </label>
-    <br>
-    <label>
-        New Password:
-        <input type="password" name="new_password" required>
-    </label>
-    <br>
-    <label>
-        Confirm Password:
-        <input type="password" name="confirm_password" required>
-    </label>
-    <br>
-    <input type="submit" value="Reset Password">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<?php
-    mysqli_close($conn);
-?>
+    <style> <?php include 'css/loginform.css'; ?> </style>
+    
+    <title>Document</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- another icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+</head>
+<body>
+<section>
+        <div class="imgbox">
+            <img src="images/rocket.jpeg" alt="#">
+            <div class="imagetext">
+            </div>
+        </div>
+        <div class="contentbox">
+            <div class="formbox">
+                <h2>Reset Password</h2>
+                <form method="post">
+
+                <label>
+                    <input type="radio" name="user_type" value="driver" required>
+                    <span>Driver</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="user_type" value="passenger" required>
+                    <span>Passenger</span>
+                </label>
+
+                    <div class="inputbox">
+                        <span>Email</span>
+                        <input class="reg_box" type='email' name="email" size="40" required>
+                    </div>
+                    <div class="inputbox">
+                        <span>New Password</span>
+                        <input class="reg_box" type='password' name="new_password" size="40" required>
+                    </div>
+
+                    <div class="inputbox">
+                        <span>Confirm New Password</span>
+                        <input class="reg_box" type='password' name="confirm_password" size="40" required>
+                    </div>
+
+                    <div class="inputbox">
+                        <input class="input_state" type="submit" value="Reset Password"> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

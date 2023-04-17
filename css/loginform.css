@@ -125,3 +125,11 @@ section .contentbox .formbox .inputbox input[type="submit"]:hover {
 section .contentbox .formbox .inputbox p a {
     color: var(--main-color);
 }
+
+section .contentbox .formbox .inputbox a {
+    color: var(--main-color);
+}
+
+input[type="radio"]{
+    margin: 2em 2em;
+}
