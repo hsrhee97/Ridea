@@ -131,10 +131,6 @@
         $biography = $_POST['biography'];
         $credit_card = $_POST['credit_card'];
     
-        if(empty($fname) || empty($lname) || empty($password) || empty($address) || empty($phone) || empty($biography) || empty($credit_card)) {
-            echo ("<script>alert('Please fill in all the required fields')</script>");
-        }
-        else {
             $query = "UPDATE PASSENGER SET fname = '$fname', lname = '$lname', address = '$address', phone = '$phone', password = PASSWORD('$password'), biography = '$biography' WHERE PassengerID = '$PassengerID' " ;
     
             $result = mysqli_query($link, $query); 
@@ -147,6 +143,5 @@
                 exit;
             }
         }
-    }
     
 ?>
