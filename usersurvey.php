@@ -130,10 +130,8 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8WiX6J_LFrV334_WNTuEklDlZkZCeREo&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5ReqYcOembRKbjFdMSvPRbbyqqTPVOis&libraries=places"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/Main.js"></script>
-    
 </body>
 </html>
