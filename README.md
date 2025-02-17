@@ -51,27 +51,6 @@ RIDEA는 국제 학생들이 공항이나 특정 목적지로 이동할 때 함�
 - **라이브러리:** Google Maps API, PayPal REST API  
 - **도구:** Git, GitHub, Visual Studio Code, Figma  
 
-## 🔧 설치 및 실행 방법  
-
-1. **소스 코드 다운로드**  
-   ```sh  
-   git clone https://github.com/hshrlee97/RIDEA.git  
-   cd RIDEA  
-   ```  
-
-2. **환경 설정**  
-   - 웹 서버 (Apache) 및 데이터베이스 (MySQL) 설정  
-   - `config.php`에서 데이터베이스 연결 정보 설정  
-
-3. **데이터베이스 마이그레이션**  
-   ```sh  
-   mysql -u [username] -p [database_name] < database/schema.sql  
-   ```  
-
-4. **서버 실행**  
-   - 로컬 환경에서 `localhost`를 통해 실행  
-   - `home.php`에 접속하여 서비스 확인  
-
 ## 🔍 사용성 테스트 및 개선 사항  
 
 - **사용성 테스트**: Interview, Think Aloud, Survey, A/B Testing을 통해 사용자 피드백 반영  
